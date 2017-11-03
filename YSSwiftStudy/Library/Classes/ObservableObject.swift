@@ -20,16 +20,6 @@ func synchronized<T>(object: NSObject, block: () -> (T) ) -> T {
     return result
 }
 
-func synhronizedBoolRetrunFunction(object: NSObject, synhronizedFunction: () -> Bool ) -> Bool {
-    objc_sync_enter(object)
-    
-    let result = synhronizedFunction()
-    
-    objc_sync_exit(object)
-    
-    return result
-}
-
 class ObservableObject: NSObject {
     
     // MARK: Public Properties
