@@ -24,6 +24,10 @@
 		9533F1C61FAB74FB00FC12DE /* GSDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533F1C31FAB74FB00FC12DE /* GSDConstants.swift */; };
 		9533F1C91FAB754A00FC12DE /* Random+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533F1C81FAB754A00FC12DE /* Random+Extensions.swift */; };
 		9533F1CB1FACE58B00FC12DE /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533F1CA1FACE58B00FC12DE /* Array+Extension.swift */; };
+		9533F1D01FACF9CD00FC12DE /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533F1CF1FACF9CD00FC12DE /* LoadingView.swift */; };
+		9533F1D21FACF9F100FC12DE /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9533F1D11FACF9F100FC12DE /* LoadingView.xib */; };
+		9533F1D41FACFE9E00FC12DE /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533F1D31FACFE9E00FC12DE /* UIView.swift */; };
+		9533F1D61FAD1F5400FC12DE /* YSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533F1D51FAD1F5400FC12DE /* YSView.swift */; };
 		955141111FA0C1AD00B57947 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955141101FA0C1AD00B57947 /* String+Extension.swift */; };
 		955141131FA0E74B00B57947 /* UIWindows+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955141121FA0E74B00B57947 /* UIWindows+Extension.swift */; };
 		956A85CA1F93D52200292D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 956A85C91F93D52200292D21 /* Assets.xcassets */; };
@@ -53,6 +57,10 @@
 		9533F1C31FAB74FB00FC12DE /* GSDConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSDConstants.swift; sourceTree = "<group>"; };
 		9533F1C81FAB754A00FC12DE /* Random+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Random+Extensions.swift"; sourceTree = "<group>"; };
 		9533F1CA1FACE58B00FC12DE /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		9533F1CF1FACF9CD00FC12DE /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		9533F1D11FACF9F100FC12DE /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		9533F1D31FACFE9E00FC12DE /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		9533F1D51FAD1F5400FC12DE /* YSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YSView.swift; sourceTree = "<group>"; };
 		955141101FA0C1AD00B57947 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		955141121FA0E74B00B57947 /* UIWindows+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindows+Extension.swift"; sourceTree = "<group>"; };
 		956A85BF1F93D52200292D21 /* YSSwiftStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YSSwiftStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,17 +86,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		95070F321FA3456700B26BD7 /* YSArrayModel */ = {
+		95070F321FA3456700B26BD7 /* ArrayModel */ = {
 			isa = PBXGroup;
 			children = (
-				95070F371FA348BD00B26BD7 /* YSArrayModelChange */,
+				95070F371FA348BD00B26BD7 /* ArrayModelChange */,
 				95070F351FA345CC00B26BD7 /* ArrayModel.swift */,
 			);
-			name = YSArrayModel;
-			path = YSSwiftStudy/Sourse/Models/YSModels/YSArrayModel;
+			name = ArrayModel;
+			path = YSSwiftStudy/Sourse/Models/YSModels/ArrayModel;
 			sourceTree = SOURCE_ROOT;
 		};
-		95070F371FA348BD00B26BD7 /* YSArrayModelChange */ = {
+		95070F371FA348BD00B26BD7 /* ArrayModelChange */ = {
 			isa = PBXGroup;
 			children = (
 				95070F381FA34F8200B26BD7 /* ArrayModelChange.swift */,
@@ -96,7 +104,7 @@
 				95070F3C1FA354D800B26BD7 /* ArrayModelChangeDelete.swift */,
 				95070F3E1FA3551600B26BD7 /* ArrayModelChangeMove.swift */,
 			);
-			path = YSArrayModelChange;
+			path = ArrayModelChange;
 			sourceTree = "<group>";
 		};
 		950C526C1F99F27600AD308C /* YSInternetImageModel */ = {
@@ -132,16 +140,16 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
-		950C783D1F973E1600C040E9 /* YSUser */ = {
+		950C783D1F973E1600C040E9 /* User */ = {
 			isa = PBXGroup;
 			children = (
 				950C783E1F973E4E00C040E9 /* User.swift */,
 			);
-			name = YSUser;
-			path = YSSwiftStudy/Sourse/Models/YSModels/YSUser;
+			name = User;
+			path = YSSwiftStudy/Sourse/Models/YSModels/User;
 			sourceTree = SOURCE_ROOT;
 		};
-		950C78401F973F9100C040E9 /* YSImageModel */ = {
+		950C78401F973F9100C040E9 /* ImageModel */ = {
 			isa = PBXGroup;
 			children = (
 				950C52701F9A6A9F00AD308C /* YSImageModelCache */,
@@ -149,7 +157,7 @@
 				950C526C1F99F27600AD308C /* YSInternetImageModel */,
 				950C78411F973FB200C040E9 /* ImageModel.swift */,
 			);
-			path = YSImageModel;
+			path = ImageModel;
 			sourceTree = "<group>";
 		};
 		9533F1C21FAB74FA00FC12DE /* GSDExtensions */ = {
@@ -158,6 +166,16 @@
 				9533F1C31FAB74FB00FC12DE /* GSDConstants.swift */,
 			);
 			path = GSDExtensions;
+			sourceTree = "<group>";
+		};
+		9533F1CC1FACF93E00FC12DE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9533F1CF1FACF9CD00FC12DE /* LoadingView.swift */,
+				9533F1D51FAD1F5400FC12DE /* YSView.swift */,
+				9533F1D11FACF9F100FC12DE /* LoadingView.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		9551410E1FA0C17B00B57947 /* Classes */ = {
@@ -179,6 +197,7 @@
 				95070F301FA1D4E300B26BD7 /* FileManager+Extension.swift */,
 				95070F421FA38F4800B26BD7 /* UITableView+Extension.swift */,
 				9533F1CA1FACE58B00FC12DE /* Array+Extension.swift */,
+				9533F1D31FACFE9E00FC12DE /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -240,10 +259,10 @@
 		956A85D71F93D69200292D21 /* YSModels */ = {
 			isa = PBXGroup;
 			children = (
-				950C783D1F973E1600C040E9 /* YSUser */,
-				95070F321FA3456700B26BD7 /* YSArrayModel */,
-				950C78401F973F9100C040E9 /* YSImageModel */,
-				956A85DF1F93D95A00292D21 /* YSModel */,
+				950C783D1F973E1600C040E9 /* User */,
+				95070F321FA3456700B26BD7 /* ArrayModel */,
+				950C78401F973F9100C040E9 /* ImageModel */,
+				956A85DF1F93D95A00292D21 /* Model */,
 			);
 			path = YSModels;
 			sourceTree = "<group>";
@@ -251,25 +270,18 @@
 		956A85D81F93D69200292D21 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				956A85D91F93D69200292D21 /* YSControllers */,
-				956A85DA1F93D69200292D21 /* YSViews */,
+				9533F1CC1FACF93E00FC12DE /* Views */,
+				956A85D91F93D69200292D21 /* Controllers */,
 			);
 			path = UI;
 			sourceTree = "<group>";
 		};
-		956A85D91F93D69200292D21 /* YSControllers */ = {
+		956A85D91F93D69200292D21 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				95A92DC81F9F7B070074898E /* YSSquareViewController */,
+				95A92DC81F9F7B070074898E /* SquareViewController */,
 			);
-			path = YSControllers;
-			sourceTree = "<group>";
-		};
-		956A85DA1F93D69200292D21 /* YSViews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = YSViews;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		956A85DB1F93D78B00292D21 /* Resourse */ = {
@@ -289,12 +301,12 @@
 			path = images;
 			sourceTree = "<group>";
 		};
-		956A85DF1F93D95A00292D21 /* YSModel */ = {
+		956A85DF1F93D95A00292D21 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				956A85E61F94FDA000292D21 /* Model.swift */,
 			);
-			path = YSModel;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		956A85E01F93DA3800292D21 /* YSContext */ = {
@@ -305,14 +317,14 @@
 			path = YSContext;
 			sourceTree = "<group>";
 		};
-		95A92DC81F9F7B070074898E /* YSSquareViewController */ = {
+		95A92DC81F9F7B070074898E /* SquareViewController */ = {
 			isa = PBXGroup;
 			children = (
 				95A92DC91F9F7B480074898E /* SquareViewController.swift */,
 				95A92DCD1F9F7D310074898E /* SquareView.swift */,
 				95A92DCA1F9F7B480074898E /* SquareViewController.xib */,
 			);
-			path = YSSquareViewController;
+			path = SquareViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,6 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9533F1D21FACF9F100FC12DE /* LoadingView.xib in Resources */,
 				956A85CA1F93D52200292D21 /* Assets.xcassets in Resources */,
 				95A92DCC1F9F7B480074898E /* SquareViewController.xib in Resources */,
 			);
@@ -394,6 +407,8 @@
 				95070F3D1FA354D800B26BD7 /* ArrayModelChangeDelete.swift in Sources */,
 				95070F431FA38F4800B26BD7 /* UITableView+Extension.swift in Sources */,
 				9533F1C91FAB754A00FC12DE /* Random+Extensions.swift in Sources */,
+				9533F1D61FAD1F5400FC12DE /* YSView.swift in Sources */,
+				9533F1D41FACFE9E00FC12DE /* UIView.swift in Sources */,
 				950C52801F9B89C700AD308C /* ObservableObject.swift in Sources */,
 				95070F3B1FA3544100B26BD7 /* ArrayModelChangeInsert.swift in Sources */,
 				955141131FA0E74B00B57947 /* UIWindows+Extension.swift in Sources */,
@@ -405,6 +420,7 @@
 				9533F1CB1FACE58B00FC12DE /* Array+Extension.swift in Sources */,
 				955141111FA0C1AD00B57947 /* String+Extension.swift in Sources */,
 				95070F3F1FA3551600B26BD7 /* ArrayModelChangeMove.swift in Sources */,
+				9533F1D01FACF9CD00FC12DE /* LoadingView.swift in Sources */,
 				950C52761F9A895500AD308C /* InternetImageModel.swift in Sources */,
 				950C783F1F973E4E00C040E9 /* User.swift in Sources */,
 				956A85E71F94FDA000292D21 /* Model.swift in Sources */,

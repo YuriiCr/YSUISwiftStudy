@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ArrayModelObserver {
+    func arrayModelChangeWith(changeModel: ArrayModelChange)
+}
+
 class ArrayModel<T> : Model {
     
     // MARK: Public Properties
@@ -21,10 +25,22 @@ class ArrayModel<T> : Model {
     // MARK: Public Methods
     
     func add(_ object: T) {
-        
+        synchronized(object: self) {
+            self.insertObject(object, index: self.count)
+        }
     }
     
     func addObjects(_ objects: T) {
+        
+    }
+    
+    func remove(_ object: T) {
+        synchronized(object: self) {
+            self.removeObjectAtIndex(self.indexOfObject(object))
+        }
+    }
+    
+    func removeObject (_ objects: T) {
         
     }
     
@@ -32,6 +48,14 @@ class ArrayModel<T> : Model {
         return synchronized(object: self) {
             return self.count > index ? self.array[index] : nil
             } as? Int
+    }
+    
+    func indexOfObject(_ object: T) -> Int {
+        return synchronized(object: self, block: { () -> (Int) in
+            return self.array.index(where: { (object) -> Bool in
+                return true
+            })!
+        })
     }
     
     func insertObject(_ object: T, index: Int) {
@@ -67,8 +91,15 @@ class ArrayModel<T> : Model {
     func notifyOfStateChangeWith(object: T) {  self.notifyOfStateWithObject(state: .modelChanged, object: object as! NSObject)
     }
     
+    // MARK: Observation
     
-    
-
+    override func selectorForState(state:ModelState) -> Selector? {
+        switch state {
+        case .modelChanged:
+            return Selector(("arrayModelChangeWith:"))
+        default:
+            return super.selectorForState(state: state)
+        }
+    }
     
 }
