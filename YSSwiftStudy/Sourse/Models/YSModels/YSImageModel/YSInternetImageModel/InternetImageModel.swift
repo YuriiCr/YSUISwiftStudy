@@ -19,25 +19,20 @@ class InternetImageModel: FileManagerImageModel {
         return URLSession.shared
     }
     
-    private var _task: URLSessionDownloadTask?
-    
     private var task: URLSessionDownloadTask? {
-        get {
-            return _task
-        } set {
-            if _task != newValue {
-                if let task = _task {
-                    task.cancel()
-                }
-                
-                _task = newValue
-                if let task = _task {
-                    task.resume()
-                }
+        willSet {
+            if let task = newValue {
+                task.resume()
+            }
+        }
+        
+        didSet {
+            if let task = oldValue {
+                task.cancel()
             }
         }
     }
-    
+   
     private var imagePath:String {
         return FileManager.pathWithNameFolder(Constants.DirectoryComponent)
     }

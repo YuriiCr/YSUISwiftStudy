@@ -18,7 +18,7 @@ class ImageModel: Model {
     
     deinit {
         let cache = ModelCache.shared
-        cache.removeImageModel(self)
+        cache.remove(imageModel: self)
     }
     
     func imageModelWithUrl(url:URL) -> ImageModel? {
@@ -27,7 +27,7 @@ class ImageModel: Model {
         if imageModel == nil {
             imageModel = url.isFileURL ? FileManagerImageModel.init(url: url) : InternetImageModel.init(url: url)
             if let imageModel = imageModel {
-                cache.addImageModel(imageModel)
+                cache.add(imageModel: imageModel)
                 return imageModel
             }
         }

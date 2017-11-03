@@ -16,6 +16,7 @@ extension UIWindow {
     static func windowWithRootViewController(_ controller:UIViewController) -> UIWindow {
         let window = self.window()
         window.rootViewController = controller
+        
         return window
     }
 }

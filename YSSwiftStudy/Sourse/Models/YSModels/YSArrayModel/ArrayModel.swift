@@ -8,26 +8,24 @@
 
 import UIKit
 
-class ArrayModel: Model {
+class ArrayModel<T> : Model {
     
     // MARK: Public Properties
-    var array: Array<AnyObject>?
+    
+    private var array: Array<T> = []
+    
     var count:Int {
-        if let array = self.array {
-            return array.count
-        }
-        
-        return 0
+       return self.array.count
     }
     
     // MARK: Public Methods
-    func addObject(_ object:AnyObject) {
+    func add(_ object: T) {
         
     }
     
-    func addObjects(_ objects:AnyObject) {
-        for object in self.array! {
-            self.addObject(object)
-        }
+    func addObjects(_ objects: T) {
+       
     }
+
+    
 }

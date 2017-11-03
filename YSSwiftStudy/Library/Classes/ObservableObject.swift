@@ -10,12 +10,14 @@ import UIKit
 
 // MARK: Global function for thred safety
 
-func synhronizedVoidFunction(object: NSObject, synhronizedFunction: () -> () ) {
+func synchronized<T>(object: NSObject, block: () -> (T) ) -> T {
     objc_sync_enter(object)
-    
-    synhronizedFunction()
+
+    let result =  block()
     
     objc_sync_exit(object)
+
+    return result
 }
 
 func synhronizedBoolRetrunFunction(object: NSObject, synhronizedFunction: () -> Bool ) -> Bool {
@@ -29,6 +31,7 @@ func synhronizedBoolRetrunFunction(object: NSObject, synhronizedFunction: () -> 
 }
 
 class ObservableObject: NSObject {
+    
     // MARK: Public Properties
     
     var state: ModelState = ModelState.modelDidUnload {
@@ -38,25 +41,26 @@ class ObservableObject: NSObject {
     }
     
     // MARK: Private Properties
+    
     private var notify: Bool = true
     private var observers = NSHashTable<AnyObject>()
     
     // MARK: Public methods
     
     func addObserver(obsever: NSObject) {
-        synhronizedVoidFunction(object: self) {
+        synchronized(object: self) {
              self.observers.add(obsever)
         }
     }
     
     func removeObserver(observer:NSObject) {
-        synhronizedVoidFunction(object: self) {
+        synchronized(object: self) {
             self.observers.remove(observer)
         }
     }
     
     func isObserver(observer: NSObject) -> Bool {
-        return synhronizedBoolRetrunFunction(object: self, synhronizedFunction: { () -> Bool in
+        return synchronized(object: self, block: { () -> (Bool) in
             self.observers.contains(observer)
         })
     }
@@ -72,6 +76,7 @@ class ObservableObject: NSObject {
     func selectorForState(state:ModelState) -> Selector? {
         return nil
     }
+    
    // MARK: Private methods
     
     private func notifyOfStateWithSelector(selector: Selector?) {
@@ -93,5 +98,4 @@ class ObservableObject: NSObject {
             })
         }
     }
-    
 }

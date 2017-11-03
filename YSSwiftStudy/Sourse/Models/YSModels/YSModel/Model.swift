@@ -26,13 +26,14 @@ enum ModelState {
 class Model: ObservableObject {
     
     // MARK: Public methods
+    
     func load() {
         let state = self.state
-        if (state == ModelState.modelWillLoad || state == ModelState.modelDidLoad) {
+        if (state == .modelWillLoad || state == .modelDidLoad) {
             self.notifyOfState(state: state)
             return;
         }
-        self.state = ModelState.modelWillLoad
+        self.state = .modelWillLoad
         self.performLoadingInBackground()
     }
     

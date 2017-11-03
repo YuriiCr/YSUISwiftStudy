@@ -11,9 +11,9 @@ import UIKit
 class SquareView: UIView {
     
     // Mark: public properties
-    @IBOutlet var square: UIView!
-    @IBOutlet var moveButton: UIButton!
-    @IBOutlet var randomMove: UIButton!
+    @IBOutlet var square: UIView?
+    @IBOutlet var moveButton: UIButton?
+    @IBOutlet var randomMove: UIButton?
     
     var position = 0
     
@@ -32,48 +32,49 @@ class SquareView: UIView {
     }
     
     // MARK: Public methods
+    
     func setSquarePosition (_ position: Int, animated:Bool) {
         self.setSquarePosition(position, animated: true, completionHandler: nil)
     }
     
     func setSquarePosition (_ position: Int, animated:Bool, completionHandler:(() -> ())?) {
         UIView.animate(withDuration: animated ? Constants.defaultDuration : 0, delay: Constants.defaultDelation, options: .beginFromCurrentState, animations: {
-            self.square.center = self.squareCentrForPosition(position)
+            self.square?.center = self.squareCentrForPosition(position)!
         }) { (_) in
             if let completionHandler = completionHandler {
                 completionHandler()
             }
             self.position = position
         }
-        
-        
     }
     
     // MARK: Private methods
     
-    func squareCentrForPosition (_ position: Int) -> CGPoint {
-        var center = CGPoint(x:self.square.frame.size.width/2,y: self.square.frame.size.height/2)
-        
-        let rightX = self.bounds.size.width - self.square.frame.size.width/2
-        let bottomY = self.bounds.size.height - self.square.frame.height/2
-        
-        switch position {
-        case SquarePosition.topLeft.rawValue:
-            break
-        case SquarePosition.topRight.rawValue:
-            center.x = rightX
-        case SquarePosition.bottomRight.rawValue:
-            center.x = rightX
-            center.y = bottomY
-            break
-        case SquarePosition.bottomLeft.rawValue:
-            center.y = bottomY
-            break
+    func squareCentrForPosition (_ position: Int) -> CGPoint? {
+        if let square = self.square {
+            var center = CGPoint(x:square.frame.size.width/2,y: square.frame.size.height/2)
             
-        default:
-            break
+            let rightX = self.bounds.size.width - square.frame.size.width/2
+            let bottomY = self.bounds.size.height - square.frame.height/2
+            switch position {
+            case SquarePosition.topLeft.rawValue:
+                break
+            case SquarePosition.topRight.rawValue:
+                center.x = rightX
+            case SquarePosition.bottomRight.rawValue:
+                center.x = rightX
+                center.y = bottomY
+                break
+            case SquarePosition.bottomLeft.rawValue:
+                center.y = bottomY
+                break
+                
+            default:
+                break
         }
-        return center
+             return center
+    }
+       return nil
     }
     
     func nextPosition() -> Int {

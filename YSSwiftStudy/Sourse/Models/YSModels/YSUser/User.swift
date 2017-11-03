@@ -11,11 +11,12 @@ import UIKit
 class User: Model, NSCoding {
     
     private struct Keys {
-        static let YSName:String? = "YSName"
-        static let YSSurname:String? = "YSSurname"
+        static let name:String? = "YSName"
+        static let surname:String? = "YSSurname"
     }
     
     // MARK: Public properties
+    
     var name: String?
     var surname: String?
     
@@ -37,20 +38,22 @@ class User: Model, NSCoding {
     }
     
     // MARK: Initialization
+    
     override init() {
         self.name = randomName()
         self.surname = randomName()
     }
     
     // MARK: NSCoding
+    
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(self.name, forKey:Keys.YSName!)
-        aCoder.encode(self.surname, forKey:Keys.YSSurname!)
+        aCoder.encode(self.name, forKey:Keys.name!)
+        aCoder.encode(self.surname, forKey:Keys.surname!)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.name = aDecoder.decodeObject(forKey: Keys.YSName!) as? String
-        self.surname = aDecoder.decodeObject(forKey: Keys.YSSurname!) as? String
+        self.name = aDecoder.decodeObject(forKey: Keys.name!) as? String
+        self.surname = aDecoder.decodeObject(forKey: Keys.surname!) as? String
     }
     
 }
