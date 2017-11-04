@@ -11,7 +11,7 @@ import UIKit
 protocol ModelObserver {
     func modelDidUnload(_ model:Model)
     func modelWillLoad(_ model:Model)
-    func modelDidLoad( _model:Model)
+    func modelDidLoad(_ model:Model)
     func modelFailedLoading(_ model:Model)
 }
 
