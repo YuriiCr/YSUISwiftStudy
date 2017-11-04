@@ -33,7 +33,7 @@ class ObservableObject: NSObject {
     // MARK: Private Properties
     
     private var notify: Bool = true
-    private var observers = NSHashTable<AnyObject>()
+    private var observers = NSHashTable<AnyObject>.weakObjects()
     
     // MARK: Public methods
     
