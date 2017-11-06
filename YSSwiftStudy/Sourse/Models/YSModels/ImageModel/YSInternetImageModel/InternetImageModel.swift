@@ -52,7 +52,7 @@ class InternetImageModel: FileManagerImageModel {
                 } catch _ as NSError {
 
                 }
-                }
+            }
          })
         
         return super.loadImage()

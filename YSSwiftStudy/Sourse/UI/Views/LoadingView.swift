@@ -32,16 +32,14 @@ class LoadingView: UIView {
         }
         
         didSet {
-            if let indicator = oldValue {
-                self.willRemoveSubview(indicator)
-            }
+            oldValue?.removeFromSuperview()
         }
     }
     
     var state:LoadingViewState? {
         willSet {
             if let state = newValue {
-                self.setStateAnimated(state, true)
+                self.setStateWith(state)
             }
         }
     }
@@ -65,21 +63,15 @@ class LoadingView: UIView {
     // MARK: Pulic methods
     
     static func loadingViewInView (view: UIView) -> LoadingView {
-        return LoadingView.init(frame: view.bounds)
+        return LoadingView(frame: view.bounds)
     }
     
-    func setStateAnimated(_ state: LoadingViewState, _ animated: Bool) {
-        self.setStateWithHandler(state, animated, handler: nil)
-    }
-    
-    func setStateWithHandler(_ state: LoadingViewState, _ animated: Bool, handler: (() -> ())?) {
-        UIView.animate(withDuration: animated ? Constants.loadingViewDuratuion : 0, animations: {
+    func setStateWith(_ state: LoadingViewState, animated: Bool = true, handler: (() -> ())? = nil) {
+        UIView.animate(withDuration: animated ? Constants.loadingViewDuratuion : 0,
+                       animations: {
             self.alpha = state == .visible ? Constants.presentantionLoadingViewAlpha : Constants.loadingViewHiddenAlpha
         }) { (_) in
-            if let handler = handler {
-                handler()
-            }
-            
+            handler?()
             self.state = state
         }
     }

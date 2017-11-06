@@ -10,7 +10,12 @@ import UIKit
 
 extension UIView {
     var autoresizeAll: UIViewAutoresizing {
-return [.flexibleBottomMargin, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleWidth, .flexibleHeight]
+        return [.flexibleBottomMargin,
+                .flexibleTopMargin,
+                .flexibleLeftMargin,
+                .flexibleRightMargin,
+                .flexibleWidth,
+                .flexibleHeight]
     }
 }
 

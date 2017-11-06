@@ -10,36 +10,26 @@ import UIKit
 
 class ImageView: YSView, ModelObserver {
    
-    
-
     //MARK: Public properties
     
     var imageModel: ImageModel? {
         willSet {
-            if let model = newValue {
-                model.addObserver(obsever: self)
-                model.load()
-            }
+           newValue?.addObserver(obsever: self)
+           newValue?.load()
         }
         
         didSet {
-            if let model = oldValue {
-                model.removeObserver(observer: self)
-            }
+            oldValue?.removeObserver(observer: self)
         }
     }
     
     var imageView: UIImageView? {
         willSet {
-            if let imageView = newValue {
-                self.addSubview(imageView)
-            }
+            newValue?.addSubview(self)
         }
         
         didSet {
-            if let imageView = oldValue {
-                imageView.removeFromSuperview()
-            }
+            oldValue?.removeFromSuperview()
         }
     }
     

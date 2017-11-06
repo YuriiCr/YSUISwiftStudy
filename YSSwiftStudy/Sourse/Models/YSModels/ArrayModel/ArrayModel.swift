@@ -25,7 +25,7 @@ class ArrayModel<T> : Model {
     // MARK: Public Methods
     
     func add(_ object: T) {
-        synchronized(object: self) {
+        synchronized(self) {
             self.insertObject(object, index: self.count)
         }
     }
@@ -35,7 +35,7 @@ class ArrayModel<T> : Model {
     }
     
     func remove(_ object: T) {
-        synchronized(object: self) {
+        synchronized(self) {
             self.removeObjectAtIndex(self.indexOfObject(object))
         }
     }
@@ -44,14 +44,14 @@ class ArrayModel<T> : Model {
         
     }
     
-    func objectAtIndex(_ index: Int) -> Int? {
-        return synchronized(object: self) {
+    func objectAtIndex(_ index: Int) -> T? {
+        return synchronized(self) {
             return self.count > index ? self.array[index] : nil
-            } as? Int
+            }
     }
     
     func indexOfObject(_ object: T) -> Int {
-        return synchronized(object: self, block: { () -> (Int) in
+        return synchronized(self, block: { () -> (Int) in
             return self.array.index(where: { (object) -> Bool in
                 return true
             })!
@@ -59,7 +59,7 @@ class ArrayModel<T> : Model {
     }
     
     func insertObject(_ object: T, index: Int) {
-        synchronized(object: self) {
+        synchronized( self) {
             self.array.insert(object, at: index)
               let modelChange:ArrayModelChange = ArrayModelChangeInsert(index: index)
             self.notifyOfStateChangeWith(object: modelChange as! T)
@@ -67,7 +67,7 @@ class ArrayModel<T> : Model {
     }
     
     func removeObjectAtIndex(_ index: Int) {
-        synchronized(object: self) {
+        synchronized(self) {
             if self.count > index {
                 self.array.remove(at: index)
                 let modelChange:ArrayModelChange = ArrayModelChangeDelete(index: index)
@@ -77,7 +77,7 @@ class ArrayModel<T> : Model {
     }
     
     func moveObject(at index: Int, to destinationIndex:Int) {
-        synchronized(object: self) {
+        synchronized(self) {
             if index != destinationIndex {
                 self.array.moveObject(at: index, to: destinationIndex)
                 let modelChange:ArrayModelChange = ArrayModelChangeMove(index: index, destinationIndex: destinationIndex)

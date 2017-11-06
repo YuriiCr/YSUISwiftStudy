@@ -9,9 +9,11 @@
 import UIKit
 
 class ModelCache {
+    
     // MARK: Public properties
     
     var cache = NSMapTable<AnyObject, ImageModel>.strongToWeakObjects()
+    
     static let shared = ModelCache()
     
     // MARK: Private methods
@@ -21,18 +23,18 @@ class ModelCache {
     // MARK: Public methods
     
     func add(imageModel: ImageModel) {
-        synchronized(object: imageModel) {
+        synchronized(imageModel) {
             self.cache.setObject(imageModel, forKey: imageModel.url as AnyObject)
         }
     }
     
     func remove(imageModel: ImageModel) {
-        synchronized(object: imageModel) {
+        synchronized(imageModel) {
                self.cache.removeObject(forKey:imageModel.url as AnyObject)
         }
     }
     
-    func imageModelWithUrl(_ url: URL) -> ImageModel? {
+    func imageModel(with url: URL) -> ImageModel? {
         return self.cache.object(forKey: url as AnyObject)
     }
 

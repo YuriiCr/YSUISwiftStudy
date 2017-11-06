@@ -11,6 +11,7 @@ import UIKit
 class ArrayModelChange {
     
     //MARK: Public Methods
+    
     func changeTableView(_ tableView: UITableView) {
         self.changeTableViewWith(tableView, inSection: 0, rowAnimation: .automatic)
     }

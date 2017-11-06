@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: Global function for thred safety
 
-func synchronized<T>(object: NSObject, block: () -> (T) ) -> T {
+func synchronized<T>(_ object: NSObject, block: () -> (T) ) -> T {
     objc_sync_enter(object)
 
     let result =  block()
@@ -24,9 +24,9 @@ class ObservableObject: NSObject {
     
     // MARK: Public Properties
     
-    var state: ModelState = ModelState.modelDidUnload {
-        willSet {
-            self.notifyOfState(state: newValue)
+    var state: ModelState = .modelDidUnload {
+        didSet {
+            self.notifyOfState(state: self.state)
         }
     }
     
@@ -38,19 +38,19 @@ class ObservableObject: NSObject {
     // MARK: Public methods
     
     func addObserver(obsever: NSObject) {
-        synchronized(object: self) {
+        synchronized(self) {
              self.observers.add(obsever)
         }
     }
     
     func removeObserver(observer:NSObject) {
-        synchronized(object: self) {
+        synchronized(self) {
             self.observers.remove(observer)
         }
     }
     
     func isObserver(observer: NSObject) -> Bool {
-        return synchronized(object: self, block: { () -> (Bool) in
+        return synchronized(self, block: { () -> (Bool) in
             self.observers.contains(observer)
         })
     }

@@ -23,11 +23,12 @@ class ImageModel: Model {
     
     func imageModelWithUrl(url:URL) -> ImageModel? {
         let cache = ModelCache.shared
-        var imageModel = cache.imageModelWithUrl(url)
+        var imageModel = cache.imageModel(with: url)
         if imageModel == nil {
-            imageModel = url.isFileURL ? FileManagerImageModel.init(url: url) : InternetImageModel.init(url: url)
+            imageModel = url.isFileURL ? FileManagerImageModel(url: url) : InternetImageModel(url: url)
             if let imageModel = imageModel {
                 cache.add(imageModel: imageModel)
+                
                 return imageModel
             }
         }
@@ -43,5 +44,4 @@ class ImageModel: Model {
         self.image = loadImage()
         self.state = self.image == nil ? .modelFailedLoading : .modelDidLoad
     }
-
 }

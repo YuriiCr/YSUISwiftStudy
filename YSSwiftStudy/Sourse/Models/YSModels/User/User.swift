@@ -11,8 +11,8 @@ import UIKit
 class User: Model, NSCoding {
     
     private struct Keys {
-        static let name:String? = "YSName"
-        static let surname:String? = "YSSurname"
+        static let name:String = "YSName"
+        static let surname:String = "YSSurname"
     }
     
     // MARK: Public properties
@@ -47,13 +47,13 @@ class User: Model, NSCoding {
     // MARK: NSCoding
     
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(self.name, forKey:Keys.name!)
-        aCoder.encode(self.surname, forKey:Keys.surname!)
+        aCoder.encode(self.name, forKey:Keys.name)
+        aCoder.encode(self.surname, forKey:Keys.surname)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.name = aDecoder.decodeObject(forKey: Keys.name!) as? String
-        self.surname = aDecoder.decodeObject(forKey: Keys.surname!) as? String
+        self.name = aDecoder.decodeObject(forKey: Keys.name) as? String
+        self.surname = aDecoder.decodeObject(forKey: Keys.surname) as? String
     }
     
 }
