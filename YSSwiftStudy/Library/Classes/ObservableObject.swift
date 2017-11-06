@@ -33,9 +33,18 @@ class ObservableObject: NSObject {
     // MARK: Private Properties
     
     private var notify: Bool = true
+    private var controllers = NSHashTable<ObservationController>.weakObjects()
     private var observers = NSHashTable<AnyObject>.weakObjects()
     
     // MARK: Public methods
+    
+    func notify(of state: ModelState) {
+        synchronized(self) {
+            self.controllers.allObjects.forEach { (controller) in
+                controller.notify(of: state)
+            }
+        }
+    }
     
     func addObserver(obsever: NSObject) {
         synchronized(self) {
@@ -89,3 +98,24 @@ class ObservableObject: NSObject {
         }
     }
 }
+
+// MARK: Extensions for Observer
+
+extension ObservableObject {
+    class ObservationController {
+        typealias ObserverType = AnyObject
+        typealias ActionType = (ObservableObject) -> ()
+        
+        private var observableObject: ObservableObject?
+        private var observer: ObserverType?
+        
+        private var relation = [ModelState : ActionType]()
+        
+        func notify(of state: ModelState) {
+//            self.relation[state]
+        }
+        
+    }
+}
+
+
