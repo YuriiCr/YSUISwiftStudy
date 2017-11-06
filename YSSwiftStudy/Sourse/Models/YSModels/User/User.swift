@@ -31,7 +31,7 @@ class User: Model, NSCoding {
     }
     var fullName : String? {
         if let name = self.name {
-            return self.surname == nil ? name : "\(name)  \(self.surname!)"
+            return self.surname == nil ? name : "\(name)  \(self.surname ?? "")"
         }
         
         return nil
