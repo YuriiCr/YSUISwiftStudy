@@ -175,8 +175,8 @@
 			children = (
 				9533F1CF1FACF9CD00FC12DE /* LoadingView.swift */,
 				9533F1D51FAD1F5400FC12DE /* YSView.swift */,
-				9533F1D11FACF9F100FC12DE /* LoadingView.xib */,
 				9533F1D71FADAB7100FC12DE /* ImageView.swift */,
+				9533F1D11FACF9F100FC12DE /* LoadingView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";

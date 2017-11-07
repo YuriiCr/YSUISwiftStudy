@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageView: YSView, ModelObserver {
+class ImageView: YSView {
    
     //MARK: Public properties
     
@@ -53,28 +53,6 @@ class ImageView: YSView, ModelObserver {
     
     func fillWith(model: ImageModel) {
         self.imageView?.image = model.image
-    }
-    
-    // MARK: Model Observer
-    
-    func modelDidUnload(_ model: Model) {
-        
-    }
-    
-    func modelWillLoad(_ model: Model) {
-        DispatchQueue.main.async {
-            self.loadingView?.state = .visible
-        }
-    }
-    
-    func modelDidLoad(_ model: Model) {
-        self.loadingView?.state = .hidden
-        fillWith(model: model as! ImageModel)
-
-    }
-    
-    func modelFailedLoading(_ model: Model) {
-        
     }
 
 }

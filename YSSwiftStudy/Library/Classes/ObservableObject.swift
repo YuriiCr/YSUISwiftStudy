@@ -112,9 +112,18 @@ extension ObservableObject {
         private var relation = [ModelState : ActionType]()
         
         func notify(of state: ModelState) {
-//            self.relation[state]
+            _ = self.relation[state]
         }
         
+        subscript(state: ModelState) -> ActionType {
+            get {
+                return self.relation[state]!
+            }
+            
+            set(newValue) {
+                self.relation[state] = newValue
+            }
+        }
     }
 }
 

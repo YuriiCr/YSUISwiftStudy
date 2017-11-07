@@ -31,17 +31,21 @@ class ArrayModel<T> : Model {
     }
     
     func addObjects(_ objects: T) {
-        
+        self.array.forEach {
+            self.add($0)
+        }
     }
     
-    func remove(_ object: T) {
+    func remove(object: T) {
         synchronized(self) {
             self.removeObjectAtIndex(self.indexOfObject(object))
         }
     }
     
-    func removeObject (_ objects: T) {
-        
+    func remove(objects: T) {
+        self.array.forEach {
+            self.remove(object: $0)
+        }
     }
     
     func objectAtIndex(_ index: Int) -> T? {

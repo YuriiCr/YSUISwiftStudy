@@ -7,10 +7,18 @@
 //
 
 class YSContext {
+    // MARK: Public properties
+    
     var model: Model?
     
+     // MARK: Public Methods
+    
     func execute() {
-        self.performEcexution(state:self.model!.state)
+        if let model = self.model {
+              self.performEcexution(state: model.state)
+        }
+        
+      
     }
     
     func cancel() {
