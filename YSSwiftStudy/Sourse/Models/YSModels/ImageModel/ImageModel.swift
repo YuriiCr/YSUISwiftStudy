@@ -21,7 +21,7 @@ class ImageModel: Model {
         cache.remove(imageModel: self)
     }
     
-    func imageModelWithUrl(url:URL) -> ImageModel? {
+    static func imageModelWith(url:URL) -> ImageModel? {
         let cache = ModelCache.shared
         var imageModel = cache.imageModel(with: url)
         if imageModel == nil {

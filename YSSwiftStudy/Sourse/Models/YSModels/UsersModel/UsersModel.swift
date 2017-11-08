@@ -28,7 +28,7 @@ class UsersModel: ArrayModel<ObservableObject> {
         
     }
     
-    private var names = [NSNotification.Name.UIApplicationWillTerminate, NSNotification.Name.UIApplicationWillResignActive]
+    private let names = [NSNotification.Name.UIApplicationWillTerminate, NSNotification.Name.UIApplicationWillResignActive]
     
     // MARK: Initialization
     

@@ -10,6 +10,8 @@ class YSContext {
     // MARK: Public properties
     
     var model: Model?
+    var user: FBCurrentUser?
+    
     
      // MARK: Public Methods
     

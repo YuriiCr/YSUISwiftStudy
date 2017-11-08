@@ -24,7 +24,7 @@ class User: Model, NSCoding {
         let fileUrl = Bundle.main.url(forResource:"image", withExtension: "jpg")
         
         if let fileUrl = fileUrl {
-            return ImageModel(url: fileUrl)
+            return ImageModel.imageModelWith(url: fileUrl)
         }
         
         return nil
