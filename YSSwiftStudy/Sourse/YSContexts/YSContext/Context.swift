@@ -7,27 +7,25 @@
 //
 
 class YSContext {
+    
     // MARK: Public properties
     
     var model: Model?
     var user: FBCurrentUser?
     
-    
      // MARK: Public Methods
     
     func execute() {
-        if let model = self.model {
-              self.performEcexution(state: model.state)
+        self.performEcexution { (state) in
+            self.model?.state = state
         }
-        
-      
     }
     
     func cancel() {
 
     }
     
-    func performEcexution(state: ModelState) {
+    func performEcexution(_ block: (ModelState) -> ()) {
         
     }
     

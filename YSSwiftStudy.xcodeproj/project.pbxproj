@@ -41,6 +41,7 @@
 		95A92DCE1F9F7D310074898E /* SquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A92DCD1F9F7D310074898E /* SquareView.swift */; };
 		95B04E2F1F95117100BE907C /* YSAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A85DE1F93D78B00292D21 /* YSAppDelegate.swift */; };
 		95B1C0B91FB315070030A0C3 /* FBCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1C0B81FB315070030A0C3 /* FBCurrentUser.swift */; };
+		95B1C0C01FB3553C0030A0C3 /* FBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1C0BF1FB3553C0030A0C3 /* FBViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		95A92DCA1F9F7B480074898E /* SquareViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SquareViewController.xib; sourceTree = "<group>"; };
 		95A92DCD1F9F7D310074898E /* SquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
 		95B1C0B81FB315070030A0C3 /* FBCurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBCurrentUser.swift; sourceTree = "<group>"; };
+		95B1C0BF1FB3553C0030A0C3 /* FBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +301,7 @@
 		956A85D91F93D69200292D21 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				95B1C0BA1FB354A90030A0C3 /* FBViewControllers */,
 				95A92DC81F9F7B070074898E /* SquareViewController */,
 			);
 			path = Controllers;
@@ -345,6 +348,46 @@
 				95A92DCA1F9F7B480074898E /* SquareViewController.xib */,
 			);
 			path = SquareViewController;
+			sourceTree = "<group>";
+		};
+		95B1C0BA1FB354A90030A0C3 /* FBViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				95B1C0BE1FB354A90030A0C3 /* FBViewController */,
+				95B1C0BB1FB354A90030A0C3 /* FBLoginViewController */,
+				95B1C0BC1FB354A90030A0C3 /* FBUserLoginViewController */,
+				95B1C0BD1FB354A90030A0C3 /* FBUsersViewController */,
+			);
+			path = FBViewControllers;
+			sourceTree = "<group>";
+		};
+		95B1C0BB1FB354A90030A0C3 /* FBLoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FBLoginViewController;
+			sourceTree = "<group>";
+		};
+		95B1C0BC1FB354A90030A0C3 /* FBUserLoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FBUserLoginViewController;
+			sourceTree = "<group>";
+		};
+		95B1C0BD1FB354A90030A0C3 /* FBUsersViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FBUsersViewController;
+			sourceTree = "<group>";
+		};
+		95B1C0BE1FB354A90030A0C3 /* FBViewController */ = {
+			isa = PBXGroup;
+			children = (
+				95B1C0BF1FB3553C0030A0C3 /* FBViewController.swift */,
+			);
+			path = FBViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -444,6 +487,7 @@
 				955141111FA0C1AD00B57947 /* String+Extension.swift in Sources */,
 				95B1C0B91FB315070030A0C3 /* FBCurrentUser.swift in Sources */,
 				95070F3F1FA3551600B26BD7 /* ArrayModelChangeMove.swift in Sources */,
+				95B1C0C01FB3553C0030A0C3 /* FBViewController.swift in Sources */,
 				9533F1D01FACF9CD00FC12DE /* LoadingView.swift in Sources */,
 				950C52761F9A895500AD308C /* InternetImageModel.swift in Sources */,
 				950C783F1F973E4E00C040E9 /* User.swift in Sources */,
