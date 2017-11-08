@@ -16,7 +16,7 @@ class ArrayModel<T> : Model {
     
     // MARK: Public Properties
     
-    private var array: Array<T> = []
+    var array: Array<T> = []
     
     var count:Int {
        return self.array.count
@@ -30,8 +30,8 @@ class ArrayModel<T> : Model {
         }
     }
     
-    func addObjects(_ objects: T) {
-        self.array.forEach {
+    func addObjects(_ objects: Array<T>) {
+        objects.forEach {
             self.add($0)
         }
     }
@@ -42,8 +42,8 @@ class ArrayModel<T> : Model {
         }
     }
     
-    func remove(objects: T) {
-        self.array.forEach {
+    func remove(objects: Array<T>) {
+        objects.forEach {
             self.remove(object: $0)
         }
     }
