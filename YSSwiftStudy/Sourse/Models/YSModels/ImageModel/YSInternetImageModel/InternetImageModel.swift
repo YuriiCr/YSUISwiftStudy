@@ -33,22 +33,24 @@ class InternetImageModel: FileManagerImageModel {
         }
     }
    
-    private var imagePath:String {
+    private var imagePath:String? {
         return FileManager.pathWithNameFolder(Constants.DirectoryComponent)
     }
     
     // MARK: Public Methods
     
     override func loadImage() -> UIImage? {
-        if FileManager.default.fileExists(atPath: self.imagePath) {
-            let image = super.loadImage()
-            return image
+        if let imagePath = self.imagePath {
+            if FileManager.default.fileExists(atPath: imagePath) {
+                let image = super.loadImage()
+                return image
+            }
         }
         
         self.task = self.session.downloadTask(with: self.url, completionHandler: { (location, response, error) in
-            if let location = location {
+            if let location = location, let imagePath = self.imagePath {
                 do {
-                    try FileManager.default.moveItem(atPath: location.path, toPath: self.imagePath)
+                    try FileManager.default.moveItem(atPath: location.path, toPath: imagePath)
                 } catch _ as NSError {
 
                 }

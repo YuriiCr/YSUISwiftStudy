@@ -85,8 +85,8 @@ class LoadingView: UIView {
         self.indicator?.center = CGPoint(x: bounds.midX, y: bounds.midY);
         
         self.indicator?.startAnimating()
-//        self.autoresizingMask = [.flexibleBottomMargin, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleWidth, .flexibleHeight]
-        self.autoresizingMask = autoresizeAll
+        self.autoresizingMask = [.flexibleBottomMargin, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleWidth, .flexibleHeight]
+//        self.autoresizingMask = autoresizeAll
     }
 
 }

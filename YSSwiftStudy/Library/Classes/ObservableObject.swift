@@ -76,6 +76,14 @@ class ObservableObject: NSObject {
         return nil
     }
     
+    func performBlockWithNotification(_ block: () -> ()) {
+        
+    }
+    
+    func performBlockWithoutNotification(_ block: () -> ()) {
+        
+    }
+    
    // MARK: Private methods
     
     private func notifyOfStateWithSelector(selector: Selector?) {

@@ -9,15 +9,17 @@
 import Foundation
 
 extension FileManager {
-    static func pathWithNameFolder(_ nameFolder:String) -> String {
-        let documentsPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
+    static func pathWithNameFolder(_ nameFolder:String) -> String? {
+        let documentsPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first
         
-        let folderPath = documentsPath.appending(documentsPath)
-        if !FileManager.default.fileExists(atPath: folderPath) {
-            do {
-            try FileManager.default.createDirectory(atPath: folderPath, withIntermediateDirectories: false, attributes: nil)
-            } catch let error as NSError {
-                print (error.localizedDescription)
+        let folderPath = documentsPath?.appending(nameFolder)
+        if let folderPath = folderPath {
+            if !FileManager.default.fileExists(atPath: folderPath) {
+                do {
+                    try FileManager.default.createDirectory(atPath: folderPath, withIntermediateDirectories: false, attributes: nil)
+                } catch let error as NSError {
+                    print (error.localizedDescription)
+                }
             }
         }
         
