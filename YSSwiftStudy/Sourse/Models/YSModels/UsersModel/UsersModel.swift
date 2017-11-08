@@ -28,6 +28,19 @@ class UsersModel: ArrayModel<ObservableObject> {
         
     }
     
+    private var names = [NSNotification.Name.UIApplicationWillTerminate, NSNotification.Name.UIApplicationWillResignActive]
+    
+    // MARK: Initialization
+    
+    deinit {
+        self.cancelNotification()
+    }
+    
+    override init() {
+        super.init()
+        self.subscribeNotification()
+    }
+    
     // MARK: Public methods
     
     override func performLoading() {
@@ -46,11 +59,28 @@ class UsersModel: ArrayModel<ObservableObject> {
             }
         })
         
+        self.state = .modelDidLoad
     }
     
     func save() {
         if let path = self.pathList {
             NSKeyedArchiver.archiveRootObject(self.array , toFile: path)
+        }
+    }
+    
+    // MARK: Private Methods
+    
+    func subscribeNotification() {
+        for name in self.names {
+            NotificationCenter.default.addObserver(forName: name, object: nil, queue: OperationQueue.main, using: { (_) in
+                self.save()
+            })
+        }
+    }
+    
+    func cancelNotification() {
+        for name in self.names {
+            NotificationCenter.default.removeObserver(self, name: name, object: nil)
         }
     }
     
