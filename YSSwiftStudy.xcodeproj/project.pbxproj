@@ -402,6 +402,7 @@
 		95B1C0BD1FB354A90030A0C3 /* FBUsersViewController */ = {
 			isa = PBXGroup;
 			children = (
+				95B1C0D31FB487000030A0C3 /* FBUserCell */,
 				95B1C0C91FB372540030A0C3 /* FBUsersViewController.swift */,
 				95B1C0D11FB372B40030A0C3 /* FBUsersView.swift */,
 				95B1C0CA1FB372540030A0C3 /* FBUsersViewController.xib */,
@@ -415,6 +416,13 @@
 				95B1C0BF1FB3553C0030A0C3 /* FBViewController.swift */,
 			);
 			path = FBViewController;
+			sourceTree = "<group>";
+		};
+		95B1C0D31FB487000030A0C3 /* FBUserCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FBUserCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

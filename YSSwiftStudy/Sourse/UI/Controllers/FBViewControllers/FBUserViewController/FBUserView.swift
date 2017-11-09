@@ -9,7 +9,12 @@
 import UIKit
 
 class FBUserView: YSView {
+    
+     // MARK: Public properties
 
-  
+    @IBOutlet var userImageView: ImageView?
+    @IBOutlet var fullNameLabel: UILabel?
+    @IBOutlet var friendsButton: UIButton?
+    @IBOutlet var logoutButton: UIButton?
 
 }

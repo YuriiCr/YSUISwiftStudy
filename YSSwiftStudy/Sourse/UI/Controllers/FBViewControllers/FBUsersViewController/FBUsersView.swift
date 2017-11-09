@@ -10,6 +10,9 @@ import UIKit
 
 class FBUsersView: YSView {
 
-  
+    // MARK: Public properties
+    
+    @IBOutlet var logOut: UIButton?
+    @IBOutlet var tableView: UITableView?
 
 }

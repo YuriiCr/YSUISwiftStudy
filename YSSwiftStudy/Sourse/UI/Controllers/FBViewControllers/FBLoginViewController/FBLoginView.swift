@@ -10,6 +10,8 @@ import UIKit
 
 class FBLoginView: YSView {
 
-   
+    // MARK: Public properties
+    
+    @IBOutlet var login: UIButton?
 
 }
