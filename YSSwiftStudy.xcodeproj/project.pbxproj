@@ -42,6 +42,15 @@
 		95B04E2F1F95117100BE907C /* YSAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A85DE1F93D78B00292D21 /* YSAppDelegate.swift */; };
 		95B1C0B91FB315070030A0C3 /* FBCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1C0B81FB315070030A0C3 /* FBCurrentUser.swift */; };
 		95B1C0C01FB3553C0030A0C3 /* FBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1C0BF1FB3553C0030A0C3 /* FBViewController.swift */; };
+		95B1C0C31FB371C40030A0C3 /* FBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1C0C11FB371C40030A0C3 /* FBLoginViewController.swift */; };
+		95B1C0C41FB371C40030A0C3 /* FBLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B1C0C21FB371C40030A0C3 /* FBLoginViewController.xib */; };
+		95B1C0C71FB3723E0030A0C3 /* FBUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1C0C51FB3723E0030A0C3 /* FBUserViewController.swift */; };
+		95B1C0C81FB3723E0030A0C3 /* FBUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B1C0C61FB3723E0030A0C3 /* FBUserViewController.xib */; };
+		95B1C0CB1FB372540030A0C3 /* FBUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1C0C91FB372540030A0C3 /* FBUsersViewController.swift */; };
+		95B1C0CC1FB372540030A0C3 /* FBUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B1C0CA1FB372540030A0C3 /* FBUsersViewController.xib */; };
+		95B1C0CE1FB372830030A0C3 /* FBLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1C0CD1FB372830030A0C3 /* FBLoginView.swift */; };
+		95B1C0D01FB372A10030A0C3 /* FBUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1C0CF1FB372A10030A0C3 /* FBUserView.swift */; };
+		95B1C0D21FB372B40030A0C3 /* FBUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1C0D11FB372B40030A0C3 /* FBUsersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +92,15 @@
 		95A92DCD1F9F7D310074898E /* SquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
 		95B1C0B81FB315070030A0C3 /* FBCurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBCurrentUser.swift; sourceTree = "<group>"; };
 		95B1C0BF1FB3553C0030A0C3 /* FBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBViewController.swift; sourceTree = "<group>"; };
+		95B1C0C11FB371C40030A0C3 /* FBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginViewController.swift; sourceTree = "<group>"; };
+		95B1C0C21FB371C40030A0C3 /* FBLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FBLoginViewController.xib; sourceTree = "<group>"; };
+		95B1C0C51FB3723E0030A0C3 /* FBUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBUserViewController.swift; sourceTree = "<group>"; };
+		95B1C0C61FB3723E0030A0C3 /* FBUserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FBUserViewController.xib; sourceTree = "<group>"; };
+		95B1C0C91FB372540030A0C3 /* FBUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBUsersViewController.swift; sourceTree = "<group>"; };
+		95B1C0CA1FB372540030A0C3 /* FBUsersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FBUsersViewController.xib; sourceTree = "<group>"; };
+		95B1C0CD1FB372830030A0C3 /* FBLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginView.swift; sourceTree = "<group>"; };
+		95B1C0CF1FB372A10030A0C3 /* FBUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBUserView.swift; sourceTree = "<group>"; };
+		95B1C0D11FB372B40030A0C3 /* FBUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBUsersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -355,7 +373,7 @@
 			children = (
 				95B1C0BE1FB354A90030A0C3 /* FBViewController */,
 				95B1C0BB1FB354A90030A0C3 /* FBLoginViewController */,
-				95B1C0BC1FB354A90030A0C3 /* FBUserLoginViewController */,
+				95B1C0BC1FB354A90030A0C3 /* FBUserViewController */,
 				95B1C0BD1FB354A90030A0C3 /* FBUsersViewController */,
 			);
 			path = FBViewControllers;
@@ -364,20 +382,29 @@
 		95B1C0BB1FB354A90030A0C3 /* FBLoginViewController */ = {
 			isa = PBXGroup;
 			children = (
+				95B1C0C11FB371C40030A0C3 /* FBLoginViewController.swift */,
+				95B1C0CD1FB372830030A0C3 /* FBLoginView.swift */,
+				95B1C0C21FB371C40030A0C3 /* FBLoginViewController.xib */,
 			);
 			path = FBLoginViewController;
 			sourceTree = "<group>";
 		};
-		95B1C0BC1FB354A90030A0C3 /* FBUserLoginViewController */ = {
+		95B1C0BC1FB354A90030A0C3 /* FBUserViewController */ = {
 			isa = PBXGroup;
 			children = (
+				95B1C0C51FB3723E0030A0C3 /* FBUserViewController.swift */,
+				95B1C0CF1FB372A10030A0C3 /* FBUserView.swift */,
+				95B1C0C61FB3723E0030A0C3 /* FBUserViewController.xib */,
 			);
-			path = FBUserLoginViewController;
+			path = FBUserViewController;
 			sourceTree = "<group>";
 		};
 		95B1C0BD1FB354A90030A0C3 /* FBUsersViewController */ = {
 			isa = PBXGroup;
 			children = (
+				95B1C0C91FB372540030A0C3 /* FBUsersViewController.swift */,
+				95B1C0D11FB372B40030A0C3 /* FBUsersView.swift */,
+				95B1C0CA1FB372540030A0C3 /* FBUsersViewController.xib */,
 			);
 			path = FBUsersViewController;
 			sourceTree = "<group>";
@@ -450,8 +477,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95B1C0C81FB3723E0030A0C3 /* FBUserViewController.xib in Resources */,
+				95B1C0CC1FB372540030A0C3 /* FBUsersViewController.xib in Resources */,
 				9533F1D21FACF9F100FC12DE /* LoadingView.xib in Resources */,
 				956A85CA1F93D52200292D21 /* Assets.xcassets in Resources */,
+				95B1C0C41FB371C40030A0C3 /* FBLoginViewController.xib in Resources */,
 				95A92DCC1F9F7B480074898E /* SquareViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,7 +494,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				950C78421F973FB200C040E9 /* ImageModel.swift in Sources */,
+				95B1C0CB1FB372540030A0C3 /* FBUsersViewController.swift in Sources */,
 				956A85E21F93DA6300292D21 /* Context.swift in Sources */,
+				95B1C0D01FB372A10030A0C3 /* FBUserView.swift in Sources */,
 				95070F361FA345CC00B26BD7 /* ArrayModel.swift in Sources */,
 				950C52741F9A88F600AD308C /* FileManagerImageModel.swift in Sources */,
 				95070F3D1FA354D800B26BD7 /* ArrayModelChangeDelete.swift in Sources */,
@@ -477,6 +509,8 @@
 				95070F3B1FA3544100B26BD7 /* ArrayModelChangeInsert.swift in Sources */,
 				9533F1DB1FB2EDB500FC12DE /* UsersModel.swift in Sources */,
 				955141131FA0E74B00B57947 /* UIWindows+Extension.swift in Sources */,
+				95B1C0C31FB371C40030A0C3 /* FBLoginViewController.swift in Sources */,
+				95B1C0C71FB3723E0030A0C3 /* FBUserViewController.swift in Sources */,
 				9533F1D81FADAB7100FC12DE /* ImageView.swift in Sources */,
 				950C52811F9B89C700AD308C /* RandomString.swift in Sources */,
 				95070F391FA34F8200B26BD7 /* ArrayModelChange.swift in Sources */,
@@ -486,8 +520,10 @@
 				9533F1CB1FACE58B00FC12DE /* Array+Extension.swift in Sources */,
 				955141111FA0C1AD00B57947 /* String+Extension.swift in Sources */,
 				95B1C0B91FB315070030A0C3 /* FBCurrentUser.swift in Sources */,
+				95B1C0D21FB372B40030A0C3 /* FBUsersView.swift in Sources */,
 				95070F3F1FA3551600B26BD7 /* ArrayModelChangeMove.swift in Sources */,
 				95B1C0C01FB3553C0030A0C3 /* FBViewController.swift in Sources */,
+				95B1C0CE1FB372830030A0C3 /* FBLoginView.swift in Sources */,
 				9533F1D01FACF9CD00FC12DE /* LoadingView.swift in Sources */,
 				950C52761F9A895500AD308C /* InternetImageModel.swift in Sources */,
 				950C783F1F973E4E00C040E9 /* User.swift in Sources */,

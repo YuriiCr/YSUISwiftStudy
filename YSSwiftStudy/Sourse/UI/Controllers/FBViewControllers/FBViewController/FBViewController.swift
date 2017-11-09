@@ -10,21 +10,34 @@ import UIKit
 
 class FBViewController: UIViewController, RootView {
     
-    //Public properties
+    // MARK: Public properties
     typealias ViewType = YSView
     var rootView: YSView?
     
-    var model:Model?
-    var context:YSContext?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    var model:Model? {
+        willSet {
+            
+        }
+        
+        didSet {
+            
+        }
+    }
+    
+    var context:YSContext? {
+        willSet {
+            newValue?.execute()
+        }
+        
+        didSet {
+            oldValue?.cancel()
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-       
+    //MARK: Public Methods
+    
+    func fill(with model: Model) {
+        
     }
 
 }
