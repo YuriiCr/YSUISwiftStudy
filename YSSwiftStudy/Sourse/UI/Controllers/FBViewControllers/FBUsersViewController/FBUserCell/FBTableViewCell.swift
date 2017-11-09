@@ -21,11 +21,13 @@ class FBTableViewCell: UITableViewCell {
         }
     }
     
-    // MARK: Public properties
+    // MARK: Public methods
     
     func fillWith(user: FBUser?) {
         self.fullNameLabel?.text = user?.fullName
     }
+    
+    // MARK: Override methods
     
     override func prepareForReuse() {
         super.prepareForReuse()

@@ -23,6 +23,11 @@
 		950C78421F973FB200C040E9 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C78411F973FB200C040E9 /* ImageModel.swift */; };
 		950F93581FB49205005CE4C6 /* FBTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950F93561FB49205005CE4C6 /* FBTableViewCell.swift */; };
 		950F93591FB49205005CE4C6 /* FBTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 950F93571FB49205005CE4C6 /* FBTableViewCell.xib */; };
+		950F935B1FB4EE22005CE4C6 /* GetContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950F935A1FB4EE22005CE4C6 /* GetContext.swift */; };
+		950F935D1FB4EE8F005CE4C6 /* GetUserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950F935C1FB4EE8F005CE4C6 /* GetUserContext.swift */; };
+		950F935F1FB4EEB7005CE4C6 /* GetUsersContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950F935E1FB4EEB7005CE4C6 /* GetUsersContext.swift */; };
+		950F93611FB4EF64005CE4C6 /* FBLoginContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950F93601FB4EF64005CE4C6 /* FBLoginContext.swift */; };
+		950F93631FB4EFB9005CE4C6 /* FBLogoutContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950F93621FB4EFB9005CE4C6 /* FBLogoutContext.swift */; };
 		9533F1C61FAB74FB00FC12DE /* GSDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533F1C31FAB74FB00FC12DE /* GSDConstants.swift */; };
 		9533F1C91FAB754A00FC12DE /* Random+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533F1C81FAB754A00FC12DE /* Random+Extensions.swift */; };
 		9533F1CB1FACE58B00FC12DE /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533F1CA1FACE58B00FC12DE /* Array+Extension.swift */; };
@@ -73,6 +78,11 @@
 		950C78411F973FB200C040E9 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		950F93561FB49205005CE4C6 /* FBTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBTableViewCell.swift; sourceTree = "<group>"; };
 		950F93571FB49205005CE4C6 /* FBTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FBTableViewCell.xib; sourceTree = "<group>"; };
+		950F935A1FB4EE22005CE4C6 /* GetContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetContext.swift; sourceTree = "<group>"; };
+		950F935C1FB4EE8F005CE4C6 /* GetUserContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserContext.swift; sourceTree = "<group>"; };
+		950F935E1FB4EEB7005CE4C6 /* GetUsersContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersContext.swift; sourceTree = "<group>"; };
+		950F93601FB4EF64005CE4C6 /* FBLoginContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginContext.swift; sourceTree = "<group>"; };
+		950F93621FB4EFB9005CE4C6 /* FBLogoutContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLogoutContext.swift; sourceTree = "<group>"; };
 		9533F1C31FAB74FB00FC12DE /* GSDConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSDConstants.swift; sourceTree = "<group>"; };
 		9533F1C81FAB754A00FC12DE /* Random+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Random+Extensions.swift"; sourceTree = "<group>"; };
 		9533F1CA1FACE58B00FC12DE /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
@@ -298,6 +308,11 @@
 			isa = PBXGroup;
 			children = (
 				956A85E01F93DA3800292D21 /* YSContext */,
+				950F935A1FB4EE22005CE4C6 /* GetContext.swift */,
+				950F935C1FB4EE8F005CE4C6 /* GetUserContext.swift */,
+				950F935E1FB4EEB7005CE4C6 /* GetUsersContext.swift */,
+				950F93601FB4EF64005CE4C6 /* FBLoginContext.swift */,
+				950F93621FB4EFB9005CE4C6 /* FBLogoutContext.swift */,
 			);
 			path = YSContexts;
 			sourceTree = "<group>";
@@ -518,6 +533,7 @@
 				95070F361FA345CC00B26BD7 /* ArrayModel.swift in Sources */,
 				950C52741F9A88F600AD308C /* FileManagerImageModel.swift in Sources */,
 				95070F3D1FA354D800B26BD7 /* ArrayModelChangeDelete.swift in Sources */,
+				950F93631FB4EFB9005CE4C6 /* FBLogoutContext.swift in Sources */,
 				95070F431FA38F4800B26BD7 /* UITableView+Extension.swift in Sources */,
 				9533F1DD1FB30CAD00FC12DE /* FBUser.swift in Sources */,
 				9533F1C91FAB754A00FC12DE /* Random+Extensions.swift in Sources */,
@@ -527,14 +543,18 @@
 				950C52801F9B89C700AD308C /* ObservableObject.swift in Sources */,
 				95070F3B1FA3544100B26BD7 /* ArrayModelChangeInsert.swift in Sources */,
 				9533F1DB1FB2EDB500FC12DE /* UsersModel.swift in Sources */,
+				950F935B1FB4EE22005CE4C6 /* GetContext.swift in Sources */,
 				955141131FA0E74B00B57947 /* UIWindows+Extension.swift in Sources */,
 				95B1C0C31FB371C40030A0C3 /* FBLoginViewController.swift in Sources */,
 				95B1C0C71FB3723E0030A0C3 /* FBUserViewController.swift in Sources */,
 				9533F1D81FADAB7100FC12DE /* ImageView.swift in Sources */,
+				950F93611FB4EF64005CE4C6 /* FBLoginContext.swift in Sources */,
 				950C52811F9B89C700AD308C /* RandomString.swift in Sources */,
 				95070F391FA34F8200B26BD7 /* ArrayModelChange.swift in Sources */,
 				95A92DCB1F9F7B480074898E /* SquareViewController.swift in Sources */,
+				950F935F1FB4EEB7005CE4C6 /* GetUsersContext.swift in Sources */,
 				9533F1C61FAB74FB00FC12DE /* GSDConstants.swift in Sources */,
+				950F935D1FB4EE8F005CE4C6 /* GetUserContext.swift in Sources */,
 				95A92DCE1F9F7D310074898E /* SquareView.swift in Sources */,
 				9533F1CB1FACE58B00FC12DE /* Array+Extension.swift in Sources */,
 				955141111FA0C1AD00B57947 /* String+Extension.swift in Sources */,

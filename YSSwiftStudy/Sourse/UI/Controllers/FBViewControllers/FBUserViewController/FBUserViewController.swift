@@ -9,6 +9,8 @@
 import UIKit
 
 class FBUserViewController: FBViewController {
+    
+    typealias ViewType = FBUserView
 
     override func viewDidLoad() {
         super.viewDidLoad()

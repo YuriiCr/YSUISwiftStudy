@@ -9,11 +9,12 @@
 import UIKit
 
 class FBUsersViewController: FBViewController {
+    
+    typealias ViewType = FBUserView
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
 
