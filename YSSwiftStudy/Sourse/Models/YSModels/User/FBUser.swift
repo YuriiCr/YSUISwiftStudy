@@ -19,6 +19,7 @@ class FBUser: User {
         if let url = self.photoURL {
             return ImageModel.imageModelWith(url: url)
         }
+        
         return nil
     }
 
