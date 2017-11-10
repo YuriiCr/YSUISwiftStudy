@@ -14,7 +14,7 @@ class FBViewController: UIViewController, RootView {
     typealias ViewType = YSView
     var rootView: YSView?
     
-    var model:Model? {
+    var model:Model? = FBCurrentUser() {
         willSet {
             
         }
@@ -22,6 +22,10 @@ class FBViewController: UIViewController, RootView {
         didSet {
             
         }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     var context:YSContext? {

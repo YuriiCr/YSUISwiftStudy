@@ -77,14 +77,23 @@ class ObservableObject: NSObject {
     }
     
     func performBlockWithNotification(_ block: () -> ()) {
-        
+        self.perform(block: block, notify: true)
     }
     
     func performBlockWithoutNotification(_ block: () -> ()) {
-        
+        self.perform(block: block, notify: false)
     }
     
    // MARK: Private methods
+    
+    func perform(block: () -> (), notify: Bool) {
+        synchronized(self) {
+            let postNotificstion = self.notify
+            self.notify = notify
+            block()
+            self.notify = postNotificstion
+        }
+    }
     
     private func notifyOfStateWithSelector(selector: Selector?) {
         if self.notify {
@@ -107,6 +116,8 @@ class ObservableObject: NSObject {
     }
 }
 
+
+
 // MARK: Extensions for Observer
 
 extension ObservableObject {
@@ -128,7 +139,7 @@ extension ObservableObject {
                 return self.relation[state]!
             }
             
-            set(newValue) {
+            set {
                 self.relation[state] = newValue
             }
         }

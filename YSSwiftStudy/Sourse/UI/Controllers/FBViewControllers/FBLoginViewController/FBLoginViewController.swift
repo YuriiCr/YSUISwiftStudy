@@ -12,11 +12,11 @@ class FBLoginViewController: FBViewController {
     
     typealias ViewType = FBLoginView
 //    var rootView: FBLoginView?
- 
+    
     // MARK: Actions
     
     @IBAction func onLogin(sender: UIButton) {
-        
+        self.context = FBLoginContext()
     }
     
     // MARK: Public methods
