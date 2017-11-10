@@ -12,7 +12,7 @@ class FBViewController: UIViewController, RootView {
     
     // MARK: Public properties
     typealias ViewType = YSView
-    var rootView: YSView?
+//    var rootView: ViewType
     
     var model:Model? = FBCurrentUser() {
         willSet {

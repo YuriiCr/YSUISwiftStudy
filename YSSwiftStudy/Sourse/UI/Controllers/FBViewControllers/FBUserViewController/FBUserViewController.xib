@@ -40,6 +40,9 @@
                     <state key="normal" title="Button">
                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="onFriendsWithSender:" destination="-1" eventType="touchUpInside" id="OFd-eK-Oit"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQx-4s-WdS">
                     <rect key="frame" x="86" y="556" width="202" height="47"/>
@@ -48,6 +51,9 @@
                     <state key="normal" title="LogOut">
                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="logOutWithSender:" destination="-1" eventType="touchUpInside" id="1AW-Zp-fGl"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

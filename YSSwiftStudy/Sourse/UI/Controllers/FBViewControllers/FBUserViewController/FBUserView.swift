@@ -16,5 +16,12 @@ class FBUserView: YSView {
     @IBOutlet var fullNameLabel: UILabel?
     @IBOutlet var friendsButton: UIButton?
     @IBOutlet var logoutButton: UIButton?
+    
+    // MARK: Public methods
+    
+    func fillWith(user: FBUser) {
+        self.userImageView?.imageModel = user.imageModel
+        self.fullNameLabel?.text = user.fullName
+    }
 
 }

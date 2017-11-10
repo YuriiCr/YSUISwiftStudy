@@ -15,6 +15,15 @@ class YSContext {
     
      // MARK: Public Methods
     
+    init () {
+        
+    }
+    
+    convenience init(model: Model) {
+        self.init()
+        self.model = model
+    }
+    
     func execute() {
         self.performEcexution { (state) in
             self.model?.state = state
