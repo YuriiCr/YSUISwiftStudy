@@ -9,5 +9,13 @@
 import UIKit
 
 class FBLogoutContext: FBLoginContext {
+    
+    // Public methods
+    
+    override func performEcexution(_ block: (ModelState) -> ()) {
+        
+        self.user?.token = nil
+        block(.modelDidUnload)
+    }
 
 }

@@ -132,6 +132,7 @@ extension ObservableObject {
         
         func notify(of state: ModelState) {
             _ = self.relation[state]
+            
         }
         
         subscript(state: ModelState) -> ActionType {

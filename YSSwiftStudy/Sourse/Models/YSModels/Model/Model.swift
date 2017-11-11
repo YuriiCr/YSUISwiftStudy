@@ -51,7 +51,7 @@ class Model: ObservableObject {
     
     // MARK: Model Observer
     
-    override func selectorForState(state:ModelState) -> Selector? {
+    override func selectorForState(state: ModelState) -> Selector? {
         switch state {
         case .modelDidUnload:
             return Selector(("modelDidUnload:"))

@@ -14,7 +14,8 @@ class InternetImageModel: FileManagerImageModel {
         static let DirectoryComponent = "images"
     }
     
-    //MARK: Private Properties
+    // MARK: Private Properties
+    
     private var session: URLSession {
         return URLSession.shared
     }

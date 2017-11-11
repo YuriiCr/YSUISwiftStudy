@@ -9,8 +9,13 @@
 import UIKit
 
 class ImageModel: Model {
+    
+    // MARK: Public properties
+    
     var url:URL
     var image:UIImage?
+    
+    // MARK: Initialization
     
     init(url:URL) {
         self.url = url
@@ -20,6 +25,8 @@ class ImageModel: Model {
         let cache = ModelCache.shared
         cache.remove(imageModel: self)
     }
+    
+    // MARK: Public methods
     
     static func imageModelWith(url:URL) -> ImageModel? {
         let cache = ModelCache.shared
