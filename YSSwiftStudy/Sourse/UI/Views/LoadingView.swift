@@ -85,7 +85,6 @@ class LoadingView: UIView {
         
         self.indicator?.startAnimating()
         self.autoresizingMask = [.flexibleBottomMargin, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleWidth, .flexibleHeight]
-//        self.autoresizingMask = autoresizeAll
     }
 
 }

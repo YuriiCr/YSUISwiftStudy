@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import FacebookLogin
 
 class FBLogoutContext: FBLoginContext {
     
     // Public methods
     
     override func performEcexution(_ block: (ModelState) -> ()) {
-        
+        LoginManager().logOut()
         self.user?.token = nil
         block(.modelDidUnload)
     }

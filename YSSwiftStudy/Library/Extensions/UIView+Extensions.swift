@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIView {
-    var aurtoresizeAll: UIViewAutoresizing {
+    static var aurtoresizeAll: UIViewAutoresizing {
         return [.flexibleBottomMargin,
                 .flexibleTopMargin,
                 .flexibleLeftMargin,
@@ -19,15 +19,4 @@ extension UIView {
     }
 }
 
-protocol RootView {
-    associatedtype ViewType
-    
-    var rootView: ViewType? {get}
-}
-
-extension RootView where Self: UIViewController {
-    var rootView: ViewType? {
-        return self.viewIfLoaded as? ViewType
-    }
-}
 

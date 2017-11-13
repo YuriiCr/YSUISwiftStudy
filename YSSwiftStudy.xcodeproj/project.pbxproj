@@ -15,6 +15,8 @@
 		95070F3D1FA354D800B26BD7 /* ArrayModelChangeDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95070F3C1FA354D800B26BD7 /* ArrayModelChangeDelete.swift */; };
 		95070F3F1FA3551600B26BD7 /* ArrayModelChangeMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95070F3E1FA3551600B26BD7 /* ArrayModelChangeMove.swift */; };
 		95070F431FA38F4800B26BD7 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95070F421FA38F4800B26BD7 /* UITableView+Extension.swift */; };
+		950732701FB9C71200FFEE7B /* RootViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9507326F1FB9C71200FFEE7B /* RootViewProtocol.swift */; };
+		950732721FB9C7F200FFEE7B /* UINib+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950732711FB9C7F200FFEE7B /* UINib+Extensions.swift */; };
 		950C52721F9A6ACA00AD308C /* ModelCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C52711F9A6ACA00AD308C /* ModelCache.swift */; };
 		950C52741F9A88F600AD308C /* FileManagerImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C52731F9A88F600AD308C /* FileManagerImageModel.swift */; };
 		950C52761F9A895500AD308C /* InternetImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C52751F9A895500AD308C /* InternetImageModel.swift */; };
@@ -71,6 +73,8 @@
 		95070F3C1FA354D800B26BD7 /* ArrayModelChangeDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayModelChangeDelete.swift; sourceTree = "<group>"; };
 		95070F3E1FA3551600B26BD7 /* ArrayModelChangeMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayModelChangeMove.swift; sourceTree = "<group>"; };
 		95070F421FA38F4800B26BD7 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		9507326F1FB9C71200FFEE7B /* RootViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewProtocol.swift; sourceTree = "<group>"; };
+		950732711FB9C7F200FFEE7B /* UINib+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINib+Extensions.swift"; sourceTree = "<group>"; };
 		950C52711F9A6ACA00AD308C /* ModelCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCache.swift; sourceTree = "<group>"; };
 		950C52731F9A88F600AD308C /* FileManagerImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerImageModel.swift; sourceTree = "<group>"; };
 		950C52751F9A895500AD308C /* InternetImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetImageModel.swift; sourceTree = "<group>"; };
@@ -163,6 +167,14 @@
 				95070F3E1FA3551600B26BD7 /* ArrayModelChangeMove.swift */,
 			);
 			path = ArrayModelChange;
+			sourceTree = "<group>";
+		};
+		9507326E1FB9C6EA00FFEE7B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9507326F1FB9C71200FFEE7B /* RootViewProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		950C526C1F99F27600AD308C /* YSInternetImageModel */ = {
@@ -268,6 +280,7 @@
 				95070F421FA38F4800B26BD7 /* UITableView+Extension.swift */,
 				9533F1CA1FACE58B00FC12DE /* Array+Extension.swift */,
 				9533F1D31FACFE9E00FC12DE /* UIView+Extensions.swift */,
+				950732711FB9C7F200FFEE7B /* UINib+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -305,6 +318,7 @@
 		956A85D41F93D69200292D21 /* Sourse */ = {
 			isa = PBXGroup;
 			children = (
+				9507326E1FB9C6EA00FFEE7B /* Protocols */,
 				956A85D61F93D69200292D21 /* YSContexts */,
 				956A85D51F93D69200292D21 /* Models */,
 				956A85D81F93D69200292D21 /* UI */,
@@ -635,6 +649,7 @@
 				9533F1D41FACFE9E00FC12DE /* UIView+Extensions.swift in Sources */,
 				950C52801F9B89C700AD308C /* ObservableObject.swift in Sources */,
 				95070F3B1FA3544100B26BD7 /* ArrayModelChangeInsert.swift in Sources */,
+				950732701FB9C71200FFEE7B /* RootViewProtocol.swift in Sources */,
 				9533F1DB1FB2EDB500FC12DE /* UsersModel.swift in Sources */,
 				950F935B1FB4EE22005CE4C6 /* GetContext.swift in Sources */,
 				955141131FA0E74B00B57947 /* UIWindows+Extension.swift in Sources */,
@@ -654,6 +669,7 @@
 				95B1C0B91FB315070030A0C3 /* FBCurrentUser.swift in Sources */,
 				95B1C0D21FB372B40030A0C3 /* FBUsersView.swift in Sources */,
 				95B1C0D51FB48ED20030A0C3 /* YSTableViewCell.swift in Sources */,
+				950732721FB9C7F200FFEE7B /* UINib+Extensions.swift in Sources */,
 				95070F3F1FA3551600B26BD7 /* ArrayModelChangeMove.swift in Sources */,
 				95B1C0C01FB3553C0030A0C3 /* FBViewController.swift in Sources */,
 				95B1C0CE1FB372830030A0C3 /* FBLoginView.swift in Sources */,
