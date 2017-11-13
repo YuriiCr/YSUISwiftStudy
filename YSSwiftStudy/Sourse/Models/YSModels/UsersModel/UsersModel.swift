@@ -13,8 +13,8 @@ class UsersModel: ArrayModel<ObservableObject> {
     // MARK: Constants
     
     private struct Constants {
-        static let pathComponent:String = "Users.plist"
-        static let numberOfCells:Int = 11
+        static let pathComponent = "Users.plist"
+        static let numberOfCells = 11
     }
     
     // MARK: Private properties
@@ -28,7 +28,7 @@ class UsersModel: ArrayModel<ObservableObject> {
         
     }
     
-    private let names = [NSNotification.Name.UIApplicationWillTerminate, NSNotification.Name.UIApplicationWillResignActive]
+    private let notifiactionNames = [NSNotification.Name.UIApplicationWillTerminate, NSNotification.Name.UIApplicationWillResignActive]
     
     // MARK: Initialization
     
@@ -71,15 +71,15 @@ class UsersModel: ArrayModel<ObservableObject> {
     // MARK: Private Methods
     
     func subscribeNotification() {
-        for name in self.names {
-            NotificationCenter.default.addObserver(forName: name, object: nil, queue: OperationQueue.main, using: { (_) in
-                self.save()
+        for name in self.notifiactionNames {
+            NotificationCenter.default.addObserver(forName: name, object: nil, queue: OperationQueue.main, using: {[weak self] (_) in
+                self?.save()
             })
         }
     }
     
     func cancelNotification() {
-        for name in self.names {
+        for name in self.notifiactionNames {
             NotificationCenter.default.removeObserver(self, name: name, object: nil)
         }
     }

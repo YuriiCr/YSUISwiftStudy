@@ -8,10 +8,9 @@
 
 import UIKit
 
-class FBLoginViewController: FBViewController {
+class FBLoginViewController: FBViewController, RootView {
     
     typealias ViewType = FBLoginView
-    var rootView: FBLoginView?
     
     // MARK: IBActions
     
@@ -28,12 +27,8 @@ class FBLoginViewController: FBViewController {
     // MARK: Private methods
     
     func presentFBUserViewController() {
-        let userController = FBUsersViewController(coder: NSCoder())
-        userController?.model = self.model
-        if let userController = userController {
-            let navigationController = UINavigationController(rootViewController: userController)
-            self.present(navigationController, animated: true, completion: nil)
-        }
+        let navigationController = UINavigationController(rootViewController: FBUserViewController(model: self.model))
+        self.present(navigationController, animated: true, completion: nil)
     }
     
 }

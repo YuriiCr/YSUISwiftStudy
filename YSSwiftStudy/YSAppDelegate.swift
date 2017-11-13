@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import FacebookCore
+import FacebookLogin
+import FacebookShare
 
 @UIApplicationMain
 class YSAppDelegate: UIResponder, UIApplicationDelegate {

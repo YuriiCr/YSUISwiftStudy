@@ -8,11 +8,7 @@
 
 import UIKit
 
-class FBViewController: UIViewController, RootView {
-    
-    // MARK: Public properties
-    typealias ViewType = YSView
-//    var rootView: ViewType
+class FBViewController: UIViewController {
     
     var model:Model? = FBCurrentUser() {
         willSet {
@@ -22,6 +18,11 @@ class FBViewController: UIViewController, RootView {
         didSet {
             
         }
+    }
+    
+    init(model: Model?) {
+        super.init(nibName: nil, bundle: .main)
+        self.model = model
     }
     
     required init?(coder aDecoder: NSCoder) {

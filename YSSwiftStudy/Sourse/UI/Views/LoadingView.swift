@@ -31,9 +31,8 @@ class LoadingView: UIView {
             }
         }
         
-        didSet {
-            oldValue?.removeFromSuperview()
-        }
+        didSet { oldValue?.removeFromSuperview()}
+        
     }
     
     var state:LoadingViewState? {
@@ -68,11 +67,11 @@ class LoadingView: UIView {
     
     func setStateWith(_ state: LoadingViewState, animated: Bool = true, handler: (() -> ())? = nil) {
         UIView.animate(withDuration: animated ? Constants.loadingViewDuratuion : 0,
-                       animations: {
-            self.alpha = state == .visible ? Constants.presentantionLoadingViewAlpha : Constants.loadingViewHiddenAlpha
-        }) { (_) in
+                       animations: { [weak self] in
+                        self?.alpha = state == .visible ? Constants.presentantionLoadingViewAlpha : Constants.loadingViewHiddenAlpha
+        }) {[weak self] (_) in
             handler?()
-            self.state = state
+            self?.state = state
         }
     }
     

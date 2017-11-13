@@ -21,17 +21,8 @@ class InternetImageModel: FileManagerImageModel {
     }
     
     private var task: URLSessionDownloadTask? {
-        willSet {
-            if let task = newValue {
-                task.resume()
-            }
-        }
-        
-        didSet {
-            if let task = oldValue {
-                task.cancel()
-            }
-        }
+        willSet { newValue?.resume() }
+        didSet  { oldValue?.cancel() }
     }
    
     private var imagePath:String? {
