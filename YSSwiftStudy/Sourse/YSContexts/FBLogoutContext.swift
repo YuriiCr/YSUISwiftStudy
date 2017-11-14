@@ -16,7 +16,7 @@ class FBLogoutContext: FBLoginContext {
     override func performEcexution(_ block: (ModelState) -> ()) {
         LoginManager().logOut()
         self.user?.token = nil
-        block(.modelDidUnload)
+        block(.didUnload)
     }
 
 }

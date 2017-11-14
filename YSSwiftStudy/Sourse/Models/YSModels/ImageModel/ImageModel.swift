@@ -49,6 +49,6 @@ class ImageModel: Model {
     
     override func performLoading() {
         self.image = loadImage()
-        self.state = self.image == nil ? .modelFailedLoading : .modelDidLoad
+        self.state = self.image == nil ? .loadingFailed : .didLoad
     }
 }

@@ -16,11 +16,11 @@ protocol ModelObserver {
 }
 
 enum ModelState {
-    case modelDidUnload
-    case modelWillLoad
-    case modelDidLoad
-    case modelFailedLoading
-    case modelChanged
+    case didUnload
+    case willLoad
+    case didLoad
+    case loadingFailed
+    case changed
 }
 
 class Model: ObservableObject {
@@ -29,11 +29,11 @@ class Model: ObservableObject {
     
     func load() {
         let state = self.state
-        if (state == .modelWillLoad || state == .modelDidLoad) {
+        if (state == .willLoad || state == .didLoad) {
             self.notifyOfState(state: state)
             return;
         }
-        self.state = .modelWillLoad
+        self.state = .willLoad
         self.performLoadingInBackground()
     }
     
@@ -53,13 +53,13 @@ class Model: ObservableObject {
     
     override func selectorForState(state: ModelState) -> Selector? {
         switch state {
-        case .modelDidUnload:
+        case .didUnload:
             return Selector(("modelDidUnload:"))
-        case .modelWillLoad:
+        case .willLoad:
             return Selector(("modelWillLoad:"))
-        case .modelDidLoad:
+        case .didLoad:
             return Selector (("modelDidLoad:"))
-        case .modelFailedLoading:
+        case .loadingFailed:
             return Selector(("modelFailedLoading:"))
         
         default:

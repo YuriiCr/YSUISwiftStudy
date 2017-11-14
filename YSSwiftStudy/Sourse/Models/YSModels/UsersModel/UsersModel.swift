@@ -59,7 +59,7 @@ class UsersModel: ArrayModel<ObservableObject> {
             }
         })
         
-        self.state = .modelDidLoad
+        self.state = .didLoad
     }
     
     func save() {

@@ -17,6 +17,7 @@
 		95070F431FA38F4800B26BD7 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95070F421FA38F4800B26BD7 /* UITableView+Extension.swift */; };
 		950732701FB9C71200FFEE7B /* RootViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9507326F1FB9C71200FFEE7B /* RootViewProtocol.swift */; };
 		950732721FB9C7F200FFEE7B /* UINib+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950732711FB9C7F200FFEE7B /* UINib+Extensions.swift */; };
+		950732751FBB6A0700FFEE7B /* FBResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950732741FBB6A0700FFEE7B /* FBResponseParser.swift */; };
 		950C52721F9A6ACA00AD308C /* ModelCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C52711F9A6ACA00AD308C /* ModelCache.swift */; };
 		950C52741F9A88F600AD308C /* FileManagerImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C52731F9A88F600AD308C /* FileManagerImageModel.swift */; };
 		950C52761F9A895500AD308C /* InternetImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C52751F9A895500AD308C /* InternetImageModel.swift */; };
@@ -75,6 +76,7 @@
 		95070F421FA38F4800B26BD7 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		9507326F1FB9C71200FFEE7B /* RootViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewProtocol.swift; sourceTree = "<group>"; };
 		950732711FB9C7F200FFEE7B /* UINib+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINib+Extensions.swift"; sourceTree = "<group>"; };
+		950732741FBB6A0700FFEE7B /* FBResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBResponseParser.swift; sourceTree = "<group>"; };
 		950C52711F9A6ACA00AD308C /* ModelCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCache.swift; sourceTree = "<group>"; };
 		950C52731F9A88F600AD308C /* FileManagerImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerImageModel.swift; sourceTree = "<group>"; };
 		950C52751F9A895500AD308C /* InternetImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetImageModel.swift; sourceTree = "<group>"; };
@@ -175,6 +177,14 @@
 				9507326F1FB9C71200FFEE7B /* RootViewProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		950732731FBB69E500FFEE7B /* FBResponseParser */ = {
+			isa = PBXGroup;
+			children = (
+				950732741FBB6A0700FFEE7B /* FBResponseParser.swift */,
+			);
+			path = FBResponseParser;
 			sourceTree = "<group>";
 		};
 		950C526C1F99F27600AD308C /* YSInternetImageModel */ = {
@@ -350,6 +360,7 @@
 		956A85D71F93D69200292D21 /* YSModels */ = {
 			isa = PBXGroup;
 			children = (
+				950732731FBB69E500FFEE7B /* FBResponseParser */,
 				956A85DF1F93D95A00292D21 /* Model */,
 				950C783D1F973E1600C040E9 /* User */,
 				95070F321FA3456700B26BD7 /* ArrayModel */,
@@ -654,6 +665,7 @@
 				950F935B1FB4EE22005CE4C6 /* GetContext.swift in Sources */,
 				955141131FA0E74B00B57947 /* UIWindows+Extension.swift in Sources */,
 				95B1C0C31FB371C40030A0C3 /* FBLoginViewController.swift in Sources */,
+				950732751FBB6A0700FFEE7B /* FBResponseParser.swift in Sources */,
 				95B1C0C71FB3723E0030A0C3 /* FBUserViewController.swift in Sources */,
 				9533F1D81FADAB7100FC12DE /* ImageView.swift in Sources */,
 				950F93611FB4EF64005CE4C6 /* FBLoginContext.swift in Sources */,

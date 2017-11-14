@@ -9,5 +9,6 @@
 import UIKit
 
 class FBLoginContext: YSContext {
+    var user: FBCurrentUser?
 
 }

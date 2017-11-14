@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import FacebookCore
+import FacebookLogin
 
 class GetContext: YSContext {
     
     // MARK: Public properties
     
-    var graphPath: String?
-    var parameters = Dictionary<String, String>()
+    var graphPath = ""
+    var parameters = [String : String]()
     var cachedFileName: String?
     
     // MARK: Private properties
@@ -30,6 +32,34 @@ class GetContext: YSContext {
     // MARK: Public Methods
     
     override func execute() {
+        if let model = self.model {
+            synchronized(model) {
+                let state = model.state
+                if state == .willLoad || state == .didLoad {
+                    model.notify(of: state)
+                    if state == .didLoad {
+                        return
+                    }
+                }
+                
+               model.state = .willLoad
+            }
+            super.execute()
+        }
+    }
+    
+    override func performEcexution(_ block: (ModelState) -> ()) {
+        let request = GraphRequest(graphPath: self.graphPath, parameters: self.parameters)
+        request.start { (response, request) in
+            
+        }
+    }
+    
+    func save(response: AnyObject) {
+        
+    }
+    
+    func parse(response: AnyObject) {
         
     }
 

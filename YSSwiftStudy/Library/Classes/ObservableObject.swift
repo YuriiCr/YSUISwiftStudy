@@ -24,7 +24,7 @@ class ObservableObject: NSObject {
     
     // MARK: Public Properties
     
-    var state: ModelState = .modelDidUnload {
+    var state: ModelState = .didUnload {
         didSet {
             self.notifyOfState(state: self.state)
         }

@@ -92,14 +92,14 @@ class ArrayModel<T> : Model {
     
      // MARK: Private Methods
     
-    func notifyOfStateChangeWith(object: T) {  self.notifyOfStateWithObject(state: .modelChanged, object: object as! NSObject)
+    func notifyOfStateChangeWith(object: T) {  self.notifyOfStateWithObject(state: .changed, object: object as! NSObject)
     }
     
     // MARK: Observation
     
     override func selectorForState(state:ModelState) -> Selector? {
         switch state {
-        case .modelChanged:
+        case .changed:
             return Selector(("arrayModelChangeWith:"))
         default:
             return super.selectorForState(state: state)
