@@ -60,6 +60,7 @@ class FBResponseParser {
             for friend in afriends {
                 var mutableFriends = [FBUser]()
                 mutableFriends.append(self.userWith(response: friend))
+                
                 return mutableFriends
             }
             

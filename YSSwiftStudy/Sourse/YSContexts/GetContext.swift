@@ -18,6 +18,10 @@ class GetContext: YSContext {
     var parameters = [String : String]()
     var cachedFileName: String?
     
+    var user: FBUser? {
+        return self.model as? FBUser
+    }
+    
     // MARK: Private properties
     
     private var cachedResponsePath: String? {
@@ -48,16 +52,40 @@ class GetContext: YSContext {
         }
     }
     
-    override func performEcexution(_ block: (ModelState) -> ()) {
+    override func performEcexution(_ block: @escaping (ModelState) -> ()) {
         let request = GraphRequest(graphPath: self.graphPath, parameters: self.parameters)
-        request.start { (response, request) in
+        var state = self.user?.state
+        request.start {[weak self] (response, request) in
             
+            
+            switch request {
+                
+            case .success(let response):
+                self?.save(response: response as AnyObject)
+                self?.parse(response: response as AnyObject)
+                state = .didLoad
+                
+            case .failed(_):
+                if let cachedResponse = self?.cachedResponsePath {
+                    self?.parse(response: cachedResponse as AnyObject)
+                    self?.user?.state = .didLoad
+                } else {
+                    self?.user?.state = .loadingFailed
+                }
+            }
+            if let state = state {
+                 block(state)
+            }
         }
     }
     
     func save(response: AnyObject) {
-        
+        if let path = self.cachedResponsePath {
+             NSKeyedArchiver.archiveRootObject(response, toFile: path)
+        }
     }
+    
+    // this methid is intended for subclassing, do not call it directly
     
     func parse(response: AnyObject) {
         

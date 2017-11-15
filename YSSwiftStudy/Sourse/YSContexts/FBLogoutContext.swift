@@ -13,7 +13,7 @@ class FBLogoutContext: FBLoginContext {
     
     // Public methods
     
-    override func performEcexution(_ block: (ModelState) -> ()) {
+    override func performEcexution(_ block: @escaping (ModelState) -> ()) {
         LoginManager().logOut()
         self.user?.token = nil
         block(.didUnload)

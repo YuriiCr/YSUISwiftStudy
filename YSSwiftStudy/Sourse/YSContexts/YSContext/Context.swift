@@ -33,7 +33,7 @@ class YSContext {
 
     }
     
-    func performEcexution(_ block: (ModelState) -> ()) {
+    func performEcexution(_ block: @escaping (ModelState) -> ()) {
         
     }
     
