@@ -7,7 +7,63 @@
 //
 
 import UIKit
+import FacebookCore
 
 class GetUsersContext: GetContext {
+    
+    // MARK: Constants
+    
+    private struct Constants {
+        static let friendCachedFileName = "fbFriends.plist"
+        static let parametersFieldName = "fields"
+        static let parametersFriendsValues = "friends{first_name,last_name,id,picture}"
+    }
+    
+    // MARK: Public properties
+    
+    override var parameters: [String : String] {
+        get {
+            return [Constants.parametersFieldName : Constants.parametersFriendsValues]
+        }
+        
+        set {
+            
+        }
+        
+    }
+    
+    override var graphPath: String {
+        get {
+            if let id = AccessToken.current?.appId {
+                return id
+            }
+            
+            return ""
+        }
+        
+        set {
+            
+        }
+    }
+    
+    override var cachedFileName: String? {
+        get {
+            return Constants.friendCachedFileName
+        }
+        
+        set {
+            
+        }
+    }
+    
+    // MARK: Public methods
+    
+    override func parse(response: AnyObject) {
+        let parser = FBResponseParser.init(response: response)
+        let users = self.model as? UsersModel
+        users?.performBlockWithoutNotification {
+            users?.addObjects(parser.friends)
+        }
+    }
 
 }
