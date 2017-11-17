@@ -48,23 +48,5 @@ class Model: ObservableObject {
             self.performLoading()
         }
     }
-    
-    // MARK: Model Observer
-    
-    override func selectorForState(state: ModelState) -> Selector? {
-        switch state {
-        case .didUnload:
-            return Selector(("modelDidUnload:"))
-        case .willLoad:
-            return Selector(("modelWillLoad:"))
-        case .didLoad:
-            return Selector (("modelDidLoad:"))
-        case .loadingFailed:
-            return Selector(("modelFailedLoading:"))
-        
-        default:
-            return super.selectorForState(state: state)
-        }
-    }
 
 }

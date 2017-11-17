@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07D680C5AB2B026586E498B0 /* Pods_YSSwiftStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436B33C20F65630E542ADF5F /* Pods_YSSwiftStudy.framework */; };
+		95029ECC1FBEDEE9004AEA54 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95029ECB1FBEDEE9004AEA54 /* Bundle+Extensions.swift */; };
 		95070F311FA1D4E300B26BD7 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95070F301FA1D4E300B26BD7 /* FileManager+Extension.swift */; };
 		95070F361FA345CC00B26BD7 /* ArrayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95070F351FA345CC00B26BD7 /* ArrayModel.swift */; };
 		95070F391FA34F8200B26BD7 /* ArrayModelChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95070F381FA34F8200B26BD7 /* ArrayModelChange.swift */; };
@@ -67,6 +68,7 @@
 
 /* Begin PBXFileReference section */
 		436B33C20F65630E542ADF5F /* Pods_YSSwiftStudy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YSSwiftStudy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95029ECB1FBEDEE9004AEA54 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		95070F301FA1D4E300B26BD7 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		95070F351FA345CC00B26BD7 /* ArrayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayModel.swift; sourceTree = "<group>"; };
 		95070F381FA34F8200B26BD7 /* ArrayModelChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayModelChange.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				9533F1CA1FACE58B00FC12DE /* Array+Extension.swift */,
 				9533F1D31FACFE9E00FC12DE /* UIView+Extensions.swift */,
 				950732711FB9C7F200FFEE7B /* UINib+Extensions.swift */,
+				95029ECB1FBEDEE9004AEA54 /* Bundle+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				9533F1C91FAB754A00FC12DE /* Random+Extensions.swift in Sources */,
 				9533F1D61FAD1F5400FC12DE /* YSView.swift in Sources */,
 				950F93581FB49205005CE4C6 /* FBTableViewCell.swift in Sources */,
+				95029ECC1FBEDEE9004AEA54 /* Bundle+Extensions.swift in Sources */,
 				9533F1D41FACFE9E00FC12DE /* UIView+Extensions.swift in Sources */,
 				950C52801F9B89C700AD308C /* ObservableObject.swift in Sources */,
 				95070F3B1FA3544100B26BD7 /* ArrayModelChangeInsert.swift in Sources */,

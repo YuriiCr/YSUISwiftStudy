@@ -135,9 +135,9 @@ extension ObservableObject {
             
         }
         
-        subscript(state: ModelState) -> ActionType {
+        subscript(state: ModelState) -> ActionType? {
             get {
-                return self.relation[state]!
+                return self.relation[state]
             }
             
             set {
