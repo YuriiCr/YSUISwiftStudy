@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FBLoginView: YSView {
+class FBLoginView: YSView{
 
     // MARK: Public properties
     

@@ -18,8 +18,10 @@ class YSAppDelegate: UIResponder, UIApplicationDelegate {
    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow.windowWithRootViewController(SquareViewController())
-        self.window = window
-        window.makeKeyAndVisible()
+        let uwindow = UIWindow.windowWithRootViewController(FBLoginViewController(model: FBCurrentUser()))
+    
+        self.window = uwindow
+        uwindow.makeKeyAndVisible()
        
         return true
     }

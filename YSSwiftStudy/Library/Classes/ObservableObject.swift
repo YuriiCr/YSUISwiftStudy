@@ -26,7 +26,7 @@ class ObservableObject: NSObject {
     
     var state: ModelState = .didUnload {
         didSet {
-            self.notifyOfState(state: self.state)
+            self.notify(of: self.state)
         }
     }
     
@@ -64,12 +64,8 @@ class ObservableObject: NSObject {
         })
     }
     
-    func notifyOfState(state:ModelState) {
-        self.notifyOfStateWithSelector(selector: self.selectorForState(state: state))
-    }
-    
     func notifyOfStateWithObject(state:ModelState, object:NSObject) {
-        self.notifyOfStateWithSelectorWithObject(selector: self.selectorForState(state: state), obj: object)
+        
     }
     
     func selectorForState(state:ModelState) -> Selector? {
@@ -92,26 +88,6 @@ class ObservableObject: NSObject {
             self.notify = notify
             block()
             self.notify = postNotificstion
-        }
-    }
-    
-    private func notifyOfStateWithSelector(selector: Selector?) {
-        if self.notify {
-            self.observers.allObjects.forEach({ (object) in
-                if (object.responds(to: selector)) {
-                     _ = object.perform(selector, with: self)
-                }
-            })
-        }
-    }
-    
-    private func notifyOfStateWithSelectorWithObject(selector: Selector?, obj: NSObject) {
-        if self.notify {
-            self.observers.allObjects.forEach({ (object) in
-                if (object.responds(to: selector)) {
-                    _ = object.perform(selector, with: obj)
-                }
-            })
         }
     }
 }

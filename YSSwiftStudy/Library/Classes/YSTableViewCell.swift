@@ -12,9 +12,9 @@ class YSTableViewCell: UITableViewCell {
     
     // MARK: Public properties
     
-    override var reuseIdentifier: String? {
-    let className = String(describing: self) // Gives you "Foo"
-        return ""
+    override var reuseIdentifier: String {
+    let className = String(describing: self)
+        return className
     }
 
 

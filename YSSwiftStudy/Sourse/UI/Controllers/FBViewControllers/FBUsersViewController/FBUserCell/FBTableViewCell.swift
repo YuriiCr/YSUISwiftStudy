@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FBTableViewCell: UITableViewCell {
+class FBTableViewCell: YSTableViewCell {
 
     // MARK: Public properties
     

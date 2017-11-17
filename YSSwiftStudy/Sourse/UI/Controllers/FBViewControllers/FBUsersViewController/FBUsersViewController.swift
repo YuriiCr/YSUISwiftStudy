@@ -70,8 +70,11 @@ class FBUsersViewController: FBViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-
+        var cell = tableView.reusableCell(with: String(describing: FBTableViewCell()))
+       
+        
+        
+        return cell
     }
 
     
