@@ -34,7 +34,6 @@ class ObservableObject: NSObject {
     
     private var notify: Bool = true
     private var controllers = NSHashTable<ObservationController>.weakObjects()
-    private var observers = NSHashTable<AnyObject>.weakObjects()
     
     // MARK: Public methods
     
@@ -46,31 +45,7 @@ class ObservableObject: NSObject {
         }
     }
     
-    func addObserver(obsever: NSObject) {
-        synchronized(self) {
-             self.observers.add(obsever)
-        }
-    }
     
-    func removeObserver(observer:NSObject) {
-        synchronized(self) {
-            self.observers.remove(observer)
-        }
-    }
-    
-    func isObserver(observer: NSObject) -> Bool {
-        return synchronized(self, block: { () -> (Bool) in
-            self.observers.contains(observer)
-        })
-    }
-    
-    func notifyOfStateWithObject(state:ModelState, object:NSObject) {
-        
-    }
-    
-    func selectorForState(state:ModelState) -> Selector? {
-        return nil
-    }
     
     func performBlockWithNotification(_ block: () -> ()) {
         self.perform(block: block, notify: true)
@@ -107,7 +82,9 @@ extension ObservableObject {
         private var relation = [ModelState : ActionType]()
         
         func notify(of state: ModelState) {
-            _ = self.relation[state]
+            if let block = self.relation[state], let object = self.observableObject {
+                block(object)
+            }
             
         }
         
