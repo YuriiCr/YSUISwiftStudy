@@ -20,10 +20,19 @@ class YSAppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow.windowWithRootViewController(SquareViewController())
         let uwindow = UIWindow.windowWithRootViewController(FBLoginViewController(model: FBCurrentUser()))
     
-        self.window = window
-        window.makeKeyAndVisible()
+        self.window = uwindow
+        uwindow.makeKeyAndVisible()
+        
+        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
        
         return true
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return SDKApplicationDelegate.shared.application(application,
+                                                         open: url,
+                                                         sourceApplication: sourceApplication,
+                                                         annotation: annotation)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -18,5 +18,4 @@ class FBLogoutContext: FBLoginContext {
         self.user?.token = nil
         block(.didUnload)
     }
-
 }

@@ -13,7 +13,7 @@ class YSTableViewCell: UITableViewCell {
     // MARK: Public properties
     
     override var reuseIdentifier: String {
-    let className = String(describing: self)
+    let className = String(describing: type(of: self))
         return className
     }
 

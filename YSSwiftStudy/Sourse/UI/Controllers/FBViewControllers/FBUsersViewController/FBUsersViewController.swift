@@ -66,9 +66,9 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.reusableCell(with: String(describing: FBTableViewCell()))
+        let cell = tableView.reusableCell(with: FBTableViewCell.self)
        
-        return cell
+        return cell!
     }
 
     

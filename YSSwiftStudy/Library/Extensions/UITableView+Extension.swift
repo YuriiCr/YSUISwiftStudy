@@ -10,14 +10,15 @@ import UIKit
 
 extension UITableView {
     
-    func reusableCell<T>(with cls: T) -> UITableViewCell {
-        let cell = self.dequeueReusableCell(withIdentifier: String(describing: cls))
+    func reusableCell<T>(with cls: T.Type) -> T? {
+        
+        let cell = self.dequeueReusableCell(withIdentifier: toString(type: cls))
         
         if let cell = cell {
-            return cell
+            return cell as? T
+        } else {
+            return UINib.object(with: cls)
         }
-        
-        return UINib.object(with: cls) as! UITableViewCell
     }
     
     func updateWithBlock(_ block: () -> ()) {
@@ -29,6 +30,4 @@ extension UITableView {
     func updateTableViewWithModel(_ changeModel:ArrayModelChange) {
         changeModel.changeTableView(self)
     }
-    
-    
 }

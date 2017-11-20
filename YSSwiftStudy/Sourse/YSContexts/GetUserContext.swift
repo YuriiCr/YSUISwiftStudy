@@ -44,7 +44,7 @@ class GetUserContext: GetContext {
     
     override func parse(response: AnyObject) {
         let user = self.user
-        let parser = FBResponseParser.init(response: response)
+        let parser = FBResponseParser(response: response)
         
         user?.userID = parser.userID
         user?.name = parser.name

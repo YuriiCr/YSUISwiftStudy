@@ -35,6 +35,7 @@ class FBLoginContext: YSContext {
                     user.userID = AccessToken.current?.userId
                     user.token = AccessToken.current?.authenticationToken
                     block(.didLoad)
+                    
                 case .cancelled:
                     print ("user cancelled login")
                     
@@ -42,9 +43,7 @@ class FBLoginContext: YSContext {
                     block(.loadingFailed)
                 }
             })
-            
         }
-       
     }
     
 }

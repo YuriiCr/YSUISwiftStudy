@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+// MARK: Constants
+
 let lowerCaseAlphabet = "abcdefghijklmnopqrstuvwxyz"
 let upperCaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let defaultStringLength = 7
@@ -20,11 +22,17 @@ let autoresizeAll: UIViewAutoresizing = [.flexibleBottomMargin,
                                          .flexibleWidth,
                                          .flexibleHeight]
 
+// MARK: GLobal functions
+
 func synchronized<T>(_ object: NSObject, block: () -> (T) ) -> T {
     objc_sync_enter(object)
     defer { objc_sync_exit(object) }
     
     return block()
+}
+
+func toString<T>(type: T.Type) -> String {
+    return String(describing: type)
 }
 
 func randomName () -> String {
