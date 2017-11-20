@@ -36,7 +36,7 @@
                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="logOutWithSender:" destination="-1" eventType="touchUpInside" id="jSa-pI-hUJ"/>
+                        <action selector="logOutWithSender:" destination="-1" eventType="touchUpInside" id="9t9-FE-uQT"/>
                     </connections>
                 </button>
             </subviews>

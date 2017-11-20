@@ -20,11 +20,10 @@ class FBLoginContext: YSContext {
     
     // MARK: Public methods
     
-    override func performEcexution(_ block: @escaping (ModelState) -> ()) {
+    override func performExecution(_ block: @escaping (ModelState) -> ()) {
         if let user = self.user {
-            var state = user.state
             if user.isAuthorized {
-                state = .didLoad
+                block(.didLoad)
                 return
             }
             
@@ -33,14 +32,14 @@ class FBLoginContext: YSContext {
                 switch LoginResult {
                     
                 case .success(_, _,  _):
-                    user.userID = AccessToken.current?.appId
+                    user.userID = AccessToken.current?.userId
                     user.token = AccessToken.current?.authenticationToken
                     block(.didLoad)
                 case .cancelled:
                     print ("user cancelled login")
                     
                 case .failed(_):
-                    state = .loadingFailed
+                    block(.loadingFailed)
                 }
             })
             

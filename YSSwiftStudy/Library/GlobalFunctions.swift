@@ -7,10 +7,25 @@
 //
 
 import Foundation
+import UIKit
 
 let lowerCaseAlphabet = "abcdefghijklmnopqrstuvwxyz"
 let upperCaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let defaultStringLength = 7
+
+let autoresizeAll: UIViewAutoresizing = [.flexibleBottomMargin,
+                                         .flexibleTopMargin,
+                                         .flexibleLeftMargin,
+                                         .flexibleRightMargin,
+                                         .flexibleWidth,
+                                         .flexibleHeight]
+
+func synchronized<T>(_ object: NSObject, block: () -> (T) ) -> T {
+    objc_sync_enter(object)
+    defer { objc_sync_exit(object) }
+    
+    return block()
+}
 
 func randomName () -> String {
     var result = ""

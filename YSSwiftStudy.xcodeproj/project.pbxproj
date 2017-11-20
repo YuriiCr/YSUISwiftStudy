@@ -22,7 +22,7 @@
 		950C52741F9A88F600AD308C /* FileManagerImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C52731F9A88F600AD308C /* FileManagerImageModel.swift */; };
 		950C52761F9A895500AD308C /* InternetImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C52751F9A895500AD308C /* InternetImageModel.swift */; };
 		950C52801F9B89C700AD308C /* ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C527C1F9B89C700AD308C /* ObservableObject.swift */; };
-		950C52811F9B89C700AD308C /* RandomString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C527D1F9B89C700AD308C /* RandomString.swift */; };
+		950C52811F9B89C700AD308C /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C527D1F9B89C700AD308C /* GlobalFunctions.swift */; };
 		950C783F1F973E4E00C040E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C783E1F973E4E00C040E9 /* User.swift */; };
 		950C78421F973FB200C040E9 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950C78411F973FB200C040E9 /* ImageModel.swift */; };
 		950F93581FB49205005CE4C6 /* FBTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950F93561FB49205005CE4C6 /* FBTableViewCell.swift */; };
@@ -83,7 +83,7 @@
 		950C52731F9A88F600AD308C /* FileManagerImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerImageModel.swift; sourceTree = "<group>"; };
 		950C52751F9A895500AD308C /* InternetImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetImageModel.swift; sourceTree = "<group>"; };
 		950C527C1F9B89C700AD308C /* ObservableObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableObject.swift; sourceTree = "<group>"; };
-		950C527D1F9B89C700AD308C /* RandomString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomString.swift; sourceTree = "<group>"; };
+		950C527D1F9B89C700AD308C /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		950C783E1F973E4E00C040E9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		950C78411F973FB200C040E9 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		950F93561FB49205005CE4C6 /* FBTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBTableViewCell.swift; sourceTree = "<group>"; };
@@ -207,6 +207,7 @@
 		950C52771F9B89C700AD308C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				950C527D1F9B89C700AD308C /* GlobalFunctions.swift */,
 				9551410F1FA0C18900B57947 /* Extensions */,
 				9551410E1FA0C17B00B57947 /* Classes */,
 			);
@@ -265,7 +266,6 @@
 		9551410E1FA0C17B00B57947 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				950C527D1F9B89C700AD308C /* RandomString.swift */,
 				950C527C1F9B89C700AD308C /* ObservableObject.swift */,
 				95B1C0D41FB48ED20030A0C3 /* YSTableViewCell.swift */,
 			);
@@ -673,7 +673,7 @@
 				95B1C0C71FB3723E0030A0C3 /* FBUserViewController.swift in Sources */,
 				9533F1D81FADAB7100FC12DE /* ImageView.swift in Sources */,
 				950F93611FB4EF64005CE4C6 /* FBLoginContext.swift in Sources */,
-				950C52811F9B89C700AD308C /* RandomString.swift in Sources */,
+				950C52811F9B89C700AD308C /* GlobalFunctions.swift in Sources */,
 				95070F391FA34F8200B26BD7 /* ArrayModelChange.swift in Sources */,
 				95A92DCB1F9F7B480074898E /* SquareViewController.swift in Sources */,
 				950F935F1FB4EEB7005CE4C6 /* GetUsersContext.swift in Sources */,

@@ -8,26 +8,12 @@
 
 import UIKit
 
-// MARK: Global function for thred safety
-
-func synchronized<T>(_ object: NSObject, block: () -> (T) ) -> T {
-    objc_sync_enter(object)
-
-    let result =  block()
-    
-    objc_sync_exit(object)
-
-    return result
-}
-
 class ObservableObject: NSObject {
     
     // MARK: Public Properties
     
     var state: ModelState = .didUnload {
-        didSet {
-            self.notify(of: self.state)
-        }
+        didSet { self.notify(of: self.state) }
     }
     
     // MARK: Private Properties
@@ -39,13 +25,11 @@ class ObservableObject: NSObject {
     
     func notify(of state: ModelState) {
         synchronized(self) {
-            self.controllers.allObjects.forEach { (controller) in
-                controller.notify(of: state)
+            self.controllers.allObjects.forEach {
+                $0.notify(of: state)
             }
         }
     }
-    
-    
     
     func performBlockWithNotification(_ block: () -> ()) {
         self.perform(block: block, notify: true)
@@ -67,8 +51,6 @@ class ObservableObject: NSObject {
     }
 }
 
-
-
 // MARK: Extensions for Observer
 
 extension ObservableObject {
@@ -85,7 +67,6 @@ extension ObservableObject {
             if let block = self.relation[state], let object = self.observableObject {
                 block(object)
             }
-            
         }
         
         subscript(state: ModelState) -> ActionType? {

@@ -14,23 +14,19 @@ class ImageView: YSView {
     
     var imageModel: ImageModel? {
         willSet {
-           newValue?.addObserver(obsever: self)
+//           newValue?.addObserver(obsever: self)
            newValue?.load()
         }
         
         didSet {
-            oldValue?.removeObserver(observer: self)
+//            oldValue?.removeObserver(observer: self)
         }
     }
     
     var imageView: UIImageView? {
-        willSet {
-            newValue?.addSubview(self)
-        }
+        willSet { newValue?.addSubview(self) }
         
-        didSet {
-            oldValue?.removeFromSuperview()
-        }
+        didSet { oldValue?.removeFromSuperview() }
     }
     
     // MARK: Override methods

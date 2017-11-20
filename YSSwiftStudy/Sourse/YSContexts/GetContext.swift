@@ -14,8 +14,8 @@ class GetContext: YSContext {
     
     // MARK: Public properties
     
-    var graphPath = ""
-    var parameters: [String : String] = [:]
+    var graphPath: String?
+    var parameters: [String : String]?
     
     var cachedFileName: String?
     
@@ -53,29 +53,30 @@ class GetContext: YSContext {
         }
     }
     
-    override func performEcexution(_ block: @escaping (ModelState) -> ()) {
-        let request = GraphRequest(graphPath: self.graphPath, parameters: self.parameters)
-        var state = self.user?.state
-        request.start {[weak self] (response, request) in
-            
-            
-            switch request {
+    override func performExecution(_ block: @escaping (ModelState) -> ()) {
+        if let graphPath = self.graphPath, let parameters = self.parameters {
+            let request = GraphRequest(graphPath: graphPath, parameters: parameters)
+            var state = self.user?.state
+            request.start {[weak self] (response, request) in
                 
-            case .success(let response):
-                self?.save(response: response as AnyObject)
-                self?.parse(response: response as AnyObject)
-                state = .didLoad
-                
-            case .failed(_):
-                if let cachedResponse = self?.cachedResponsePath {
-                    self?.parse(response: cachedResponse as AnyObject)
-                    self?.user?.state = .didLoad
-                } else {
-                    self?.user?.state = .loadingFailed
+                switch request {
+                    
+                case .success(let response):
+                    self?.save(response: response as AnyObject)
+                    self?.parse(response: response as AnyObject)
+                    state = .didLoad
+                    
+                case .failed(_):
+                    if let cachedResponse = self?.cachedResponsePath {
+                        self?.parse(response: cachedResponse as AnyObject)
+                        self?.user?.state = .didLoad
+                    } else {
+                        self?.user?.state = .loadingFailed
+                    }
                 }
-            }
-            if let state = state {
-                 block(state)
+                if let state = state {
+                    block(state)
+                }
             }
         }
     }

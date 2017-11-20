@@ -20,8 +20,8 @@ class YSAppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow.windowWithRootViewController(SquareViewController())
         let uwindow = UIWindow.windowWithRootViewController(FBLoginViewController(model: FBCurrentUser()))
     
-        self.window = uwindow
-        uwindow.makeKeyAndVisible()
+        self.window = window
+        window.makeKeyAndVisible()
        
         return true
     }

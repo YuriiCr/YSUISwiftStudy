@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FBUsersViewController: FBViewController, UITableViewDelegate, UITableViewDataSource {
+class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Constants
     
@@ -22,19 +22,15 @@ class FBUsersViewController: FBViewController, UITableViewDelegate, UITableViewD
     var rootView: FBUsersView?
     
     var usersModel:UsersModel? {
-        return (self.model as! UsersModel)
+        return (self.model as? UsersModel)
     }
 
     // MARK: Private properties
     
     private var logoutContext:FBLogoutContext? {
-        willSet {
-            newValue?.execute()
-        }
+        willSet { newValue?.execute() }
         
-        didSet {
-            oldValue?.cancel()
-        }
+        didSet { oldValue?.cancel() }
     }
     
     // MARK: View Lifecycle
@@ -70,10 +66,8 @@ class FBUsersViewController: FBViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.reusableCell(with: String(describing: FBTableViewCell()))
+        let cell = tableView.reusableCell(with: String(describing: FBTableViewCell()))
        
-        
-        
         return cell
     }
 

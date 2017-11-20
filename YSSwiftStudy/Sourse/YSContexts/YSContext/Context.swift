@@ -24,7 +24,7 @@ class YSContext {
     }
     
     func execute() {
-        self.performEcexution { (state) in
+        self.performExecution { (state) in
             self.model?.state = state
         }
     }
@@ -33,7 +33,7 @@ class YSContext {
 
     }
     
-    func performEcexution(_ block: @escaping (ModelState) -> ()) {
+    func performExecution(_ block: @escaping (ModelState) -> ()) {
         
     }
     

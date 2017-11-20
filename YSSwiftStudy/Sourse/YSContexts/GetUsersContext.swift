@@ -21,39 +21,24 @@ class GetUsersContext: GetContext {
     
     // MARK: Public properties
     
-    override var parameters: [String : String] {
+    override var parameters: [String : String]? {
         get {
             return [Constants.parametersFieldName : Constants.parametersFriendsValues]
         }
         
-        set {
-            
-        }
-        
+        set { }
     }
     
-    override var graphPath: String {
-        get {
-            if let id = AccessToken.current?.appId {
-                return id
-            }
-            
-            return ""
-        }
+    override var graphPath: String? {
+        get { return AccessToken.current?.userId }
         
-        set {
-            
-        }
+        set { }
     }
     
     override var cachedFileName: String? {
-        get {
-            return Constants.friendCachedFileName
-        }
+        get { return Constants.friendCachedFileName }
         
-        set {
-            
-        }
+        set { }
     }
     
     // MARK: Public methods

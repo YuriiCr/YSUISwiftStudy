@@ -10,15 +10,8 @@ import UIKit
 
 class FBViewController: UIViewController {
     
-    var model:Model? = FBCurrentUser() {
-        willSet {
-            
-        }
-        
-        didSet {
-            
-        }
-    }
+    var model:Model? = FBUser()
+      
     
     init(model: Model?) {
         super.init(nibName: nil, bundle: .main)
@@ -30,13 +23,9 @@ class FBViewController: UIViewController {
     }
     
     var context:YSContext? {
-        willSet {
-            newValue?.execute()
-        }
+        willSet { newValue?.execute() }
         
-        didSet {
-            oldValue?.cancel()
-        }
+        didSet { oldValue?.cancel() }
     }
 
     //MARK: Public Methods

@@ -21,11 +21,11 @@ class SquareViewController: UIViewController {
     
     //MARK: Public Methods
     
-    @IBAction func move(sender: UIButton) -> () {
+    @IBAction func move(_ sender: UIButton) -> () {
         self.squareView?.startPositionChange()
     }
     
-    @IBAction func randomMove(sender: UIButton) -> () {
+    @IBAction func randomMove(_ sender: UIButton) -> () {
         self.squareView?.startRandomPositionChange()
     }
     
