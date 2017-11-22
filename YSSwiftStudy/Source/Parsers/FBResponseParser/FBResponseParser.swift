@@ -8,8 +8,10 @@
 
 import Foundation
 
+typealias JSON = [String : Any]
+
 class FBResponseParser {
-    
+        
     // MARK: Constants
     
     private struct Keys {
@@ -23,7 +25,7 @@ class FBResponseParser {
     // MARK: Public properties
     
     var name: String? {
-        if let response = self.response as? NSObject {
+        if let response = self.response as NSObject? {
             return response.value(forKeyPath: Keys.userName) as? String
         }
         
@@ -31,7 +33,7 @@ class FBResponseParser {
     }
     
     var surname: String? {
-        if let response = self.response as? NSObject {
+        if let response = self.response as NSObject? {
             return response.value(forKeyPath: Keys.userSurname) as? String
         }
         
@@ -39,7 +41,7 @@ class FBResponseParser {
     }
     
     var userID: String? {
-        if let response = self.response as? NSObject {
+        if let response = self.response as NSObject? {
             return response.value(forKeyPath: Keys.userID) as? String
         }
         
@@ -47,7 +49,7 @@ class FBResponseParser {
     }
     
     var photoUrl: URL? {
-        if let response = self.response as? NSObject {
+        if let response = self.response as NSObject? {
             return URL(string: (response.value(forKeyPath: Keys.userPhoto) as! String))
         }
         
@@ -55,13 +57,15 @@ class FBResponseParser {
     }
     
     var friends:[FBUser] {
-        if let response = self.response as? NSObject {
-            let afriends =  response.value(forKeyPath: Keys.userFriends) as! Array<FBUser>
-            for friend in afriends {
-                var mutableFriends = [FBUser]()
-                mutableFriends.append(self.userWith(response: friend))
-                
-                return mutableFriends
+        if let response = self.response as NSObject? {
+            let afriends =  response.value(forKeyPath: Keys.userFriends) as? Array<JSON>
+            if let afriends = afriends {
+                for friend in afriends {
+                    var mutableFriends = [FBUser]()
+                    mutableFriends.append(self.userWith(response: friend))
+                    
+                    return mutableFriends
+                }
             }
             
         }
@@ -71,18 +75,18 @@ class FBResponseParser {
     
     // MARK: Private properties
     
-    private var response: AnyObject?
+    private var response: JSON?
     
     // MARK: Initialization
     
-    init (response: AnyObject?) {
+    init (response: JSON?) {
         self.response = response
     }
     
     // MARK: Private properties
     
     
-    private func userWith(response: AnyObject) -> FBUser {
+    private func userWith(response: JSON?) -> FBUser {
         let fbUser = FBUser()
         let parser = FBResponseParser(response: response)
         

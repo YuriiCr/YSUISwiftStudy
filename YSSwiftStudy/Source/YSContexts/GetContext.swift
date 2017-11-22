@@ -62,13 +62,13 @@ class GetContext: YSContext {
                 switch request {
                     
                 case .success(let response):
-                    self?.save(response: response as AnyObject)
-                    self?.parse(response: response as AnyObject)
+                    self?.save(response: (response as AnyObject) as? JSON)
+                    self?.parse(response: (response as AnyObject) as? JSON)
                     state = .didLoad
                     
                 case .failed(_):
                     if let cachedResponse = self?.cachedResponsePath {
-                        self?.parse(response: cachedResponse as AnyObject)
+                        self?.parse(response: (cachedResponse as AnyObject) as? JSON)
                         self?.user?.state = .didLoad
                     } else {
                         self?.user?.state = .loadingFailed
@@ -81,15 +81,15 @@ class GetContext: YSContext {
         }
     }
     
-    func save(response: AnyObject) {
-        if let path = self.cachedResponsePath {
+    func save(response: JSON?) {
+        if let path = self.cachedResponsePath, let response = response {
              NSKeyedArchiver.archiveRootObject(response, toFile: path)
         }
     }
     
     // this methid is intended for subclassing, do not call it directly
     
-    func parse(response: AnyObject) {
+    func parse(response: JSON?) {
         
     }
 

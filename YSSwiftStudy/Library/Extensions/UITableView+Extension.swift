@@ -14,11 +14,11 @@ extension UITableView {
         
         let cell = self.dequeueReusableCell(withIdentifier: toString(type: cls))
         
-        if let cell = cell {
-            return cell as? T
-        } else {
-            return UINib.object(with: cls)
+        if cell == nil {
+             return UINib.object(with: cls)
         }
+        
+        return cell as? T
     }
     
     func updateWithBlock(_ block: () -> ()) {

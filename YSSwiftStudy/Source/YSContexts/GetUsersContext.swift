@@ -43,8 +43,8 @@ class GetUsersContext: GetContext {
     
     // MARK: Public methods
     
-    override func parse(response: AnyObject) {
-        let parser = FBResponseParser.init(response: response)
+    override func parse(response: JSON?) {
+        let parser = FBResponseParser(response: response)
         let users = self.model as? UsersModel
         users?.performBlockWithoutNotification {
             users?.addObjects(parser.friends)

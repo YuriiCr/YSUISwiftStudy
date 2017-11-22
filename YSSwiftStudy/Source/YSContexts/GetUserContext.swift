@@ -42,7 +42,7 @@ class GetUserContext: GetContext {
     
     // MARK: Public methods
     
-    override func parse(response: AnyObject) {
+    override func parse(response: JSON?) {
         let user = self.user
         let parser = FBResponseParser(response: response)
         
