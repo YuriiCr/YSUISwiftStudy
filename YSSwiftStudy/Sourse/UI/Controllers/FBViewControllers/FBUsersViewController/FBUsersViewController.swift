@@ -67,9 +67,14 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.reusableCell(with: FBTableViewCell.self)
+        cell?.user = self.usersModel?.objectAtIndex(indexPath.row) as? FBUser
        
         return cell!
     }
-
     
+    // MARK: UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.navigationController?.pushViewController(FBUserViewController(model: self.usersModel?.objectAtIndex(indexPath.row) as? Model), animated: true)
+    }
 }
