@@ -90,6 +90,16 @@ class ArrayModel<T> : Model {
         }
     }
     
+    subscript(_ index: Int) -> T? {
+        get {
+            return self.objectAtIndex(index)
+        }
+        
+        set {
+//            self.objectAtIndex(index) = newValue
+        }
+    }
+    
      // MARK: Private Methods
     
     func notifyOfStateChangeWith(object: T) {  

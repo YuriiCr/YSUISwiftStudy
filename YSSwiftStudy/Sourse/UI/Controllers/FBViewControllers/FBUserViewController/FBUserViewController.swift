@@ -10,11 +10,13 @@ import UIKit
 
 class FBUserViewController: FBViewController, RootView {
     
+    // MARK: RootView
+    
+    var rootView: FBUserView?
+    
     // MARK: Public properties
     
     typealias ViewType = FBUserView
-    var rootView: FBUserView?
-   
     
     var user: FBUser? {
         return self.model as? FBUser

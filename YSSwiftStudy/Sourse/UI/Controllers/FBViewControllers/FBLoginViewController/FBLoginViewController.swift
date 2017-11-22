@@ -10,6 +10,8 @@ import UIKit
 
 class FBLoginViewController: FBViewController, RootView {
     
+    // MARK: RootView
+    
     typealias ViewType = FBLoginView
     
     // MARK: IBActions

@@ -22,13 +22,11 @@ class UsersModel: ArrayModel<ObservableObject> {
     private var pathList: String? {
          let documentsPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first
         
-        let pathList = documentsPath?.appending(Constants.pathComponent)
-        
-        return pathList
+        return documentsPath?.appending(Constants.pathComponent)
         
     }
     
-    private let notifiactionNames = [NSNotification.Name.UIApplicationWillTerminate, NSNotification.Name.UIApplicationWillResignActive]
+    private let notifiactionNames:[NSNotification.Name] = [.UIApplicationWillTerminate, .UIApplicationWillResignActive]
     
     // MARK: Initialization
     

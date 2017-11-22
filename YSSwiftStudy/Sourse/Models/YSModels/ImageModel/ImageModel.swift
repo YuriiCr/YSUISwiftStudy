@@ -22,8 +22,7 @@ class ImageModel: Model {
     }
     
     deinit {
-        let cache = ModelCache.shared
-        cache.remove(imageModel: self)
+        ModelCache.shared.remove(imageModel: self)
     }
     
     // MARK: Public methods
