@@ -35,7 +35,7 @@ func toString<T>(type: T.Type) -> String {
     return String(describing: type)
 }
 
-func randomName () -> String {
+func randomName() -> String {
     var result = ""
     let helpArray = Array(lowerCaseAlphabet)
     
@@ -58,6 +58,6 @@ func randomBool() -> Bool {
     return randomNumberToMaxValue(maxValue: 2) == 1
 }
 
-func randomObject(object1:AnyObject, object2:AnyObject) -> AnyObject {
+func randomObject<T>(object1:T, object2:T) -> T {
     return randomBool() ? object1 : object2
 }

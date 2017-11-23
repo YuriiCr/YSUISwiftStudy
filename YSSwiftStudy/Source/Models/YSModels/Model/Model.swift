@@ -30,7 +30,7 @@ class Model: ObservableObject {
     func load() {
         let state = self.state
         if (state == .willLoad || state == .didLoad) {
-            self.notify(of: state)
+            self.notifyOfState()
             return;
         }
         self.state = .willLoad

@@ -41,7 +41,7 @@ class GetContext: YSContext {
             synchronized(model) {
                 let state = model.state
                 if state == .willLoad || state == .didLoad {
-                    model.notify(of: state)
+                    model.notifyOfState()
                     if state == .didLoad {
                         return
                     }

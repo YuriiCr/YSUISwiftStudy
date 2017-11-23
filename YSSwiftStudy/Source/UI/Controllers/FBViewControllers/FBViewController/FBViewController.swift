@@ -9,9 +9,19 @@
 import UIKit
 
 class FBViewController: UIViewController {
-    
+    var  observationController: ObservableObject.ObservationController? {
+        didSet {
+            self.observationController?[.didLoad] = {
+                model in
+                self.fill(with: model)
+                
+                } as? ObservableObject.ObservationController.ActionType
+            
+            
+        }
+        
+    }
     var model:Model? = FBUser()
-      
     
     init(model: Model?) {
         super.init(nibName: nil, bundle: .main)
@@ -33,5 +43,7 @@ class FBViewController: UIViewController {
     func fill(with model: Model) {
         
     }
+    
+    
 
 }

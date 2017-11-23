@@ -13,7 +13,7 @@ class ObservableObject: NSObject {
     // MARK: Public Properties
     
     var state: ModelState = .didUnload {
-        didSet { self.notify(of: self.state) }
+        didSet { self.notifyOfState() }
     }
     
     // MARK: Private Properties
@@ -23,12 +23,19 @@ class ObservableObject: NSObject {
     
     // MARK: Public methods
     
-    func notify(of state: ModelState) {
+    func notifyOfState() {
         synchronized(self) {
             self.controllers.allObjects.forEach {
-                $0.notify(of: state)
+                $0.notify(of: self.state)
             }
         }
+    }
+    
+    func controller(with observer: ObserverType) -> ObservationController {
+        let controller = ObservationController(observableObject: self, observer: observer)
+        self.controllers.add(controller)
+        
+        return controller
     }
     
     func performBlockWithNotification(_ block: () -> ()) {
@@ -43,10 +50,10 @@ class ObservableObject: NSObject {
     
     func perform(block: () -> (), notify: Bool) {
         synchronized(self) {
-            let postNotificstion = self.notify
+            let postNotification = self.notify
             self.notify = notify
             block()
-            self.notify = postNotificstion
+            self.notify = postNotification
         }
     }
 }
@@ -54,20 +61,35 @@ class ObservableObject: NSObject {
 // MARK: Extensions for Observer
 
 extension ObservableObject {
+    
+    typealias ObserverType = AnyObject
+    typealias ActionType = (ObservableObject) -> ()
+    
     class ObservationController {
-        typealias ObserverType = AnyObject
-        typealias ActionType = (ObservableObject) -> ()
         
-        private var observableObject: ObservableObject?
-        private var observer: ObserverType?
+        // MARK: Public properties
+        
+        private var observableObject: ObservableObject
+        private var observer: ObserverType
         
         private var relation = [ModelState : ActionType]()
         
+        // MARK: Initialization
+        
+        init(observableObject: ObservableObject, observer: ObserverType) {
+            self.observableObject = observableObject
+            self.observer = observer
+        }
+        
+        // MARK: Public method
+        
         func notify(of state: ModelState) {
-            if let block = self.relation[state], let object = self.observableObject {
-                block(object)
+            if let block = self.relation[state] {
+                block(self.observableObject)
             }
         }
+        
+        // MARK: Subscript
         
         subscript(state: ModelState) -> ActionType? {
             get {

@@ -13,7 +13,7 @@ extension String {
     static let lowerCaseAlphabet = "abcdefghijklmnopqrstuvwxyz"
     static let upperCaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     
-    static func randomName () -> String {
+    static func randomName() -> String {
         var result = ""
         let helpArray = Array(lowerCaseAlphabet)
         
