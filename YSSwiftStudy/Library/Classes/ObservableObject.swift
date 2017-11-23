@@ -38,6 +38,10 @@ class ObservableObject: NSObject {
         return controller
     }
     
+    func remove(controller: ObservationController) {
+        self.controllers.remove(controller)
+    }
+    
     func performBlockWithNotification(_ block: () -> ()) {
         self.perform(block: block, notify: true)
     }

@@ -17,7 +17,7 @@ class FBViewController: UIViewController, RootView {
     // MARK: Public properties
     
     var  observationController: ObservableObject.ObservationController? {
-        didSet {
+        willSet {
             self.observationController?[.didLoad] = { [weak self]
                 model in
                 self?.fill(with: model as? Model)
@@ -39,11 +39,17 @@ class FBViewController: UIViewController, RootView {
                 self?.rootView?.loadingView?.state = .hidden
             }
         }
-        
     }
+    
     var model:Model? = FBUser() {
-        didSet {
+        willSet {
             self.observationController = self.model?.controller(with: self)
+        }
+        
+        didSet {
+            if let controller = self.observationController {
+                oldValue?.remove(controller: controller)
+            }
         }
     }
     

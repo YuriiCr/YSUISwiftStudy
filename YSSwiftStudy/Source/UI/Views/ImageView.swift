@@ -14,12 +14,15 @@ class ImageView: YSView {
     
     var imageModel: ImageModel? {
         willSet {
-//           newValue?.addObserver(obsever: self)
-           newValue?.load()
+            self.observationController = self.imageModel?.controller(with: self)
+            newValue?.load()
         }
         
         didSet {
-//            oldValue?.removeObserver(observer: self)
+            if let controller = self.observationController {
+                oldValue?.remove(controller: controller)
+            }
+            
         }
     }
     
@@ -27,6 +30,26 @@ class ImageView: YSView {
         willSet { newValue?.addSubview(self) }
         
         didSet { oldValue?.removeFromSuperview() }
+    }
+    
+    var  observationController: ObservableObject.ObservationController? {
+        willSet {
+            self.observationController?[.didLoad] = { [weak self]
+                model in
+                self?.loadingView?.state = .hidden
+                self?.fillWith(model: model as? ImageModel)
+            }
+            
+            self.observationController?[.willLoad] = { [weak self]
+                model in
+                self?.loadingView?.state = .visible
+            }
+            
+            self.observationController?[.loadingFailed] = { [weak self]
+                model in
+                self?.loadingView?.state = .hidden
+            }
+        }
     }
     
     // MARK: Override methods
@@ -47,8 +70,8 @@ class ImageView: YSView {
     
     // MARK: Private methods
     
-    func fillWith(model: ImageModel) {
-        self.imageView?.image = model.image
+    func fillWith(model: ImageModel?) {
+        self.imageView?.image = model?.image
     }
 
 }

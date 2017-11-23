@@ -50,7 +50,7 @@ class FBUsersViewController: FBViewController, UITableViewDelegate, UITableViewD
     
     // MARK: Public methods
     
-    override func fill(with model: Model) {
+    override func fill(with model: Model?) {
         self.navigationItem.title = Constants.title
         self.rootView?.tableView?.reloadData()
     }
