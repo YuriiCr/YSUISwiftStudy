@@ -8,11 +8,21 @@
 
 import UIKit
 
-class FBLoginViewController: FBViewController, RootView {
+class FBLoginViewController: FBViewController {
     
     // MARK: RootView
     
     typealias ViewType = FBLoginView
+    
+    // MARK: Initialization
+    
+     init() {
+        super.init(model: FBCurrentUser())
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: IBActions
     
@@ -22,7 +32,7 @@ class FBLoginViewController: FBViewController, RootView {
     
     // MARK: Public methods
     
-    override func fill(with model: Model) {
+    override func fill(with model: Model?) {
         self.presentFBUserViewController()
     }
     
@@ -32,5 +42,4 @@ class FBLoginViewController: FBViewController, RootView {
         let navigationController = UINavigationController(rootViewController: FBUserViewController(model: self.model))
         self.present(navigationController, animated: true, completion: nil)
     }
-    
 }

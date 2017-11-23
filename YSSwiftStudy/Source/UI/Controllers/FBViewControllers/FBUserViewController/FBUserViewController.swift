@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FBUserViewController: FBViewController, RootView {
+class FBUserViewController: FBViewController {
     
     // MARK: RootView
     
@@ -32,7 +32,7 @@ class FBUserViewController: FBViewController, RootView {
     
     // MARK: Public methods
     
-    override func fill(with model: Model) {
+    override func fill(with model: Model?) {
         if let user = model as? FBUser {
             self.rootView?.fillWith(user: user)
         }
@@ -57,5 +57,4 @@ class FBUserViewController: FBViewController, RootView {
     @IBAction func logOut(sender: UIButton) {
         self.logoutContext = FBLogoutContext()
     }
-
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UITableViewDataSource {
+class FBUsersViewController: FBViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Constants
     
