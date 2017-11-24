@@ -66,7 +66,7 @@ class ArrayModel<Element> : Model {
         synchronized( self) {
             self.array.insert(object, at: index)
               let modelChange:ArrayModelChange = ArrayModelChangeInsert(index: index)
-            self.notifyOfStateChangeWith(object: modelChange as! Element)
+            self.notifyOfStateChangeWith(object: modelChange as? Element)
         }
     }
     
@@ -75,7 +75,7 @@ class ArrayModel<Element> : Model {
             if self.count > index {
                 self.array.remove(at: index)
                 let modelChange:ArrayModelChange = ArrayModelChangeDelete(index: index)
-                self.notifyOfStateChangeWith(object: modelChange as! Element)
+                self.notifyOfStateChangeWith(object: modelChange as? Element)
             }
         }
     }
@@ -85,7 +85,7 @@ class ArrayModel<Element> : Model {
             if index != destinationIndex {
                 self.array.moveObject(at: index, to: destinationIndex)
                 let modelChange:ArrayModelChange = ArrayModelChangeMove(index: index, destinationIndex: destinationIndex)
-                self.notifyOfStateChangeWith(object: modelChange as! Element)
+                self.notifyOfStateChangeWith(object: modelChange as? Element)
             }
         }
     }
@@ -98,8 +98,8 @@ class ArrayModel<Element> : Model {
     
      // MARK: Private Methods
     
-    func notifyOfStateChangeWith(object: Element) {
-        
+    func notifyOfStateChangeWith(object: Element?) {
+        self.notifyWith(object: object as AnyObject)
     }
     
 }

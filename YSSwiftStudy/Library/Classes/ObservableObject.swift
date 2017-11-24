@@ -31,6 +31,14 @@ class ObservableObject: NSObject {
         }
     }
     
+    func notifyWith(object: AnyObject?) {
+        synchronized(self) {
+            self.controllers.allObjects.forEach {
+                $0.notify(of: self.state, object: object)
+            }
+        }
+    }
+    
     func controller(with observer: ObserverType) -> ObservationController {
         let controller = ObservationController(observableObject: self, observer: observer)
         self.controllers.add(controller)
@@ -67,7 +75,7 @@ class ObservableObject: NSObject {
 extension ObservableObject {
     
     typealias ObserverType = AnyObject
-    typealias ActionType = (ObservableObject) -> ()
+    typealias ActionType = (ObservableObject, AnyObject?) -> ()
     
     class ObservationController {
         
@@ -87,14 +95,10 @@ extension ObservableObject {
         
         // MARK: Public method
         
-        func notify(of state: ModelState) {
+        func notify(of state: ModelState, object: AnyObject? = nil) {
             if let block = self.relation[state] {
-                block(self.observableObject)
+                block(self.observableObject, object)
             }
-        }
-        
-        func notify<T>(of state: ModelState, and object: T) {
-            
         }
         
         // MARK: Subscript
