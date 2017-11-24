@@ -9,7 +9,7 @@
 import UIKit
 
 extension Bundle {
-//    static func object<T>(ofClass cls: T.Type) -> T {
-//        return Bundle.loadNibNamed(toString(type: cls).filter {$0 is T}.fisrt as? T)
-//    }
+    static func object<T>(ofClass cls: T.Type) -> T? {
+        return main.loadNibNamed(toString(type: cls), owner: nil) as? T
+    }
 }

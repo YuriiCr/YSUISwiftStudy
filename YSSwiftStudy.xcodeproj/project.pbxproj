@@ -31,7 +31,6 @@
 		9533F1CB1FACE58B00FC12DE /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533F1CA1FACE58B00FC12DE /* Array+Extension.swift */; };
 		9533F1D01FACF9CD00FC12DE /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533F1CF1FACF9CD00FC12DE /* LoadingView.swift */; };
 		9533F1D21FACF9F100FC12DE /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9533F1D11FACF9F100FC12DE /* LoadingView.xib */; };
-		9533F1D41FACFE9E00FC12DE /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533F1D31FACFE9E00FC12DE /* UIView+Extensions.swift */; };
 		9533F1D61FAD1F5400FC12DE /* YSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533F1D51FAD1F5400FC12DE /* YSView.swift */; };
 		9533F1D81FADAB7100FC12DE /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533F1D71FADAB7100FC12DE /* ImageView.swift */; };
 		95478E9C1FC5ADD900C00864 /* FBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95478E991FC5ADD900C00864 /* FBUser.swift */; };
@@ -92,7 +91,6 @@
 		9533F1CA1FACE58B00FC12DE /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		9533F1CF1FACF9CD00FC12DE /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		9533F1D11FACF9F100FC12DE /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
-		9533F1D31FACFE9E00FC12DE /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		9533F1D51FAD1F5400FC12DE /* YSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YSView.swift; sourceTree = "<group>"; };
 		9533F1D71FADAB7100FC12DE /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		95478E991FC5ADD900C00864 /* FBUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBUser.swift; sourceTree = "<group>"; };
@@ -288,7 +286,6 @@
 				95070F301FA1D4E300B26BD7 /* FileManager+Extension.swift */,
 				95070F421FA38F4800B26BD7 /* UITableView+Extension.swift */,
 				9533F1CA1FACE58B00FC12DE /* Array+Extension.swift */,
-				9533F1D31FACFE9E00FC12DE /* UIView+Extensions.swift */,
 				950732711FB9C7F200FFEE7B /* UINib+Extensions.swift */,
 				95029ECB1FBEDEE9004AEA54 /* Bundle+Extensions.swift */,
 			);
@@ -664,7 +661,6 @@
 				9533F1D61FAD1F5400FC12DE /* YSView.swift in Sources */,
 				950F93581FB49205005CE4C6 /* FBTableViewCell.swift in Sources */,
 				95029ECC1FBEDEE9004AEA54 /* Bundle+Extensions.swift in Sources */,
-				9533F1D41FACFE9E00FC12DE /* UIView+Extensions.swift in Sources */,
 				950C52801F9B89C700AD308C /* ObservableObject.swift in Sources */,
 				950732701FB9C71200FFEE7B /* RootViewProtocol.swift in Sources */,
 				950F935B1FB4EE22005CE4C6 /* GetContext.swift in Sources */,

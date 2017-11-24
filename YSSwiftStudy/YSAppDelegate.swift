@@ -19,8 +19,8 @@ class YSAppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow.windowWithRootViewController(SquareViewController())
         let uwindow = UIWindow.windowWithRootViewController(FBLoginViewController())
-    
         self.window = uwindow
+    
         uwindow.makeKeyAndVisible()
         
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)

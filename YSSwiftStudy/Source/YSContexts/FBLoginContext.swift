@@ -31,7 +31,7 @@ class FBLoginContext: YSContext {
             loginManager.logIn([.publicProfile, .userFriends], viewController: nil, completion: { (LoginResult) in
                 switch LoginResult {
                     
-                case .success(_, _,  _):
+                case .success(_, _, _):
                     user.userID = AccessToken.current?.userId
                     user.token = AccessToken.current?.authenticationToken
                     block(.didLoad)

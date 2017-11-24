@@ -74,6 +74,4 @@ class FBViewController: UIViewController, RootView {
         
     }
     
-    
-
 }

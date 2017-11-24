@@ -14,7 +14,7 @@ class GetContext: YSContext {
     
     // MARK: Public properties
     
-    var graphPath: String?
+    var graphPath: String? 
     var parameters: [String : String]?
     
     var cachedFileName: String?

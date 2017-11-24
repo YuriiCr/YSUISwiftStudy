@@ -16,6 +16,4 @@ class YSTableViewCell: UITableViewCell {
     let className = String(describing: type(of: self))
         return className
     }
-
-
 }
