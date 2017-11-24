@@ -12,11 +12,11 @@ protocol ArrayModelObserver {
     func arrayModelChangeWith(changeModel: ArrayModelChange)
 }
 
-class ArrayModel<T> : Model {
+class ArrayModel<Element> : Model {
     
     // MARK: Public Properties
     
-    var array: Array<T> = []
+    var array: Array<Element> = []
     
     var count:Int {
        return self.array.count
@@ -24,37 +24,37 @@ class ArrayModel<T> : Model {
     
     // MARK: Public Methods
     
-    func add(_ object: T) {
+    func add(_ object: Element) {
         synchronized(self) {
             self.insertObject(object, index: self.count)
         }
     }
     
-    func addObjects(_ objects: Array<T>) {
+    func addObjects(_ objects: Array<Element>) {
         objects.forEach {
             self.add($0)
         }
     }
     
-    func remove(object: T) {
+    func remove(object: Element) {
         synchronized(self) {
             self.removeObjectAtIndex(self.indexOfObject(object))
         }
     }
     
-    func remove(objects: Array<T>) {
+    func remove(objects: Array<Element>) {
         objects.forEach {
             self.remove(object: $0)
         }
     }
     
-    func objectAtIndex(_ index: Int) -> T? {
+    func objectAtIndex(_ index: Int) -> Element? {
         return synchronized(self) {
             return self.count > index ? self.array[index] : nil
             }
     }
     
-    func indexOfObject(_ object: T) -> Int {
+    func indexOfObject(_ object: Element) -> Int {
         return synchronized(self, block: { () -> (Int) in
             return self.array.index(where: { (object) -> Bool in
                 return true
@@ -62,11 +62,11 @@ class ArrayModel<T> : Model {
         })
     }
     
-    func insertObject(_ object: T, index: Int) {
+    func insertObject(_ object: Element, index: Int) {
         synchronized( self) {
             self.array.insert(object, at: index)
               let modelChange:ArrayModelChange = ArrayModelChangeInsert(index: index)
-            self.notifyOfStateChangeWith(object: modelChange as! T)
+            self.notifyOfStateChangeWith(object: modelChange as! Element)
         }
     }
     
@@ -75,7 +75,7 @@ class ArrayModel<T> : Model {
             if self.count > index {
                 self.array.remove(at: index)
                 let modelChange:ArrayModelChange = ArrayModelChangeDelete(index: index)
-                self.notifyOfStateChangeWith(object: modelChange as! T)
+                self.notifyOfStateChangeWith(object: modelChange as! Element)
             }
         }
     }
@@ -85,26 +85,21 @@ class ArrayModel<T> : Model {
             if index != destinationIndex {
                 self.array.moveObject(at: index, to: destinationIndex)
                 let modelChange:ArrayModelChange = ArrayModelChangeMove(index: index, destinationIndex: destinationIndex)
-                self.notifyOfStateChangeWith(object: modelChange as! T)
+                self.notifyOfStateChangeWith(object: modelChange as! Element)
             }
         }
     }
     
-    subscript(_ index: Int) -> T? {
+    subscript(_ index: Int) -> Element? {
         get {
             return self.objectAtIndex(index)
-        }
-        
-        set {
-//            self.objectAtIndex(index) = newValue
         }
     }
     
      // MARK: Private Methods
     
-    func notifyOfStateChangeWith(object: T) {  
+    func notifyOfStateChangeWith(object: Element) {
+        
     }
-    
-   
     
 }

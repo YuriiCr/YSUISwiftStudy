@@ -11,6 +11,7 @@ import UIKit
 class SquareView: UIView {
     
     // Mark: public properties
+    
     @IBOutlet var square: UIView?
     @IBOutlet var moveButton: UIButton?
     @IBOutlet var randomMove: UIButton?

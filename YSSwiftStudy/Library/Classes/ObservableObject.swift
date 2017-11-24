@@ -93,6 +93,10 @@ extension ObservableObject {
             }
         }
         
+        func notify<T>(of state: ModelState, and object: T) {
+            
+        }
+        
         // MARK: Subscript
         
         subscript(state: ModelState) -> ActionType? {

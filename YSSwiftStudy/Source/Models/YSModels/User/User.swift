@@ -10,6 +10,8 @@ import UIKit
 
 class User: Model, NSCoding {
     
+    // MARK: Keys
+    
     private struct Keys {
         static let name:String = "YSName"
         static let surname:String = "YSSurname"

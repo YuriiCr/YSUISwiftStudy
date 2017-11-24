@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import FacebookCore
 
 class FBCurrentUser: FBUser {
+    
+    // MARK: Public properties
+    
     var token: String?
     var isAuthorized: Bool {
-        return false
+        return self.token == AccessToken.current?.authenticationToken
     }
 
 }
