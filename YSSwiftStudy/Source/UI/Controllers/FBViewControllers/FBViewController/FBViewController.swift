@@ -19,23 +19,23 @@ class FBViewController: UIViewController, RootView {
     var  observationController: ObservableObject.ObservationController? {
         willSet {
             self.observationController?[.didLoad] = { [weak self]
-                model, object in
-                self?.fill(with: model as? Model)
+                _, _ in
+                self?.fill(with: self?.model)
                 self?.rootView?.loadingView?.state = .hidden
                 }
             
             self.observationController?[.didUnload] = { [weak self]
-                model, object in
+                _, _ in
                 self?.dismiss(animated: true)
             }
             
             self.observationController?[.willLoad] = { [weak self]
-                model, object in
+                _, _ in
                 self?.rootView?.loadingView?.state = .visible
             }
             
             self.observationController?[.loadingFailed] = { [weak self]
-                model, object in
+                _, _ in
                 self?.rootView?.loadingView?.state = .hidden
             }
         }

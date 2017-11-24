@@ -35,18 +35,18 @@ class ImageView: YSView {
     var  observationController: ObservableObject.ObservationController? {
         willSet {
             self.observationController?[.didLoad] = { [weak self]
-                model, object in
+                _, _ in
                 self?.loadingView?.state = .hidden
-                self?.fillWith(model: model as? ImageModel)
+                self?.fillWith(model: self?.imageModel)
             }
             
             self.observationController?[.willLoad] = { [weak self]
-                model, object in
+                _, _ in
                 self?.loadingView?.state = .visible
             }
             
             self.observationController?[.loadingFailed] = { [weak self]
-                model, object in
+                _, _ in
                 self?.loadingView?.state = .hidden
             }
         }
