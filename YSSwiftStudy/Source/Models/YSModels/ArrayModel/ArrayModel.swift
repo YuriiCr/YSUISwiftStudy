@@ -98,7 +98,7 @@ class ArrayModel<Element> : Model {
     
      // MARK: Private Methods
     
-    func notifyOfStateChangeWith(object: Element?) {
+    private func notifyOfStateChangeWith(object: Element?) {
         self.notifyWith(object: object as AnyObject)
     }
     
