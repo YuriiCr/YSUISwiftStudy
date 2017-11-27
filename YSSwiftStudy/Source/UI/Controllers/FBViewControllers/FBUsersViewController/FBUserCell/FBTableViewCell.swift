@@ -16,14 +16,12 @@ class FBTableViewCell: YSTableViewCell {
     @IBOutlet var userImageView: ImageView?
     
     var user: FBUser? {
-        willSet {
-            self.fillWith(user: newValue)
-        }
+        willSet { self.fill(with: newValue) }
     }
     
     // MARK: Public methods
     
-    func fillWith(user: FBUser?) {
+    func fill(with user: FBUser?) {
         self.fullNameLabel?.text = user?.fullName
     }
     

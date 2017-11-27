@@ -8,15 +8,38 @@
 
 import UIKit
 
-class FBUserViewController: FBViewController {
+class FBUserViewController: FBViewController, RootView {
     
     // MARK: RootView
     
-    var rootView: FBUserView?
+    typealias ViewType = FBUserView
     
     // MARK: Public properties
     
-    typealias ViewType = FBUserView
+    override var observationController: ObservableObject.ObservationController? {
+        willSet {
+            self.observationController?[.didLoad] = { [weak self]
+                _, _ in
+                self?.fill(with: self?.model)
+                self?.rootView?.loadingView?.state = .hidden
+            }
+            
+            self.observationController?[.didUnload] = { [weak self]
+                _, _ in
+                self?.dismiss(animated: true)
+            }
+            
+            self.observationController?[.willLoad] = { [weak self]
+                _, _ in
+                self?.rootView?.loadingView?.state = .visible
+            }
+            
+            self.observationController?[.loadingFailed] = { [weak self]
+                _, _ in
+                self?.rootView?.loadingView?.state = .hidden
+            }
+        }
+    }
     
     var user: FBUser? {
         return self.model as? FBUser
@@ -54,7 +77,7 @@ class FBUserViewController: FBViewController {
         self.navigationController?.pushViewController(usersController, animated: true)
     }
     
-    @IBAction func logOut(sender: UIButton) {
+    @IBAction func onlogOut(sender: UIButton) {
         self.logoutContext = FBLogoutContext()
     }
 }

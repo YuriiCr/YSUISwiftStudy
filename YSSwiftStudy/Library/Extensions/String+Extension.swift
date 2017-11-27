@@ -19,7 +19,7 @@ extension String {
         
         var count = 0
         while count < defaultStringLength {
-            let randomIndex = randomNumberToMaxValue(maxValue: lowerCaseAlphabet.count)
+            let randomIndex = randomNumberTo(maxValue: lowerCaseAlphabet.count)
             let symbol = helpArray[randomIndex]
             result.append(symbol)
             count += 1

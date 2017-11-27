@@ -8,11 +8,38 @@
 
 import UIKit
 
-class FBLoginViewController: FBViewController {
+class FBLoginViewController: FBViewController, RootView {
     
     // MARK: RootView
     
     typealias ViewType = FBLoginView
+    
+    // MARK: Public properties
+    
+    override var observationController: ObservableObject.ObservationController? {
+        willSet {
+            self.observationController?[.didLoad] = { [weak self]
+                _, _ in
+                self?.fill(with: self?.model)
+                self?.rootView?.loadingView?.state = .hidden
+            }
+            
+            self.observationController?[.didUnload] = { [weak self]
+                _, _ in
+                self?.dismiss(animated: true)
+            }
+            
+            self.observationController?[.willLoad] = { [weak self]
+                _, _ in
+                self?.rootView?.loadingView?.state = .visible
+            }
+            
+            self.observationController?[.loadingFailed] = { [weak self]
+                _, _ in
+                self?.rootView?.loadingView?.state = .hidden
+            }
+        }
+    }
     
     // MARK: Initialization
     

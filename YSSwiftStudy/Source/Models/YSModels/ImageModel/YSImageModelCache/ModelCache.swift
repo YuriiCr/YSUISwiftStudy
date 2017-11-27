@@ -12,7 +12,7 @@ class ModelCache {
     
     // MARK: Public properties
     
-    var cache = NSMapTable<AnyObject, ImageModel>.strongToWeakObjects()
+    private var cache = NSMapTable<AnyObject, ImageModel>.strongToWeakObjects()
     
     static let shared = ModelCache()
     

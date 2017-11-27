@@ -8,38 +8,11 @@
 
 import UIKit
 
-class FBViewController: UIViewController, RootView {
-    
-    // MARK: RootView
-    
-    typealias ViewType = YSView
+class FBViewController: UIViewController {
     
     // MARK: Public properties
     
-    var  observationController: ObservableObject.ObservationController? {
-        willSet {
-            self.observationController?[.didLoad] = { [weak self]
-                _, _ in
-                self?.fill(with: self?.model)
-                self?.rootView?.loadingView?.state = .hidden
-                }
-            
-            self.observationController?[.didUnload] = { [weak self]
-                _, _ in
-                self?.dismiss(animated: true)
-            }
-            
-            self.observationController?[.willLoad] = { [weak self]
-                _, _ in
-                self?.rootView?.loadingView?.state = .visible
-            }
-            
-            self.observationController?[.loadingFailed] = { [weak self]
-                _, _ in
-                self?.rootView?.loadingView?.state = .hidden
-            }
-        }
-    }
+    var  observationController: ObservableObject.ObservationController? 
     
     var model:Model? = FBUser() {
         willSet {
@@ -64,7 +37,6 @@ class FBViewController: UIViewController, RootView {
     
     var context:YSContext? {
         willSet { newValue?.execute() }
-        
         didSet { oldValue?.cancel() }
     }
 

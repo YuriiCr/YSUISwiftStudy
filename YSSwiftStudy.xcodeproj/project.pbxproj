@@ -47,6 +47,7 @@
 		956A85CA1F93D52200292D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 956A85C91F93D52200292D21 /* Assets.xcassets */; };
 		956A85E21F93DA6300292D21 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A85E11F93DA6300292D21 /* Context.swift */; };
 		956A85E71F94FDA000292D21 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A85E61F94FDA000292D21 /* Model.swift */; };
+		957C21B51FC9B03A00806A28 /* UIViewAutoresizing+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957C21B41FC9B03A00806A28 /* UIViewAutoresizing+Extensions.swift */; };
 		95A92DCB1F9F7B480074898E /* SquareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A92DC91F9F7B480074898E /* SquareViewController.swift */; };
 		95A92DCC1F9F7B480074898E /* SquareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95A92DCA1F9F7B480074898E /* SquareViewController.xib */; };
 		95A92DCE1F9F7D310074898E /* SquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A92DCD1F9F7D310074898E /* SquareView.swift */; };
@@ -111,6 +112,7 @@
 		956A85E11F93DA6300292D21 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		956A85E61F94FDA000292D21 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		956A85E81F95009900292D21 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
+		957C21B41FC9B03A00806A28 /* UIViewAutoresizing+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewAutoresizing+Extensions.swift"; sourceTree = "<group>"; };
 		95A92DC91F9F7B480074898E /* SquareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareViewController.swift; sourceTree = "<group>"; };
 		95A92DCA1F9F7B480074898E /* SquareViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SquareViewController.xib; sourceTree = "<group>"; };
 		95A92DCD1F9F7D310074898E /* SquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				9533F1CA1FACE58B00FC12DE /* Array+Extension.swift */,
 				950732711FB9C7F200FFEE7B /* UINib+Extensions.swift */,
 				95029ECB1FBEDEE9004AEA54 /* Bundle+Extensions.swift */,
+				957C21B41FC9B03A00806A28 /* UIViewAutoresizing+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -679,6 +682,7 @@
 				9533F1C61FAB74FB00FC12DE /* GSDConstants.swift in Sources */,
 				950F935D1FB4EE8F005CE4C6 /* GetUserContext.swift in Sources */,
 				95478EAA1FC5AE1F00C00864 /* ArrayModelChangeMove.swift in Sources */,
+				957C21B51FC9B03A00806A28 /* UIViewAutoresizing+Extensions.swift in Sources */,
 				95A92DCE1F9F7D310074898E /* SquareView.swift in Sources */,
 				9533F1CB1FACE58B00FC12DE /* Array+Extension.swift in Sources */,
 				955141111FA0C1AD00B57947 /* String+Extension.swift in Sources */,

@@ -84,7 +84,7 @@ class SquareView: UIView {
     }
     
     func randomPosition() -> Int {
-        let result = randomNumberToMaxValue(maxValue: positionsCount)
+        let result = randomNumberTo(maxValue: positionsCount)
         
         return result == self.position ? randomPosition() : result
     }

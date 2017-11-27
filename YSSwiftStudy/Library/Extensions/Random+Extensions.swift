@@ -15,7 +15,7 @@ extension Bool {
 extension Int {
     static var random:Int { return Int(arc4random_uniform(UInt32.max)) }
     
-    static func randomNumberToMaxValue(maxValue:Int) -> Int {
+    static func randomNumberTo(maxValue:Int) -> Int {
         return Int(arc4random_uniform(UInt32(maxValue)))
     }
 }

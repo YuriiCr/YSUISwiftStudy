@@ -83,7 +83,7 @@ class LoadingView: UIView {
         self.indicator = UIActivityIndicatorView.init(activityIndicatorStyle:.whiteLarge)
         self.indicator?.center = CGPoint(x: bounds.midX, y: bounds.midY);
         self.indicator?.startAnimating()
-        self.autoresizingMask = autoresizeAll
+        self.autoresizingMask = UIViewAutoresizing.autoresizeAll
     }
 
 }

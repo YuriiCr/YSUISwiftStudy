@@ -41,7 +41,7 @@ func randomName() -> String {
     
     var count = 0
     while count < defaultStringLength {
-        let randomIndex = randomNumberToMaxValue(maxValue: lowerCaseAlphabet.count)
+        let randomIndex = randomNumberTo(maxValue: lowerCaseAlphabet.count)
         let symbol = helpArray[randomIndex]
         result.append(symbol)
         count += 1
@@ -50,12 +50,12 @@ func randomName() -> String {
     return result.capitalized
 }
 
-func randomNumberToMaxValue(maxValue:Int) -> Int {
+func randomNumberTo(maxValue:Int) -> Int {
     return Int(arc4random_uniform(UInt32(maxValue)))
 }
 
 func randomBool() -> Bool {
-    return randomNumberToMaxValue(maxValue: 2) == 1
+    return randomNumberTo(maxValue: 2) == 1
 }
 
 func randomObject<T>(object1:T, object2:T) -> T {

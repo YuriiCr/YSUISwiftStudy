@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FBUsersViewController: FBViewController, UITableViewDelegate, UITableViewDataSource {
+class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Constants
     
@@ -19,10 +19,38 @@ class FBUsersViewController: FBViewController, UITableViewDelegate, UITableViewD
     // MARK: Public properties
     
     typealias ViewType = FBUserView
+    
     var rootView: FBUsersView?
     
     var usersModel:UsersModel? {
         return (self.model as? UsersModel)
+    }
+    
+    // MARK: Public properties
+    
+    override var observationController: ObservableObject.ObservationController? {
+        willSet {
+            self.observationController?[.didLoad] = { [weak self]
+                _, _ in
+                self?.fill(with: self?.model)
+                self?.rootView?.loadingView?.state = .hidden
+            }
+            
+            self.observationController?[.didUnload] = { [weak self]
+                _, _ in
+                self?.dismiss(animated: true)
+            }
+            
+            self.observationController?[.willLoad] = { [weak self]
+                _, _ in
+                self?.rootView?.loadingView?.state = .visible
+            }
+            
+            self.observationController?[.loadingFailed] = { [weak self]
+                _, _ in
+                self?.rootView?.loadingView?.state = .hidden
+            }
+        }
     }
 
     // MARK: Private properties
@@ -40,6 +68,7 @@ class FBUsersViewController: FBViewController, UITableViewDelegate, UITableViewD
         if  let model = self.model {
              self.context = GetUsersContext(model: model)
         }
+        self.navigationItem.title = Constants.title
     }
     
     // MARK: IBAction
@@ -51,7 +80,7 @@ class FBUsersViewController: FBViewController, UITableViewDelegate, UITableViewD
     // MARK: Public methods
     
     override func fill(with model: Model?) {
-        self.navigationItem.title = Constants.title
+
         self.rootView?.tableView?.reloadData()
     }
     
