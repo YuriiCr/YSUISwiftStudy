@@ -14,6 +14,10 @@ extension String {
     static let upperCaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     
     static func randomName() -> String {
+        return randomString().capitalized
+    }
+    
+    static func randomString() -> String {
         var result = ""
         let helpArray = Array(lowerCaseAlphabet)
         
@@ -25,7 +29,7 @@ extension String {
             count += 1
         }
         
-        return result.capitalized
+        return result
     }
 }
 

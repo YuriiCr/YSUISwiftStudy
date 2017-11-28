@@ -61,3 +61,11 @@ func randomBool() -> Bool {
 func randomObject<T>(object1:T, object2:T) -> T {
     return randomBool() ? object1 : object2
 }
+
+func randomObject<Element>(_ array: [Element]) -> Element? {
+    if !array.isEmpty {
+        return array[randomNumberTo(maxValue: array.count)]
+    }
+    
+    return nil
+}

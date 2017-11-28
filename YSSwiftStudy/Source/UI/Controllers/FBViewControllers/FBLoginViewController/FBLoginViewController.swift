@@ -47,14 +47,18 @@ class FBLoginViewController: FBViewController, RootView {
         super.init(model: FBCurrentUser())
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+   
     
     // MARK: IBActions
     
     @IBAction func onLogin(sender: UIButton) {
-        self.context = FBLoginContext()
+        if let model = self.model {
+            self.context = FBLoginContext(model: model)
+        }
+        print("touched")
     }
     
     // MARK: Public methods

@@ -17,11 +17,11 @@ class YSAppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let window = UIWindow.windowWithRootViewController(SquareViewController())
-        let uwindow = UIWindow.windowWithRootViewController(FBLoginViewController())
-        self.window = uwindow
-    
-        uwindow.makeKeyAndVisible()
+        self.window = UIWindow.window {
+//            $0.rootViewController = SquareViewController()
+            $0.rootViewController = FBLoginViewController()
+            $0.makeKeyAndVisible()
+        }
         
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
        

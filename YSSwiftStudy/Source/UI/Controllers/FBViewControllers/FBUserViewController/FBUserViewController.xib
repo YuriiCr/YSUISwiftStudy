@@ -41,7 +41,7 @@
                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="onFriendsWithSender:" destination="-1" eventType="touchUpInside" id="OFd-eK-Oit"/>
+                        <action selector="onFriendsWithSender:" destination="-1" eventType="touchUpInside" id="xMh-kS-E2A"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQx-4s-WdS">

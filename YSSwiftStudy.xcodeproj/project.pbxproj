@@ -196,7 +196,6 @@
 		950C78401F973F9100C040E9 /* ImageModel */ = {
 			isa = PBXGroup;
 			children = (
-				950C52701F9A6A9F00AD308C /* YSImageModelCache */,
 				950C526D1F99F28200AD308C /* YSFileManagerImageModel */,
 				950C526C1F99F27600AD308C /* YSInternetImageModel */,
 				950C78411F973FB200C040E9 /* ImageModel.swift */,
@@ -272,6 +271,7 @@
 		9551410E1FA0C17B00B57947 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				950C52701F9A6A9F00AD308C /* YSImageModelCache */,
 				950C527C1F9B89C700AD308C /* ObservableObject.swift */,
 				95B1C0D41FB48ED20030A0C3 /* YSTableViewCell.swift */,
 			);

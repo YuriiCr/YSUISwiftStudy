@@ -33,11 +33,7 @@ class User: Model, NSCoding {
     }
     
     var fullName : String? {
-        if let name = self.name {
-            return self.surname == nil ? name : "\(name)  \(self.surname ?? "")"
-        }
-        
-        return nil
+        return "\(self.name ?? "") \(self.surname ?? "")"
     }
     
     // MARK: Initialization

@@ -10,15 +10,17 @@ import UIKit
 
 extension UITableView {
     
-    func reusableCell<T>(with cls: T.Type) -> T? {
+    func reusableCell<T>(with cls: T.Type, index: IndexPath) -> T {
         
         let cell = self.dequeueReusableCell(withIdentifier: toString(type: cls))
         
+        let acell = self.dequeueReusableCell(withIdentifier: toString(type: cls), for: index)
+        
         if cell == nil {
-             return UINib.object(with: cls)
+            return UINib.object(with: cls)!
         }
         
-        return cell as? T
+        return acell as! T
     }
     
     func updateWithBlock(_ block: () -> ()) {

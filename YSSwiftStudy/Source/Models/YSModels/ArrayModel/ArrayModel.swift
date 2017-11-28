@@ -12,7 +12,7 @@ protocol ArrayModelObserver {
     func arrayModelChangeWith(changeModel: ArrayModelChange)
 }
 
-class ArrayModel<Element> : Model {
+class ArrayModel<Element: Equatable> : Model {
     
     // MARK: Public Properties
     
@@ -38,7 +38,9 @@ class ArrayModel<Element> : Model {
     
     func remove(object: Element) {
         synchronized(self) {
-            self.removeObjectAtIndex(self.indexOfObject(object))
+            if let index = self.array.index(of: object) {
+                self.removeObject(at: index)
+            }
         }
     }
     
@@ -54,28 +56,20 @@ class ArrayModel<Element> : Model {
             }
     }
     
-    func indexOfObject(_ object: Element) -> Int {
-        return synchronized(self, block: { () -> (Int) in
-            return self.array.index(where: { (object) -> Bool in
-                return true
-            })!
-        })
-    }
-    
     func insertObject(_ object: Element, index: Int) {
         synchronized( self) {
             self.array.insert(object, at: index)
               let modelChange:ArrayModelChange = ArrayModelChangeInsert(index: index)
-            self.notifyOfStateChangeWith(object: modelChange as? Element)
+            self.notifyOfStateChangeWith(object: modelChange)
         }
     }
     
-    func removeObjectAtIndex(_ index: Int) {
+    func removeObject(at index: Int) {
         synchronized(self) {
             if self.count > index {
                 self.array.remove(at: index)
                 let modelChange:ArrayModelChange = ArrayModelChangeDelete(index: index)
-                self.notifyOfStateChangeWith(object: modelChange as? Element)
+                self.notifyOfStateChangeWith(object: modelChange)
             }
         }
     }
@@ -85,7 +79,7 @@ class ArrayModel<Element> : Model {
             if index != destinationIndex {
                 self.array.moveObject(at: index, to: destinationIndex)
                 let modelChange:ArrayModelChange = ArrayModelChangeMove(index: index, destinationIndex: destinationIndex)
-                self.notifyOfStateChangeWith(object: modelChange as? Element)
+                self.notifyOfStateChangeWith(object: modelChange)
             }
         }
     }
@@ -98,7 +92,7 @@ class ArrayModel<Element> : Model {
     
      // MARK: Private Methods
     
-    private func notifyOfStateChangeWith(object: Element?) {
+    private func notifyOfStateChangeWith(object: ArrayModelChange) {
         self.notifyWith(object: object as AnyObject)
     }
     

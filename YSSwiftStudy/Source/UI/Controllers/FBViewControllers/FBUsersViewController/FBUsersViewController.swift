@@ -95,10 +95,10 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.reusableCell(with: FBTableViewCell.self)
-        cell?.user = self.usersModel?[indexPath.row] as? FBUser
+        let cell = tableView.reusableCell(with: FBTableViewCell.self, index: [indexPath.row])
+        cell.user = self.usersModel?[indexPath.row] as? FBUser
        
-        return cell!
+        return cell
     }
     
     // MARK: UITableViewDelegate

@@ -16,6 +16,8 @@ class FBCurrentUser: FBUser {
     var token: String?
     var isAuthorized: Bool {
         return self.token == AccessToken.current?.authenticationToken
+
+        
     }
 
 }
