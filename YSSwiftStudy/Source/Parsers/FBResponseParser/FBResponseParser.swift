@@ -85,7 +85,6 @@ class FBResponseParser {
     
     // MARK: Private properties
     
-    
     private func userWith(response: JSON?) -> FBUser {
         let fbUser = FBUser()
         let parser = FBResponseParser(response: response)

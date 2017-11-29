@@ -10,7 +10,7 @@ import Foundation
 
 extension Array {
     mutating func moveObject(at index:Int, to destinationIndex: Int) {
-        synchronized(self as NSObject) {
+        synchronized(self as AnyObject) {
             let object = self[index]
             self.remove(at: index)
             self.insert(object, at: destinationIndex)

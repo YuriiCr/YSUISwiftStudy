@@ -30,9 +30,7 @@ class UsersModel: ArrayModel<ObservableObject> {
     
     // MARK: Initialization
     
-    deinit {
-        self.cancelNotification()
-    }
+    deinit { self.cancelNotification() }
     
     override init() {
         super.init()

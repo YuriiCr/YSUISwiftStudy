@@ -62,16 +62,16 @@ class GetContext: YSContext {
                 switch request {
                     
                 case .success(let response):
-                    self?.save(response: (response as AnyObject) as? JSON)
-                    self?.parse(response: (response as AnyObject) as? JSON)
+                    self?.save(response: response.dictionaryValue)
+                    self?.parse(response: response.dictionaryValue)
                     state = .didLoad
                     
                 case .failed(_):
                     if let cachedResponse = self?.cachedResponsePath {
                         self?.parse(response: (cachedResponse as AnyObject) as? JSON)
-                        self?.user?.state = .didLoad
+                        state = .didLoad
                     } else {
-                        self?.user?.state = .loadingFailed
+                        state = .loadingFailed
                     }
                 }
                 if let state = state {

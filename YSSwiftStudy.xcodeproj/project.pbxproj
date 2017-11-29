@@ -44,6 +44,7 @@
 		95478EAD1FC5AE1F00C00864 /* ArrayModelChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95478EA81FC5AE1F00C00864 /* ArrayModelChange.swift */; };
 		955141111FA0C1AD00B57947 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955141101FA0C1AD00B57947 /* String+Extension.swift */; };
 		955141131FA0E74B00B57947 /* UIWindows+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955141121FA0E74B00B57947 /* UIWindows+Extension.swift */; };
+		955A420A1FCF3B9B00744529 /* WeakHashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955A42091FCF3B9B00744529 /* WeakHashable.swift */; };
 		956A85CA1F93D52200292D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 956A85C91F93D52200292D21 /* Assets.xcassets */; };
 		956A85E21F93DA6300292D21 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A85E11F93DA6300292D21 /* Context.swift */; };
 		956A85E71F94FDA000292D21 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A85E61F94FDA000292D21 /* Model.swift */; };
@@ -105,6 +106,7 @@
 		95478EA81FC5AE1F00C00864 /* ArrayModelChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayModelChange.swift; sourceTree = "<group>"; };
 		955141101FA0C1AD00B57947 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		955141121FA0E74B00B57947 /* UIWindows+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindows+Extension.swift"; sourceTree = "<group>"; };
+		955A42091FCF3B9B00744529 /* WeakHashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakHashable.swift; sourceTree = "<group>"; };
 		956A85BF1F93D52200292D21 /* YSSwiftStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YSSwiftStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		956A85C91F93D52200292D21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		956A85CE1F93D52200292D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -233,8 +235,8 @@
 		95478E981FC5ADD900C00864 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				95478E991FC5ADD900C00864 /* FBUser.swift */,
 				95478E9A1FC5ADD900C00864 /* User.swift */,
+				95478E991FC5ADD900C00864 /* FBUser.swift */,
 				95478E9B1FC5ADD900C00864 /* FBCurrentUser.swift */,
 			);
 			path = User;
@@ -274,6 +276,7 @@
 				950C52701F9A6A9F00AD308C /* YSImageModelCache */,
 				950C527C1F9B89C700AD308C /* ObservableObject.swift */,
 				95B1C0D41FB48ED20030A0C3 /* YSTableViewCell.swift */,
+				955A42091FCF3B9B00744529 /* WeakHashable.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				950F93611FB4EF64005CE4C6 /* FBLoginContext.swift in Sources */,
 				950C52811F9B89C700AD308C /* GlobalFunctions.swift in Sources */,
 				95A92DCB1F9F7B480074898E /* SquareViewController.swift in Sources */,
+				955A420A1FCF3B9B00744529 /* WeakHashable.swift in Sources */,
 				950F935F1FB4EEB7005CE4C6 /* GetUsersContext.swift in Sources */,
 				9533F1C61FAB74FB00FC12DE /* GSDConstants.swift in Sources */,
 				950F935D1FB4EE8F005CE4C6 /* GetUserContext.swift in Sources */,

@@ -18,7 +18,7 @@ class ArrayModel<Element: Equatable> : Model {
     
     var array: Array<Element> = []
     
-    var count:Int {
+    var count: Int {
        return self.array.count
     }
     

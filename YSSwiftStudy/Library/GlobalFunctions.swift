@@ -24,7 +24,7 @@ let autoresizeAll: UIViewAutoresizing = [.flexibleBottomMargin,
 
 // MARK: GLobal functions
 
-func synchronized<T>(_ object: NSObject, block: () -> (T) ) -> T {
+func synchronized<T>(_ object: AnyObject, block: () -> (T) ) -> T {
     objc_sync_enter(object)
     defer { objc_sync_exit(object) }
     

@@ -24,8 +24,8 @@ class YSContext {
     }
     
     func execute() {
-        self.performExecution { (state) in
-            self.model?.state = state
+        self.performExecution {[weak self] (state) in
+            self?.model?.state = state
         }
     }
     

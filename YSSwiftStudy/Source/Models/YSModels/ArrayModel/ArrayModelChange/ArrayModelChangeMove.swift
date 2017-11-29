@@ -9,8 +9,8 @@
 import UIKit
 
 class ArrayModelChangeMove: ArrayModelChange {
-    var index: Int;
-    var destinationIndex: Int;
+    var index: Int
+    var destinationIndex: Int
     
     init(index: Int, destinationIndex: Int) {
         self.index = index
