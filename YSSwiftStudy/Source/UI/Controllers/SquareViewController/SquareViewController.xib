@@ -50,7 +50,7 @@
                 <outlet property="randomMove" destination="pxR-mw-EiO" id="nph-hB-p6k"/>
                 <outlet property="square" destination="TvX-YR-eSv" id="P7U-i8-fOh"/>
             </connections>
-            <point key="canvasLocation" x="33.5" y="54.5"/>
+            <point key="canvasLocation" x="-118" y="25"/>
         </view>
     </objects>
 </document>

@@ -19,13 +19,13 @@ class ObservableObject: NSObject {
     // MARK: Private Properties
     
     private var notify: Bool = true
-    private var controllers = NSHashTable<ObservationController>.weakObjects()
+    private var controllers = [ObservationController]()
     
     // MARK: Public methods
     
     func notifyOfState() {
         synchronized(self) {
-            self.controllers.allObjects.forEach {
+            self.controllers.forEach {
                 $0.notify(of: self.state)
             }
         }
@@ -33,7 +33,7 @@ class ObservableObject: NSObject {
     
     func notifyWith(object: AnyObject?) {
         synchronized(self) {
-            self.controllers.allObjects.forEach {
+            self.controllers.forEach {
                 $0.notify(of: self.state, object: object)
             }
         }
@@ -41,13 +41,13 @@ class ObservableObject: NSObject {
     
     func controller(with observer: ObserverType) -> ObservationController {
         let controller = ObservationController(observableObject: self, observer: observer)
-        self.controllers.add(controller)
+        self.controllers.append(controller)
         
         return controller
     }
     
     func remove(controller: ObservationController) {
-        self.controllers.remove(controller)
+        self.controllers.remove(object: controller)
     }
     
     func performBlockWithNotification(_ block: () -> ()) {
@@ -77,12 +77,19 @@ extension ObservableObject {
     typealias ObserverType = AnyObject
     typealias ActionType = (ObservableObject, AnyObject?) -> ()
     
-    class ObservationController {
+    class ObservationController: Equatable {
+        
+        // Equatable
+        
+        static func ==(lhs: ObservableObject.ObservationController, rhs: ObservableObject.ObservationController) -> Bool {
+            return lhs == rhs
+        }
+        
         
         // MARK: Public properties
         
-        private var observableObject: ObservableObject
-        private var observer: ObserverType
+        private weak var observableObject: ObservableObject?
+        private weak var observer: ObserverType?
         
         private var relation = [ModelState : ActionType]()
         
@@ -96,8 +103,8 @@ extension ObservableObject {
         // MARK: Public method
         
         func notify(of state: ModelState, object: AnyObject? = nil) {
-            if let block = self.relation[state] {
-                block(self.observableObject, object)
+            if let block = self.relation[state], let observableObject = self.observableObject {
+                block(observableObject, object)
             }
         }
         

@@ -12,7 +12,7 @@ class ModelCache {
     
     // MARK: Public properties
     
-    private var cache = [URL : ImageModel]()
+    private var cache = [URL : WeakHashable]()
     
     static let shared = ModelCache()
     
@@ -23,19 +23,19 @@ class ModelCache {
     // MARK: Public methods
     
     func add(imageModel: ImageModel) {
-        synchronized(imageModel) {
-            self.cache[imageModel.url] = imageModel
+        synchronized(self) {
+            self.cache[imageModel.url] = WeakHashable(value: imageModel)
         }
     }
     
     func remove(imageModel: ImageModel) {
-        synchronized(imageModel) {
+        synchronized(self) {
                self.cache.removeValue(forKey: imageModel.url)
         }
     }
     
     func imageModel(with url: URL) -> ImageModel? {
-        return self.cache[url]
+        return self.cache[url]?.value
     }
 
 }
