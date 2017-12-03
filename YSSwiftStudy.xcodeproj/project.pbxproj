@@ -319,8 +319,8 @@
 		956A85C11F93D52200292D21 /* YSSwiftStudy */ = {
 			isa = PBXGroup;
 			children = (
-				956A85CE1F93D52200292D21 /* Info.plist */,
 				956A85DE1F93D78B00292D21 /* YSAppDelegate.swift */,
+				956A85CE1F93D52200292D21 /* Info.plist */,
 				950C52771F9B89C700AD308C /* Library */,
 				956A85DB1F93D78B00292D21 /* Resourse */,
 				956A85D41F93D69200292D21 /* Source */,

@@ -12,7 +12,7 @@ class ModelCache {
     
     // MARK: Public properties
     
-    private var cache = [URL : WeakHashable]()
+    private var cache = [URL : WeakHashable<ImageModel>]()
     
     static let shared = ModelCache()
     

@@ -57,7 +57,7 @@ class ArrayModel<Element: Equatable> : Model {
     }
     
     func insertObject(_ object: Element, index: Int) {
-        synchronized( self) {
+        synchronized(self) {
             self.array.insert(object, at: index)
               let modelChange:ArrayModelChange = ArrayModelChangeInsert(index: index)
             self.notifyOfStateChangeWith(object: modelChange)

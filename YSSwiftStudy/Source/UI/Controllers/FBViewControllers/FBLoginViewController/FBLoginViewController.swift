@@ -17,7 +17,7 @@ class FBLoginViewController: FBViewController, RootView {
     // MARK: Public properties
     
     override var observationController: ObservableObject.ObservationController? {
-        willSet {
+        didSet {
             self.observationController?[.didLoad] = { [weak self]
                 _, _ in
                 self?.fill(with: self?.model)
@@ -44,7 +44,7 @@ class FBLoginViewController: FBViewController, RootView {
     // MARK: Initialization
     
      init() {
-        super.init(model: FBCurrentUser())
+        super.init(model: FBCurrentUser(), nibName: toString(type: FBLoginViewController.self))
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -58,7 +58,6 @@ class FBLoginViewController: FBViewController, RootView {
         if let model = self.model {
             self.context = FBLoginContext(model: model)
         }
-        print("touched")
     }
     
     // MARK: Public methods
@@ -70,7 +69,7 @@ class FBLoginViewController: FBViewController, RootView {
     // MARK: Private methods
     
     func presentFBUserViewController() {
-        let navigationController = UINavigationController(rootViewController: FBUserViewController(model: self.model))
+        let navigationController = UINavigationController(rootViewController: FBUserViewController(model: self.model, nibName: toString(type: FBUserViewController.self)))
         self.present(navigationController, animated: true, completion: nil)
     }
 }

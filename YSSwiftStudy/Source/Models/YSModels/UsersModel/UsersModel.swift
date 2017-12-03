@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UsersModel: ArrayModel<ObservableObject> {
+class UsersModel: ArrayModel<FBUser> {
     
     // MARK: Constants
     
@@ -41,12 +41,12 @@ class UsersModel: ArrayModel<ObservableObject> {
     
     override func performLoading() {
         sleep(3)
-        var objects:Array<User>?
+        var objects:Array<FBUser>?
         
         if let path = self.pathList {
-            objects = NSKeyedUnarchiver.unarchiveObject(withFile: path) as? Array<User>
+            objects = NSKeyedUnarchiver.unarchiveObject(withFile: path) as? Array<FBUser>
             if objects == nil {
-                objects = Array(repeatElement(User(), count: Constants.numberOfCells))
+                objects = Array(repeatElement(FBUser(), count: Constants.numberOfCells))
             }
         }
         self.performBlockWithoutNotification({

@@ -26,8 +26,8 @@ class FBViewController: UIViewController {
         }
     }
     
-    init(model: Model?) {
-        super.init(nibName: nil, bundle: .main)
+    init(model: Model?, nibName: String, bundle: Bundle = .main) {
+        super.init(nibName: nibName, bundle: bundle)
         self.model = model
     }
     

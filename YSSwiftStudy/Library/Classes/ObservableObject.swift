@@ -79,13 +79,6 @@ extension ObservableObject {
     
     class ObservationController: Equatable {
         
-        // Equatable
-        
-        static func ==(lhs: ObservableObject.ObservationController, rhs: ObservableObject.ObservationController) -> Bool {
-            return lhs == rhs
-        }
-        
-        
         // MARK: Public properties
         
         private weak var observableObject: ObservableObject?
@@ -107,6 +100,14 @@ extension ObservableObject {
                 block(observableObject, object)
             }
         }
+        
+        // Equatable
+        
+        static func ==(lhs: ObservableObject.ObservationController, rhs: ObservableObject.ObservationController) -> Bool {
+            return lhs.hashValue == rhs.hashValue
+        }
+        
+        public var hashValue = randomNumberTo(maxValue: Int.max)
         
         // MARK: Subscript
         

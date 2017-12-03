@@ -17,7 +17,7 @@ class FBUserViewController: FBViewController, RootView {
     // MARK: Public properties
     
     override var observationController: ObservableObject.ObservationController? {
-        willSet {
+        didSet {
             self.observationController?[.didLoad] = { [weak self]
                 _, _ in
                 self?.fill(with: self?.model)
@@ -73,7 +73,7 @@ class FBUserViewController: FBViewController, RootView {
     // MARK: IBAction
     
     @IBAction func onFriends(sender: UIButton) {
-        let usersController = FBUsersViewController(model: self.user?.friends)
+        let usersController = FBUsersViewController(model: self.user?.friends, nibName: toString(type: FBUsersViewController.self))
         self.navigationController?.pushViewController(usersController, animated: true)
     }
     

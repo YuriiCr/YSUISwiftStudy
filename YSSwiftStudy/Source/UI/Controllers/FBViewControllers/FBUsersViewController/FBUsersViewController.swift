@@ -29,7 +29,7 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
     // MARK: Public properties
     
     override var observationController: ObservableObject.ObservationController? {
-        willSet {
+        didSet {
             self.observationController?[.didLoad] = { [weak self]
                 _, _ in
                 self?.fill(with: self?.model)
@@ -57,7 +57,6 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
     
     private var logoutContext:FBLogoutContext? {
         willSet { newValue?.execute() }
-        
         didSet { oldValue?.cancel() }
     }
     
@@ -96,7 +95,7 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.reusableCell(with: FBTableViewCell.self, index: [indexPath.row])
-        cell.user = self.usersModel?[indexPath.row] as? FBUser
+        cell.user = self.usersModel?[indexPath.row]
        
         return cell
     }
@@ -104,6 +103,6 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
     // MARK: UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(FBUserViewController(model: self.usersModel?[indexPath.row] as? Model), animated: true)
+        self.navigationController?.pushViewController(FBUserViewController(model: self.usersModel?[indexPath.row], nibName: toString(type: FBUserViewController.self)), animated: true)
     }
 }

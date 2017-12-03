@@ -8,29 +8,13 @@
 
 import Foundation
 
-//struct WeakHashable<Value: Hashable>: Hashable {
-//
-//    var hashValue: Int
-//
-//    weak var value: Value?
-//
-//    init(value: Value) {
-//        self.value = value
-//        self.hashValue = value.hashValue
-//    }
-//
-//    static func ==(lhs: WeakHashable<Value>, rhs: WeakHashable<Value>) -> Bool {
-//        return lhs.hashValue == rhs.hashValue
-//    }
-//}
-
-struct WeakHashable: Hashable {
-    
+struct WeakHashable<Value: AnyObject & Hashable>: Hashable {
+   
     var hashValue: Int
-    
-    weak var value: ImageModel?
-    
-    init(value: ImageModel) {
+
+    weak var value: Value?
+
+    init(value: Value) {
         self.value = value
         self.hashValue = value.hashValue
     }
@@ -39,3 +23,20 @@ struct WeakHashable: Hashable {
         return lhs.hashValue == rhs.hashValue
     }
 }
+
+//struct WeakHashable: Hashable {
+//
+//    var hashValue: Int
+//
+//    weak var value: ImageModel?
+//
+//    init(value: ImageModel) {
+//        self.value = value
+//        self.hashValue = value.hashValue
+//    }
+//
+//    static func ==(lhs: WeakHashable, rhs: WeakHashable) -> Bool {
+//        return lhs.hashValue == rhs.hashValue
+//    }
+//}
+
