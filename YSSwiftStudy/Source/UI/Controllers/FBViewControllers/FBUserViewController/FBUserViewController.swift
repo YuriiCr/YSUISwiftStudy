@@ -18,25 +18,28 @@ class FBUserViewController: FBViewController, RootView {
     
     override var observationController: ObservableObject.ObservationController? {
         didSet {
-            self.observationController?[.didLoad] = { [weak self]
+            let controller = self.observationController
+            let loadingView = self.rootView?.loadingView
+            
+            controller?[.didLoad] = { [weak self]
                 _, _ in
                 self?.fill(with: self?.model)
-                self?.rootView?.loadingView?.state = .hidden
+                loadingView?.state = .hidden
             }
             
-            self.observationController?[.didUnload] = { [weak self]
+            controller?[.didUnload] = { [weak self]
                 _, _ in
                 self?.dismiss(animated: true)
             }
             
-            self.observationController?[.willLoad] = { [weak self]
+            controller?[.willLoad] = {
                 _, _ in
-                self?.rootView?.loadingView?.state = .visible
+                loadingView?.state = .visible
             }
             
-            self.observationController?[.loadingFailed] = { [weak self]
+            controller?[.loadingFailed] = {
                 _, _ in
-                self?.rootView?.loadingView?.state = .hidden
+                loadingView?.state = .hidden
             }
         }
     }
@@ -49,7 +52,6 @@ class FBUserViewController: FBViewController, RootView {
     
     private var logoutContext:FBLogoutContext? {
         willSet { newValue?.execute() }
-        
         didSet { oldValue?.cancel() }
     }
     

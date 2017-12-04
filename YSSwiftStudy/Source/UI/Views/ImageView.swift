@@ -18,17 +18,11 @@ class ImageView: YSView {
             newValue?.load()
         }
         
-        didSet {
-            if let controller = self.observationController {
-                oldValue?.remove(controller: controller)
-            }
-            
-        }
+        didSet { self.observationController.map { oldValue?.remove(controller: $0) } }
     }
     
     var imageView: UIImageView? {
         willSet { newValue?.addSubview(self) }
-        
         didSet { oldValue?.removeFromSuperview() }
     }
     

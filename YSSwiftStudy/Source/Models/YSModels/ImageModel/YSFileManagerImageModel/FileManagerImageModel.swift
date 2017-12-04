@@ -11,10 +11,10 @@ import UIKit
 class FileManagerImageModel: ImageModel {
     override func loadImage() -> UIImage? {
         if self.url.isFileURL {
-            let data = NSData(contentsOf: self.url)
-            image = UIImage(data: data! as Data)
-            
-            return image
+            if let data = NSData(contentsOf: self.url) {
+                let image = UIImage(data: data as Data)
+                return image
+            }
         }
         
         return nil

@@ -10,11 +10,13 @@ import Foundation
 
 extension Array {
     mutating func moveObject(at index:Int, to destinationIndex: Int) {
-        synchronized(self as AnyObject) {
-            let object = self[index]
-            self.remove(at: index)
-            self.insert(object, at: destinationIndex)
-        }
+        objc_sync_enter(self)
+        
+        let object = self[index]
+        self.remove(at: index)
+        self.insert(object, at: destinationIndex)
+        
+        objc_sync_exit(self)
     }
 }
 
@@ -24,5 +26,7 @@ extension Array where Element: Equatable {
         if let index = index(of: object) {
             remove(at: index)
         }
+        
+//        index(of: object).map{ remove(at: $0) }
     }
 }

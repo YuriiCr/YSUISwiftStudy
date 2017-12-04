@@ -20,9 +20,9 @@ extension UIWindow {
         return window
     }
     
-    static func window(_ block: (UIWindow) -> ()) -> UIWindow {
+    static func window(_ block: ((UIWindow) -> ())? = nil) -> UIWindow {
         let uwindow = awindow()
-        block(uwindow)
+        block.map{ $0(uwindow) }
         
         return uwindow
     }

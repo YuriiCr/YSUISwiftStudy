@@ -59,8 +59,8 @@ class ArrayModel<Element: Equatable> : Model {
     func insertObject(_ object: Element, index: Int) {
         synchronized(self) {
             self.array.insert(object, at: index)
-              let modelChange:ArrayModelChange = ArrayModelChangeInsert(index: index)
-            self.notifyOfStateChangeWith(object: modelChange)
+            let modelChange:ArrayModelChange = ArrayModelChangeInsert(index: index)
+            self.notifyOfStateChange(with: modelChange)
         }
     }
     
@@ -69,7 +69,7 @@ class ArrayModel<Element: Equatable> : Model {
             if self.count > index {
                 self.array.remove(at: index)
                 let modelChange:ArrayModelChange = ArrayModelChangeDelete(index: index)
-                self.notifyOfStateChangeWith(object: modelChange)
+                self.notifyOfStateChange(with: modelChange)
             }
         }
     }
@@ -79,7 +79,7 @@ class ArrayModel<Element: Equatable> : Model {
             if index != destinationIndex {
                 self.array.moveObject(at: index, to: destinationIndex)
                 let modelChange:ArrayModelChange = ArrayModelChangeMove(index: index, destinationIndex: destinationIndex)
-                self.notifyOfStateChangeWith(object: modelChange)
+                self.notifyOfStateChange(with: modelChange)
             }
         }
     }
@@ -92,7 +92,7 @@ class ArrayModel<Element: Equatable> : Model {
     
      // MARK: Private Methods
     
-    private func notifyOfStateChangeWith(object: ArrayModelChange) {
+    private func notifyOfStateChange(with object: ArrayModelChange) {
         self.notifyWith(object: object as AnyObject)
     }
     

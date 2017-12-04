@@ -18,10 +18,13 @@ class FBLoginViewController: FBViewController, RootView {
     
     override var observationController: ObservableObject.ObservationController? {
         didSet {
-            self.observationController?[.didLoad] = { [weak self]
+            let controller = self.observationController
+            let loadingView = self.rootView?.loadingView
+            
+            controller?[.didLoad] = { [weak self]
                 _, _ in
                 self?.fill(with: self?.model)
-                self?.rootView?.loadingView?.state = .hidden
+                loadingView?.state = .hidden
             }
             
             self.observationController?[.didUnload] = { [weak self]
@@ -29,14 +32,14 @@ class FBLoginViewController: FBViewController, RootView {
                 self?.dismiss(animated: true)
             }
             
-            self.observationController?[.willLoad] = { [weak self]
+            self.observationController?[.willLoad] = {
                 _, _ in
-                self?.rootView?.loadingView?.state = .visible
+                loadingView?.state = .visible
             }
             
-            self.observationController?[.loadingFailed] = { [weak self]
+            self.observationController?[.loadingFailed] = {
                 _, _ in
-                self?.rootView?.loadingView?.state = .hidden
+                loadingView?.state = .hidden
             }
         }
     }

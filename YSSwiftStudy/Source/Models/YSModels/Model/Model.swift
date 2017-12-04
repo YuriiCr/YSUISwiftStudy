@@ -8,13 +8,6 @@
 
 import UIKit
 
-protocol ModelObserver {
-    func modelDidUnload(_ model:Model)
-    func modelWillLoad(_ model:Model)
-    func modelDidLoad(_ model:Model)
-    func modelFailedLoading(_ model:Model)
-}
-
 enum ModelState {
     case didUnload
     case willLoad

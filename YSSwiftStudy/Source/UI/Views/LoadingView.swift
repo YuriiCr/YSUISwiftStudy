@@ -25,14 +25,8 @@ class LoadingView: UIView {
     // MARK: Public properties
     
     @IBOutlet var indicator: UIActivityIndicatorView? {
-        willSet {
-            if let indicator = newValue {
-                self.addSubview(indicator)
-            }
-        }
-        
+        willSet { newValue.map { self.addSubview($0) } }
         didSet { oldValue?.removeFromSuperview()}
-        
     }
     
     var state:LoadingViewState? {

@@ -23,20 +23,3 @@ struct WeakHashable<Value: AnyObject & Hashable>: Hashable {
         return lhs.hashValue == rhs.hashValue
     }
 }
-
-//struct WeakHashable: Hashable {
-//
-//    var hashValue: Int
-//
-//    weak var value: ImageModel?
-//
-//    init(value: ImageModel) {
-//        self.value = value
-//        self.hashValue = value.hashValue
-//    }
-//
-//    static func ==(lhs: WeakHashable, rhs: WeakHashable) -> Bool {
-//        return lhs.hashValue == rhs.hashValue
-//    }
-//}
-

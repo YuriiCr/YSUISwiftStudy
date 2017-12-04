@@ -30,13 +30,11 @@ class GetUserContext: GetContext {
     
     override var graphPath: String? {
         get { return self.user?.userID }
-        
         set { }
     }
     
     override var cachedFileName: String? {
         get { return Constants.friendCachedFileName }
-        
         set { }
     }
     

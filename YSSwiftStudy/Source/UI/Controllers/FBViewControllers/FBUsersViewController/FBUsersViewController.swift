@@ -30,25 +30,28 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
     
     override var observationController: ObservableObject.ObservationController? {
         didSet {
-            self.observationController?[.didLoad] = { [weak self]
+            let controller = self.observationController
+            let loadingView = self.rootView?.loadingView
+            
+            controller?[.didLoad] = { [weak self]
                 _, _ in
                 self?.fill(with: self?.model)
-                self?.rootView?.loadingView?.state = .hidden
+                loadingView?.state = .hidden
             }
             
-            self.observationController?[.didUnload] = { [weak self]
+            controller?[.didUnload] = { [weak self]
                 _, _ in
                 self?.dismiss(animated: true)
             }
             
-            self.observationController?[.willLoad] = { [weak self]
+            controller?[.willLoad] = {
                 _, _ in
-                self?.rootView?.loadingView?.state = .visible
+                loadingView?.state = .visible
             }
             
-            self.observationController?[.loadingFailed] = { [weak self]
+            controller?[.loadingFailed] = {
                 _, _ in
-                self?.rootView?.loadingView?.state = .hidden
+               loadingView?.state = .hidden
             }
         }
     }
@@ -79,18 +82,13 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
     // MARK: Public methods
     
     override func fill(with model: Model?) {
-
         self.rootView?.tableView?.reloadData()
     }
     
      // MARK: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let model = self.usersModel {
-            return model.count
-        }
-        
-        return 0
+        return self.usersModel?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

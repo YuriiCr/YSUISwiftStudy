@@ -30,7 +30,7 @@ class ModelCache {
     
     func remove(imageModel: ImageModel) {
         synchronized(self) {
-               self.cache.removeValue(forKey: imageModel.url)
+               _ = self.cache.removeValue(forKey: imageModel.url)
         }
     }
     

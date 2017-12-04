@@ -18,8 +18,8 @@ class YSAppDelegate: UIResponder, UIApplicationDelegate {
    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow.window {
-//            $0.rootViewController = SquareViewController()
-            $0.rootViewController = FBLoginViewController()
+            $0.rootViewController = SquareViewController()
+//            $0.rootViewController = FBLoginViewController()
             $0.makeKeyAndVisible()
         }
         

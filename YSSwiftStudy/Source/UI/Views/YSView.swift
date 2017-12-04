@@ -13,17 +13,8 @@ class YSView: UIView {
     //MARK: Public properties
     
     @IBOutlet var loadingView:LoadingView? {
-        willSet {
-            if let loadingView = newValue {
-                self.addSubview(loadingView)
-            }
-        }
-        
-        didSet {
-            if let loadingView = oldValue {
-                self.willRemoveSubview(loadingView)
-            }
-        }
+        willSet { newValue.map { self.addSubview($0) } }
+        didSet { oldValue.map { $0.removeFromSuperview() } }
     }
     
     // MARK: Override methods

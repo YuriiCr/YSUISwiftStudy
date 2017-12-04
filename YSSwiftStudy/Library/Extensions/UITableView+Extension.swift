@@ -12,10 +12,9 @@ extension UITableView {
     
     func reusableCell<T>(with cls: T.Type, index: IndexPath) -> T {
 
-        guard let acell = self.dequeueReusableCell(withIdentifier: toString(type: cls), for: index) as? T else {return UINib.object(with: cls)!}
+        guard let cell = self.dequeueReusableCell(withIdentifier: toString(type: cls), for: index) as? T else { return UINib.object(with: cls)! }
         
-        
-        return acell
+        return cell
     }
     
     func updateWithBlock(_ block: () -> ()) {
