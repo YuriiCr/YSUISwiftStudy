@@ -67,9 +67,7 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if  let model = self.model {
-             self.context = GetUsersContext(model: model)
-        }
+        self.model.map { self.context = GetUsersContext(model: $0) }
         self.navigationItem.title = Constants.title
     }
     

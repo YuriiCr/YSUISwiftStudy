@@ -58,9 +58,7 @@ class FBLoginViewController: FBViewController, RootView {
     // MARK: IBActions
     
     @IBAction func onLogin(sender: UIButton) {
-        if let model = self.model {
-            self.context = FBLoginContext(model: model)
-        }
+        self.model.map { self.context = FBLoginContext(model: $0) }
     }
     
     // MARK: Public methods

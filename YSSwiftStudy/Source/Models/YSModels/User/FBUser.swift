@@ -16,11 +16,7 @@ class FBUser: User {
     var photoURL: URL?
     var friends = UsersModel()
     override var imageModel: ImageModel? {
-        if let url = self.photoURL {
-            return ImageModel.imageModelWith(url: url)
-        }
-        
-        return nil
+        return self.photoURL.flatMap { ImageModel.imageModelWith(url: $0) }
     }
 
 }

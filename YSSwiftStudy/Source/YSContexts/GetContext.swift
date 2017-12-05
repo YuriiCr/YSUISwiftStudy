@@ -27,11 +27,9 @@ class GetContext: YSContext {
     
     private var cachedResponsePath: String? {
         let documentsPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first
-        if let fileName = self.cachedFileName {
-             return documentsPath?.appending(fileName)
-        }
+
+        return self.cachedFileName.flatMap { documentsPath?.appending($0) }
         
-        return nil
     }
     
     // MARK: Public Methods
@@ -74,9 +72,8 @@ class GetContext: YSContext {
                         state = .loadingFailed
                     }
                 }
-                if let state = state {
-                    block(state)
-                }
+                
+                state.map { block($0) }
             }
         }
     }

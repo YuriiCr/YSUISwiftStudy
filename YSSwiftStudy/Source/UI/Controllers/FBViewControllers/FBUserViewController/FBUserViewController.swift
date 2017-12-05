@@ -67,9 +67,7 @@ class FBUserViewController: FBViewController, RootView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let model = self.model {
-            self.context = GetUserContext(model: model)
-        }
+        self.model.map { self.context = GetUserContext(model: $0) }
     }
     
     // MARK: IBAction

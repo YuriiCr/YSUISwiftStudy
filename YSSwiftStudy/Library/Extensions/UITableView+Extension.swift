@@ -23,7 +23,7 @@ extension UITableView {
         self.endUpdates()
     }
     
-    func updateTableViewWithModel(_ changeModel:ArrayModelChange) {
+    func updateTableViewWithModel(_ changeModel: ArrayModelChange) {
         changeModel.changeTableView(self)
     }
 }

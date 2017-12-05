@@ -14,16 +14,9 @@ class FBViewController: UIViewController {
     
     var  observationController: ObservableObject.ObservationController? 
     
-    var model:Model? = FBUser() {
-        willSet {
-            self.observationController = self.model?.controller(with: self)
-        }
-        
-        didSet {
-            if let controller = self.observationController {
-                oldValue?.remove(controller: controller)
-            }
-        }
+    var model: Model? = FBUser() {
+        willSet { self.observationController = self.model?.controller(with: self) }
+        didSet { self.observationController.map { oldValue?.remove(controller: $0) } }
     }
     
     init(model: Model?, nibName: String, bundle: Bundle = .main) {
@@ -35,7 +28,7 @@ class FBViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var context:YSContext? {
+    var context: YSContext? {
         willSet { newValue?.execute() }
         didSet { oldValue?.cancel() }
     }

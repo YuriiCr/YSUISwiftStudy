@@ -62,6 +62,8 @@ class UsersModel: ArrayModel<FBUser> {
         if let path = self.pathList {
             NSKeyedArchiver.archiveRootObject(self.array , toFile: path)
         }
+        
+//        _ = self.pathList.map { NSKeyedArchiver.archiveRootObject(self.array , toFile: $0) }
     }
     
     // MARK: Private Methods

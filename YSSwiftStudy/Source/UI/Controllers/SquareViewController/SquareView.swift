@@ -80,7 +80,6 @@ class SquareView: UIView {
     
     func nextPosition() -> Int {
         return (self.position + 1) % positionsCount
-
     }
     
     func randomPosition() -> Int {

@@ -23,13 +23,7 @@ class User: Model, NSCoding {
     var surname: String?
     
     var imageModel: ImageModel? {
-        let fileUrl = Bundle.main.url(forResource:"image", withExtension: "jpg")
-        
-        if let fileUrl = fileUrl {
-            return ImageModel.imageModelWith(url: fileUrl)
-        }
-        
-        return nil
+        return Bundle.main.url(forResource:"image", withExtension: "jpg").flatMap { ImageModel.imageModelWith(url: $0) }
     }
     
     var fullName : String? {
