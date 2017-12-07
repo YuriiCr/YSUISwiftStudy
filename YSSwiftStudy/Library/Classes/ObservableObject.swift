@@ -19,35 +19,36 @@ class ObservableObject: NSObject {
     // MARK: Private Properties
     
     private var notify: Bool = true
-    private var controllers = [ObservationController]()
+    private var controllers = [WeakHashable<ObservationController>]()
     
     // MARK: Public methods
     
     func notifyOfState() {
         synchronized(self) {
-            self.controllers.forEach {
-                $0.notify(of: self.state)
+            for controller in self.controllers {
+                controller.value?.notify(of: self.state)
             }
         }
     }
     
     func notifyWith(object: AnyObject?) {
         synchronized(self) {
-            self.controllers.forEach {
-                $0.notify(of: self.state, object: object)
+            for controller in self.controllers {
+                controller.value?.notify(of: self.state, object: object)
             }
+            
         }
     }
     
     func controller(with observer: ObserverType) -> ObservationController {
         let controller = ObservationController(observableObject: self, observer: observer)
-        self.controllers.append(controller)
+        self.controllers.append(WeakHashable(value: controller))
         
         return controller
     }
     
     func remove(controller: ObservationController) {
-        self.controllers.remove(object: controller)
+        self.controllers.remove(object: WeakHashable(value: controller))
     }
     
     func performBlockWithNotification(_ block: () -> ()) {
@@ -77,12 +78,12 @@ extension ObservableObject {
     typealias ObserverType = AnyObject
     typealias ActionType = (ObservableObject, AnyObject?) -> ()
     
-    class ObservationController: Equatable {
+    class ObservationController: Hashable {
         
         // MARK: Public properties
         
-        private weak var observableObject: ObservableObject?
-        private weak var observer: ObserverType?
+        private var observableObject: ObservableObject?
+        private var observer: ObserverType?
         
         private var relation = [ModelState : ActionType]()
         

@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YSView" customModule="YSSwiftStudy" customModuleProvider="target">
             <connections>
-                <outlet property="loadingView" destination="iN0-l3-epB" id="LxZ-nF-tbK"/>
+                <outlet property="loadingView" destination="iN0-l3-epB" id="Zvc-hQ-3lP"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
