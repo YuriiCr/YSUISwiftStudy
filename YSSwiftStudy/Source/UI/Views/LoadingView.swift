@@ -17,24 +17,20 @@ class LoadingView: UIView {
     
     private struct Constants {
         static let loadingViewDuratuion = 0.2
-        static let presentantionLoadingViewAlpha:CGFloat = 1
-        static let loadingViewDefaultAlpha:CGFloat = 0.6
-        static let loadingViewHiddenAlpha:CGFloat = 0
+        static let presentantionLoadingViewAlpha: CGFloat = 1
+        static let loadingViewDefaultAlpha: CGFloat = 0.6
+        static let loadingViewHiddenAlpha: CGFloat = 0
     }
     
     // MARK: Public properties
     
     @IBOutlet var indicator: UIActivityIndicatorView? {
         willSet { newValue.map { self.addSubview($0) } }
-        didSet { oldValue?.removeFromSuperview()}
+        didSet { oldValue?.removeFromSuperview() }
     }
     
-    var state:LoadingViewState? {
-        willSet {
-            if let state = newValue {
-                self.setStateWith(state)
-            }
-        }
+    var state: LoadingViewState? {
+        willSet { newValue.map { self.setStateWith($0) } }
     }
     
     // MARK: Override methods
@@ -74,6 +70,7 @@ class LoadingView: UIView {
     private func initSubviews() {
         let bounds = self.bounds
         self.alpha = Constants.loadingViewDefaultAlpha
+        self.backgroundColor = .black
         self.indicator = UIActivityIndicatorView.init(activityIndicatorStyle:.whiteLarge)
         self.indicator?.center = CGPoint(x: bounds.midX, y: bounds.midY);
         self.indicator?.startAnimating()

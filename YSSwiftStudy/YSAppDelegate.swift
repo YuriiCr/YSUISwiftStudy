@@ -20,6 +20,7 @@ class YSAppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow.window {
 //            $0.rootViewController = SquareViewController()
             $0.rootViewController = FBLoginViewController()
+//            $0.rootViewController = FBUserViewController(model: FBCurrentUser(), nibName: toString(type: FBUserViewController.self))
             $0.makeKeyAndVisible()
         }
         
