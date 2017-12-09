@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YSView" customModule="YSSwiftStudy" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingView" customModule="YSSwiftStudy" customModuleProvider="target">
             <connections>
                 <outlet property="loadingView" destination="iN0-l3-epB" id="oc4-IW-kdD"/>
             </connections>

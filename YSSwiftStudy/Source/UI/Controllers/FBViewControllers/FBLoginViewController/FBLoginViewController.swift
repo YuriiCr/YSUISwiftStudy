@@ -53,6 +53,11 @@ class FBLoginViewController: FBViewController, RootView {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.rootView?.loadingView?.state = .hidden
+    }
    
     
     // MARK: IBActions

@@ -37,7 +37,7 @@ class LoadingView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initSubviews()
+//        self.initSubviews()
     }
     
     override init(frame: CGRect) {
@@ -46,7 +46,7 @@ class LoadingView: UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     // MARK: Pulic methods

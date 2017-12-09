@@ -9,6 +9,9 @@
 import UIKit
 
 class FileManagerImageModel: ImageModel {
+    
+    // MARK: Public Methods
+    
     override func loadImage() -> UIImage? {
         if self.url.isFileURL {
             if let data = NSData(contentsOf: self.url) {

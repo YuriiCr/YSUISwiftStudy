@@ -12,7 +12,7 @@ class YSView: UIView {
 
     //MARK: Public properties
     
-    @IBOutlet var loadingView:LoadingView? {
+    @IBOutlet var loadingView: LoadingView? {
         willSet { newValue.map { self.addSubview($0) } }
         didSet { oldValue.map { $0.removeFromSuperview() } }
     }

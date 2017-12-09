@@ -14,7 +14,7 @@ class FBViewController: UIViewController {
     
     var  observationController: ObservableObject.ObservationController? 
     
-    var model: Model? = FBUser() {
+    var model: Model? = FBCurrentUser() {
         willSet { self.observationController = self.model?.controller(with: self) }
         didSet { self.observationController.map { oldValue?.remove(controller: $0) } }
     }

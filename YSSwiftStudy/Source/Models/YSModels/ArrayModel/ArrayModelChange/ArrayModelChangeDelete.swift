@@ -10,11 +10,17 @@ import UIKit
 
 class ArrayModelChangeDelete: ArrayModelChange {
     
+    // MARK: Public Methods
+    
     var index: Int;
+    
+    // MARK: Initialization
     
     init(index: Int ) {
         self.index = index
     }
+    
+    // MARK: Public Methods
     
     override func changeTableViewWith(_ tableView: UITableView, inSection: Int, rowAnimation: UITableViewRowAnimation) {
         let index = IndexPath.init(row: self.index, section: inSection)
