@@ -33,24 +33,20 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
             let controller = self.observationController
             let loadingView = self.rootView?.loadingView
             
-            controller?[.didLoad] = { [weak self]
-                _, _ in
+            controller?[.didLoad] = { [weak self, weak loadingView] _, _ in
                 self?.fill(with: self?.model)
                 loadingView?.state = .hidden
             }
             
-            controller?[.didUnload] = { [weak self]
-                _, _ in
+            controller?[.didUnload] = { [weak self] _, _ in
                 self?.dismiss(animated: true)
             }
             
-            controller?[.willLoad] = {
-                _, _ in
+            controller?[.willLoad] = { [weak loadingView] _, _ in
                 loadingView?.state = .visible
             }
             
-            controller?[.loadingFailed] = {
-                _, _ in
+            controller?[.loadingFailed] = { [weak loadingView] _, _ in
                loadingView?.state = .hidden
             }
         }

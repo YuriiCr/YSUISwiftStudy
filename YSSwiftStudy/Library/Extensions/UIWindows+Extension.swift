@@ -14,16 +14,16 @@ extension UIWindow {
     }
     
     static func windowWithRootViewController(_ controller:UIViewController) -> UIWindow {
-        let window = self.awindow()
+        let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = controller
         
         return window
     }
     
     static func window(_ block: ((UIWindow) -> ())? = nil) -> UIWindow {
-        let uwindow = awindow()
-        block.map{ $0(uwindow) }
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        block?(window)
         
-        return uwindow
+        return window
     }
 }

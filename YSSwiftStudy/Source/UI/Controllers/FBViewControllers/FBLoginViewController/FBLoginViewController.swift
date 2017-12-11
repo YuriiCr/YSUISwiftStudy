@@ -21,24 +21,20 @@ class FBLoginViewController: FBViewController, RootView {
             let controller = self.observationController
             let loadingView = self.rootView?.loadingView
             
-            controller?[.didLoad] = { [weak self]
-                _, _ in
+            controller?[.didLoad] = { [weak self, weak loadingView] _, _ in
                 self?.fill(with: self?.model)
                 loadingView?.state = .hidden
             }
             
-            self.observationController?[.didUnload] = { [weak self]
-                _, _ in
+            controller?[.didUnload] = { [weak self] _, _ in
                 self?.dismiss(animated: true)
             }
             
-            self.observationController?[.willLoad] = {
-                _, _ in
+            controller?[.willLoad] = { [weak loadingView] _, _ in
                 loadingView?.state = .visible
             }
             
-            self.observationController?[.loadingFailed] = {
-                _, _ in
+            controller?[.loadingFailed] = { [weak loadingView] _, _ in
                 loadingView?.state = .hidden
             }
         }

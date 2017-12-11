@@ -15,11 +15,11 @@ class FBCurrentUser: FBUser {
     
     var token: String?
     var isAuthorized: Bool {
-        if AccessToken.current?.authenticationToken != nil {
-            return self.token == AccessToken.current?.authenticationToken
-        }
-        
-        return false
+        let token = AccessToken.current?.authenticationToken
+
+        return nil != token
+        ? token == self.token
+        : false
     }
 
 }

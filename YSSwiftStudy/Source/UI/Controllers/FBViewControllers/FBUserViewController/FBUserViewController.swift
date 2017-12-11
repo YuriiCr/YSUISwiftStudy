@@ -21,19 +21,16 @@ class FBUserViewController: FBViewController, RootView {
             let controller = self.observationController
             let loadingView = self.rootView?.loadingView
             
-            controller?[.didLoad] = { [weak self]
-                _, _ in
+            controller?[.didLoad] = { [weak self, loadingView] _, _ in
                 self?.fill(with: self?.model)
                 loadingView?.state = .hidden
             }
             
-            controller?[.didUnload] = { [weak self]
-                _, _ in
+            controller?[.didUnload] = { [weak self] _, _ in
                 self?.dismiss(animated: true)
             }
             
-            controller?[.willLoad] = {
-                _, _ in
+            controller?[.willLoad] = {[weak loadingView]  _, _ in
                 loadingView?.state = .visible
             }
             
@@ -44,9 +41,7 @@ class FBUserViewController: FBViewController, RootView {
         }
     }
     
-    var user: FBUser? {
-        return self.model as? FBUser
-    }
+    var user: FBUser? { return self.model as? FBUser }
     
     // MARK: Private properties
     
