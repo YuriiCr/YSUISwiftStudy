@@ -26,6 +26,7 @@
 		950F935F1FB4EEB7005CE4C6 /* GetUsersContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950F935E1FB4EEB7005CE4C6 /* GetUsersContext.swift */; };
 		950F93611FB4EF64005CE4C6 /* FBLoginContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950F93601FB4EF64005CE4C6 /* FBLoginContext.swift */; };
 		950F93631FB4EFB9005CE4C6 /* FBLogoutContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950F93621FB4EFB9005CE4C6 /* FBLogoutContext.swift */; };
+		9529FAEF1FDF018B000AE12D /* ResultEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9529FAEE1FDF018B000AE12D /* ResultEnum.swift */; };
 		9533F1C61FAB74FB00FC12DE /* GSDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533F1C31FAB74FB00FC12DE /* GSDConstants.swift */; };
 		9533F1C91FAB754A00FC12DE /* Random+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533F1C81FAB754A00FC12DE /* Random+Extensions.swift */; };
 		9533F1CB1FACE58B00FC12DE /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533F1CA1FACE58B00FC12DE /* Array+Extension.swift */; };
@@ -49,6 +50,7 @@
 		956A85E21F93DA6300292D21 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A85E11F93DA6300292D21 /* Context.swift */; };
 		956A85E71F94FDA000292D21 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A85E61F94FDA000292D21 /* Model.swift */; };
 		957C21B51FC9B03A00806A28 /* UIViewAutoresizing+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957C21B41FC9B03A00806A28 /* UIViewAutoresizing+Extensions.swift */; };
+		9589F8061FE037490052C11B /* Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589F8051FE037490052C11B /* Apply.swift */; };
 		95A92DCB1F9F7B480074898E /* SquareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A92DC91F9F7B480074898E /* SquareViewController.swift */; };
 		95A92DCC1F9F7B480074898E /* SquareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95A92DCA1F9F7B480074898E /* SquareViewController.xib */; };
 		95A92DCE1F9F7D310074898E /* SquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A92DCD1F9F7D310074898E /* SquareView.swift */; };
@@ -88,6 +90,7 @@
 		950F935E1FB4EEB7005CE4C6 /* GetUsersContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersContext.swift; sourceTree = "<group>"; };
 		950F93601FB4EF64005CE4C6 /* FBLoginContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginContext.swift; sourceTree = "<group>"; };
 		950F93621FB4EFB9005CE4C6 /* FBLogoutContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLogoutContext.swift; sourceTree = "<group>"; };
+		9529FAEE1FDF018B000AE12D /* ResultEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultEnum.swift; sourceTree = "<group>"; };
 		9533F1C31FAB74FB00FC12DE /* GSDConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSDConstants.swift; sourceTree = "<group>"; };
 		9533F1C81FAB754A00FC12DE /* Random+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Random+Extensions.swift"; sourceTree = "<group>"; };
 		9533F1CA1FACE58B00FC12DE /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
@@ -115,6 +118,7 @@
 		956A85E61F94FDA000292D21 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		956A85E81F95009900292D21 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
 		957C21B41FC9B03A00806A28 /* UIViewAutoresizing+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewAutoresizing+Extensions.swift"; sourceTree = "<group>"; };
+		9589F8051FE037490052C11B /* Apply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apply.swift; sourceTree = "<group>"; };
 		95A92DC91F9F7B480074898E /* SquareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareViewController.swift; sourceTree = "<group>"; };
 		95A92DCA1F9F7B480074898E /* SquareViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SquareViewController.xib; sourceTree = "<group>"; };
 		95A92DCD1F9F7D310074898E /* SquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				950C527D1F9B89C700AD308C /* GlobalFunctions.swift */,
+				9529FAEE1FDF018B000AE12D /* ResultEnum.swift */,
 				9551410F1FA0C18900B57947 /* Extensions */,
 				9551410E1FA0C17B00B57947 /* Classes */,
 			);
@@ -294,6 +299,7 @@
 				950732711FB9C7F200FFEE7B /* UINib+Extensions.swift */,
 				95029ECB1FBEDEE9004AEA54 /* Bundle+Extensions.swift */,
 				957C21B41FC9B03A00806A28 /* UIViewAutoresizing+Extensions.swift */,
+				9589F8051FE037490052C11B /* Apply.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -677,6 +683,7 @@
 				950732751FBB6A0700FFEE7B /* FBResponseParser.swift in Sources */,
 				95B1C0C71FB3723E0030A0C3 /* FBUserViewController.swift in Sources */,
 				9533F1D81FADAB7100FC12DE /* ImageView.swift in Sources */,
+				9589F8061FE037490052C11B /* Apply.swift in Sources */,
 				95478EA91FC5AE1F00C00864 /* ArrayModel.swift in Sources */,
 				950F93611FB4EF64005CE4C6 /* FBLoginContext.swift in Sources */,
 				950C52811F9B89C700AD308C /* GlobalFunctions.swift in Sources */,
@@ -696,6 +703,7 @@
 				95478EA11FC5ADE000C00864 /* UsersModel.swift in Sources */,
 				95B1C0C01FB3553C0030A0C3 /* FBViewController.swift in Sources */,
 				95B1C0CE1FB372830030A0C3 /* FBLoginView.swift in Sources */,
+				9529FAEF1FDF018B000AE12D /* ResultEnum.swift in Sources */,
 				9533F1D01FACF9CD00FC12DE /* LoadingView.swift in Sources */,
 				950C52761F9A895500AD308C /* InternetImageModel.swift in Sources */,
 				95478E9E1FC5ADD900C00864 /* FBCurrentUser.swift in Sources */,

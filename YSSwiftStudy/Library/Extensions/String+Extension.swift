@@ -31,5 +31,9 @@ extension String {
         
         return result
     }
+    
+    func asUrl(with characterSet: CharacterSet = .urlQueryAllowed) -> URL? {
+        return self.addingPercentEncoding(withAllowedCharacters: characterSet).flatMap { URL(string: $0) }
+    }
 }
 
