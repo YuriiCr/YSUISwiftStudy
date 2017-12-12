@@ -40,7 +40,6 @@ class UsersModel: ArrayModel<FBUser> {
     // MARK: Public methods
     
     override func performLoading() {
-        sleep(3)
         var objects:Array<FBUser>?
         
         if let path = self.pathList {
@@ -49,12 +48,9 @@ class UsersModel: ArrayModel<FBUser> {
                 objects = Array(repeatElement(FBUser(), count: Constants.numberOfCells))
             }
         }
-        self.performBlockWithoutNotification({
-            if let objects = objects {
-                 self.addObjects(objects)
-            }
-        })
-        
+        self.performBlockWithoutNotification { [weak self] in
+            objects.map { self?.addObjects($0) }
+        }
         self.state = .didLoad
     }
     

@@ -32,11 +32,9 @@ class ImageModel: Model {
         var imageModel = cache.imageModel(with: url)
         if imageModel == nil {
             imageModel = url.isFileURL ? FileManagerImageModel(url: url) : InternetImageModel(url: url)
-            if let imageModel = imageModel {
-                cache.add(imageModel: imageModel)
-                
-                return imageModel
-            }
+           imageModel.map { cache.add(imageModel: $0) }
+            
+           return imageModel
         }
         
         return imageModel

@@ -84,7 +84,7 @@ class GetContext: YSContext {
         }
     }
     
-    // this methid is intended for subclassing, do not call it directly
+    // this method is intended for subclassing, do not call it directly
     
     func parse(response: JSON?) {
         

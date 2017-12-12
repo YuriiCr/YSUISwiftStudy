@@ -37,7 +37,7 @@ class LoadingView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        self.initSubviews()
+        self.initSubviews()
     }
     
     override init(frame: CGRect) {

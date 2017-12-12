@@ -37,7 +37,7 @@ class Model: ObservableObject {
     // MARK: Private methods
     
     private func performLoadingInBackground() {
-        backgroundQueue.async { self.performLoading() }
+        backgroundQueue.async {[weak self] in self?.performLoading() }
     }
 
 }
