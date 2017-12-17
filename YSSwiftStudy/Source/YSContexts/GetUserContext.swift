@@ -15,12 +15,12 @@ class GetUserContext: GetContext {
     private struct Constants {
         static let friendCachedFileName = "fbFriend.plist"
         static let parametersFieldName = "fields"
-        static let parametersFriendValues = "first_name,last_name,picture.type(large)"
+        static let parametersFriendValues = "first_name,last_name,picture.height(9999){url}"
     }
     
     // MARK: Public properties
     
-    override var parameters: [String : String]? {
+    override var parameters: [String : String] {
         get {
            return [Constants.parametersFieldName : Constants.parametersFriendValues]
         }
@@ -28,26 +28,25 @@ class GetUserContext: GetContext {
         set { }
     }
     
-    override var graphPath: String? {
-        get { return self.user?.userID }
+    override var graphPath: String {
+        get { return self.user?.userID ?? "" }
         set { }
     }
     
-    override var cachedFileName: String? {
+    override var cachedFileName: String {
         get { return Constants.friendCachedFileName }
+        set { }
+    }
+    
+    override var user: FBUser? {
+        get { return self.model as? FBUser }
         set { }
     }
     
     // MARK: Public methods
     
-    override func parse(response: JSON?) {
-        let user = self.user
-        let parser = FBResponseParser(response: response)
-        
-        user?.userID = parser.userID
-        user?.name = parser.name
-        user?.surname = parser.surname
-        user?.photoURL = parser.photoUrl
+    override func parse(with response: JSON) {
+        self.user.map { FBResponseParser.fill(user: $0, with: response) }
     }
     
 }

@@ -63,14 +63,14 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.model.map { self.context = GetUsersContext(model: $0) }
+        self.model.map { self.context = GetUsersContext(model: $0, currentUser: FBCurrentUser()) }
         self.navigationItem.title = Constants.title
     }
     
     // MARK: IBAction
     
     @IBAction func logOut(sender: UIButton) {
-        self.logoutContext = FBLogoutContext()
+        self.logoutContext = FBLogoutContext(model: self.model!)
     }
     
     // MARK: Public methods

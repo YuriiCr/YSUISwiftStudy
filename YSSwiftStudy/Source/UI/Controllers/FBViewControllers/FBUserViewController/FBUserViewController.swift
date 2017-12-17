@@ -62,7 +62,7 @@ class FBUserViewController: FBViewController, RootView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.model.map { self.context = GetUserContext(model: $0) }
+        self.model.map { self.context = GetUserContext(model: $0, currentUser: FBCurrentUser()) }
     }
     
     // MARK: IBAction
@@ -73,6 +73,6 @@ class FBUserViewController: FBViewController, RootView {
     }
     
     @IBAction func onlogOut(sender: UIButton) {
-        self.logoutContext = FBLogoutContext()
+        self.logoutContext = FBLogoutContext(model: self.model!)
     }
 }

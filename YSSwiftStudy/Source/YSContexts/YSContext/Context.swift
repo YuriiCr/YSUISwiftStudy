@@ -14,12 +14,7 @@ class YSContext {
     
      // MARK: Public Methods
     
-    init () {
-        
-    }
-    
-    convenience init(model: Model) {
-        self.init()
+    init(model: Model) {
         self.model = model
     }
     

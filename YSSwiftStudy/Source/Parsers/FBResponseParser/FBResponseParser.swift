@@ -18,84 +18,32 @@ class FBResponseParser {
         static let userID = "id"
         static let userName = "fisrt_name"
         static let userSurname = "last_name"
-        static let userPhoto = "picture.data.url"
-        static let userFriends = "friends.data"
+        static let url = "url"
+        static let data = "data"
+        static let image = "picture"
     }
     
     // MARK: Public properties
     
-    var name: String? {
-        if let response = self.response as NSObject? {
-            return response.value(forKeyPath: Keys.userName) as? String
-        }
+    static func fill(user: FBUser, with response: JSON) {
+        let name = response[Keys.userName] as? String
+        let surname = response[Keys.userSurname] as? String
+        let url = (response[Keys.url] as? String)?.asUrl()
+        let id = response[Keys.url] as? String
         
-        return nil
+        user.name = name
+        user.surname = surname
+        user.photoURL = url
+        user.userID = id
+        user.imageModel = url.flatMap {ImageModel.imageModelWith(url: $0)}
+        
     }
     
-    var surname: String? {
-        if let response = self.response as NSObject? {
-            return response.value(forKeyPath: Keys.userSurname) as? String
-        }
+    static func user(with response: JSON) -> FBUser {
+        let user = FBUser()
+        self.fill(user: user, with: response)
         
-        return nil
-    }
-    
-    var userID: String? {
-        if let response = self.response as NSObject? {
-            return response.value(forKeyPath: Keys.userID) as? String
-        }
-        
-        return nil
-    }
-    
-    var photoUrl: URL? {
-        if let response = self.response as NSObject? {
-            return URL(string: (response.value(forKeyPath: Keys.userPhoto) as! String))
-        }
-        
-        return nil
-    }
-    
-    var friends:[FBUser] {
-        if let response = self.response as NSObject? {
-            let afriends =  response.value(forKeyPath: Keys.userFriends) as? Array<JSON>
-            if let afriends = afriends {
-                for friend in afriends {
-                    var mutableFriends = [FBUser]()
-                    mutableFriends.append(self.userWith(response: friend))
-                    
-                    return mutableFriends
-                }
-            }
-            
-        }
-        
-        return []
-    }
-    
-    // MARK: Private properties
-    
-    private var response: JSON?
-    
-    // MARK: Initialization
-    
-    init (response: JSON?) {
-        self.response = response
-    }
-    
-    // MARK: Private properties
-    
-    private func userWith(response: JSON?) -> FBUser {
-        let fbUser = FBUser()
-        let parser = FBResponseParser(response: response)
-        
-        fbUser.userID = parser.userID
-        fbUser.name  = parser.name
-        fbUser.surname = parser.surname
-        fbUser.photoURL = parser.photoUrl
-        fbUser.friends.addObjects(parser.friends)
-        
-        return fbUser
+        return user
     }
     
 }

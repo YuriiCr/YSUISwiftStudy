@@ -8,15 +8,19 @@
 
 import UIKit
 
-class FBUser: User {
+class FBUser: Model {
     
     // MARK: Public properties
+    
+    var name: String?
+    var surname: String?
+    var fullName : String? {
+        return "\(self.name ?? "") \(self.surname ?? "")"
+    }
     
     var userID: String?
     var photoURL: URL?
     var friends = UsersModel()
-    override var imageModel: ImageModel? {
-        return self.photoURL.flatMap { ImageModel.imageModelWith(url: $0) }
-    }
+    var imageModel: ImageModel?
 
 }

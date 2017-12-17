@@ -91,7 +91,7 @@ extension ObservableObject {
         init(observableObject: ObservableObject, observer: ObserverType) {
             self.observableObject = observableObject
             self.observer = observer
-            self.hashValue = self.hashValue &+ 1
+            self.hashValue = observableObject.hashValue
         }
         
         // MARK: Public method
