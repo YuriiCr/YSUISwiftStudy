@@ -46,6 +46,8 @@ class ImageModel: Model {
     
     override func performLoading() {
         self.image = loadImage()
-        self.state = self.image == nil ? .loadingFailed : .didLoad
+        DispatchQueue.main.async {
+                self.state = self.image == nil ? .loadingFailed : .didLoad
+        }
     }
 }

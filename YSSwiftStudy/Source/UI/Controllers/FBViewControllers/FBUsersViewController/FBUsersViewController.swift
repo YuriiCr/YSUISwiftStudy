@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UITableViewDataSource {
+class FBUsersViewController: FBViewController, RootView {
     
     // MARK: Constants
     
@@ -21,10 +21,6 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
     typealias ViewType = FBUserView
     
     var rootView: FBUsersView?
-    
-    var usersModel:UsersModel? {
-        return (self.model as? UsersModel)
-    }
     
     override var observationController: ObservableObject.ObservationController? {
         didSet {
@@ -54,6 +50,8 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
     
     private var user = FBUser()
     
+    var usersModel: UsersModel? { return self.model as? UsersModel }
+    
     private var logoutContext:FBLogoutContext? {
         willSet { newValue?.execute() }
         didSet { oldValue?.cancel() }
@@ -78,16 +76,18 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
         super.viewDidLoad()
         self.context = GetUsersContext(model: self.model, currentUser: self.currentUser)
         self.navigationItem.title = Constants.title
-        self.rootView?.loadingView?.state = .hidden
     }
     
     // MARK: IBAction
     
     @IBAction func onlogOut(sender: UIButton) {
-          (self.model as? FBCurrentUser).map { self.logoutContext = FBLogoutContext(user: $0 ) }
+          (self.model as? FBCurrentUser).map { self.logoutContext = FBLogoutContext(user: $0) }
     }
+}
+
+extension FBUsersViewController: UITableViewDelegate, UITableViewDataSource {
     
-     // MARK: UITableViewDataSource
+    // MARK: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.usersModel?.count ?? 0
@@ -96,7 +96,7 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.reusableCell(with: FBTableViewCell.self, index: [indexPath.row])
         cell.user = self.usersModel?[indexPath.row]
-       
+        
         return cell
     }
     

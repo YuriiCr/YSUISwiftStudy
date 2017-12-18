@@ -16,6 +16,7 @@ extension Array {
                 result.append(element)
             }
         }
+        
         return result
     }
 }

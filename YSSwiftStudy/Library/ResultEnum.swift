@@ -9,7 +9,29 @@
 import Foundation
 
 enum Result<T> {
-    case succes(value: T)
-    case failure
+    case success(T)
+    case failure(Error)
+    
+    func isSuccess() -> Bool {
+        switch self {
+        case .success: return true
+        default: return false
+        }
+    }
+    
+    func isFailure() -> Bool {
+        return !isSuccess()
+    }
+    
+    func map<U>(block: (T) -> U) -> Result<U> {
+        switch self {
+        case .success(let value):
+            return .success(block(value))
+        case .failure(let error):
+            return .failure(error)
+        }
+    }
 }
+
+
 

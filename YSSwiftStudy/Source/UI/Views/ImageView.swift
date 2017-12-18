@@ -19,7 +19,7 @@ class ImageView: YSView {
     }
 
     var imageView: UIImageView? {
-        willSet {  newValue.map { self.addSubview($0)}}
+        willSet {  newValue.map { self.addSubview($0) } }
         didSet { oldValue?.removeFromSuperview() }
     }
 
@@ -59,7 +59,6 @@ class ImageView: YSView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.initSubviews()
-
     }
 
     // MARK: Private methods

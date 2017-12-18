@@ -65,7 +65,7 @@ class FBLoginViewController: FBViewController, RootView {
     
     // MARK: Public methods
     
-    override func showViewController() {
+    func showViewController() {
         guard let user = self.model as? FBCurrentUser else { return }
         let navigationController = UINavigationController(rootViewController: FBUserViewController(model: user, currentUser: user))
         self.present(navigationController, animated: true, completion: nil)

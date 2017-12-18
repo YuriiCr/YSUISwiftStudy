@@ -20,23 +20,19 @@ class FBViewController: UIViewController {
     
     var currentUser = FBCurrentUser()
     
+    var context: YSContext? {
+        willSet { newValue?.execute() }
+        didSet { oldValue?.cancel() }
+    }
+    
+    // MARK: Initialization
+    
     init() {
         super.init(nibName: toString(type: type(of: self)), bundle: .main)
     }
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    var context: YSContext? {
-        willSet { newValue?.execute() }
-        didSet { oldValue?.cancel() }
-    }
-
-    //MARK: Public Methods
-    
-    func showViewController() {
-        
     }
     
 }

@@ -78,6 +78,6 @@ class FBUserViewController: FBViewController, RootView {
     }
     
     @IBAction func onlogOut(sender: UIButton) {
-        (self.model as? FBCurrentUser).map { self.logoutContext = FBLogoutContext(user: $0 ) }
+        (self.model as? FBCurrentUser).map { self.logoutContext = FBLogoutContext(user: $0) }
     }
 }
