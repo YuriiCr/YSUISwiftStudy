@@ -14,14 +14,14 @@ class FBViewController: UIViewController {
     
     var  observationController: ObservableObject.ObservationController? 
     
-    var model: Model? = FBCurrentUser() {
-        willSet { self.observationController = self.model?.controller(with: self) }
-        didSet { self.observationController.map { oldValue?.remove(controller: $0) } }
+    var model: Model = Model() {
+        didSet { self.observationController = self.model.controller(with: self) }
     }
     
-    init(model: Model?, nibName: String, bundle: Bundle = .main) {
-        super.init(nibName: nibName, bundle: bundle)
-        self.model = model
+    var currentUser = FBCurrentUser()
+    
+    init() {
+        super.init(nibName: toString(type: type(of: self)), bundle: .main)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -35,7 +35,7 @@ class FBViewController: UIViewController {
 
     //MARK: Public Methods
     
-    func fill(with model: Model?) {
+    func showViewController() {
         
     }
     

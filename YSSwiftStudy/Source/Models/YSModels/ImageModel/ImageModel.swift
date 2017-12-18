@@ -12,8 +12,8 @@ class ImageModel: Model {
     
     // MARK: Public properties
     
-    var url:URL
-    var image:UIImage?
+    var url: URL
+    var image: UIImage?
     
     // MARK: Initialization
     

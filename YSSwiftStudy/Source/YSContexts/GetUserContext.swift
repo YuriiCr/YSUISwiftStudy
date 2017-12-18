@@ -24,7 +24,6 @@ class GetUserContext: GetContext {
         get {
            return [Constants.parametersFieldName : Constants.parametersFriendValues]
         }
-       
         set { }
     }
     

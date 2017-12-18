@@ -22,8 +22,8 @@ class FBUserViewController: FBViewController, RootView {
             let loadingView = self.rootView?.loadingView
             
             controller?[.didLoad] = { [weak self, loadingView] _, _ in
-                self?.fill(with: self?.model)
                 loadingView?.state = .hidden
+                self?.rootView?.fillWith(user: self?.user)
             }
             
             controller?[.didUnload] = { [weak self] _, _ in
@@ -34,8 +34,7 @@ class FBUserViewController: FBViewController, RootView {
                 loadingView?.state = .visible
             }
             
-            controller?[.loadingFailed] = {
-                _, _ in
+            controller?[.loadingFailed] = { _, _ in
                 loadingView?.state = .hidden
             }
         }
@@ -50,29 +49,35 @@ class FBUserViewController: FBViewController, RootView {
         didSet { oldValue?.cancel() }
     }
     
-    // MARK: Public methods
+    // MARK: Initialization
     
-    override func fill(with model: Model?) {
-        if let user = model as? FBUser {
-            self.rootView?.fillWith(user: user)
-        }
+    init(model: Model, currentUser: FBCurrentUser) {
+        super.init()
+        self.model = model
+        self.currentUser = currentUser
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.model.map { self.context = GetUserContext(model: $0, currentUser: FBCurrentUser()) }
+        self.context = GetUserContext(model: self.model, currentUser: FBCurrentUser()) 
+        self.rootView?.loadingView?.state = .hidden
     }
     
     // MARK: IBAction
     
     @IBAction func onFriends(sender: UIButton) {
-        let usersController = FBUsersViewController(model: self.user?.friends, nibName: toString(type: FBUsersViewController.self))
+        guard let user = self.user else { return }
+        let usersController = FBUsersViewController(model: UsersModel(), user: user, currentUser: self.currentUser)
         self.navigationController?.pushViewController(usersController, animated: true)
     }
     
     @IBAction func onlogOut(sender: UIButton) {
-        self.logoutContext = FBLogoutContext(model: self.model!)
+        (self.model as? FBCurrentUser).map { self.logoutContext = FBLogoutContext(user: $0 ) }
     }
 }

@@ -71,7 +71,7 @@ class LoadingView: UIView {
         let bounds = self.bounds
         self.alpha = Constants.loadingViewDefaultAlpha
         self.backgroundColor = .black
-        self.indicator = UIActivityIndicatorView.init(activityIndicatorStyle:.whiteLarge)
+        self.indicator = UIActivityIndicatorView(activityIndicatorStyle:.whiteLarge)
         self.indicator?.center = CGPoint(x: bounds.midX, y: bounds.midY);
         self.indicator?.startAnimating()
         self.autoresizingMask = UIViewAutoresizing.autoresizeAll

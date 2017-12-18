@@ -19,9 +19,9 @@ class FBUserView: YSView {
     
     // MARK: Public methods
     
-    func fillWith(user: FBUser) {
-        self.userImageView?.imageModel = user.imageModel
-        self.fullNameLabel?.text = user.fullName
+    func fillWith(user: FBUser?) {
+        self.userImageView?.imageModel = user?.imageModel
+        self.fullNameLabel?.text = user?.fullName
     }
 
 }

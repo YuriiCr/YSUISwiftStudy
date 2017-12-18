@@ -52,5 +52,4 @@ class InternetImageModel: FileManagerImageModel {
         return super.loadImage()
     }
     
-    
 }

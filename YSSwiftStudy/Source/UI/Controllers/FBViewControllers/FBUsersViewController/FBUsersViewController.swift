@@ -26,26 +26,24 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
         return (self.model as? UsersModel)
     }
     
-    // MARK: Public properties
-    
     override var observationController: ObservableObject.ObservationController? {
         didSet {
             let controller = self.observationController
             let loadingView = self.rootView?.loadingView
-            
+
             controller?[.didLoad] = { [weak self, weak loadingView] _, _ in
-                self?.fill(with: self?.model)
+                self?.rootView?.tableView?.reloadData()
                 loadingView?.state = .hidden
             }
-            
+
             controller?[.didUnload] = { [weak self] _, _ in
                 self?.dismiss(animated: true)
             }
-            
+
             controller?[.willLoad] = { [weak loadingView] _, _ in
                 loadingView?.state = .visible
             }
-            
+
             controller?[.loadingFailed] = { [weak loadingView] _, _ in
                loadingView?.state = .hidden
             }
@@ -54,29 +52,39 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
 
     // MARK: Private properties
     
+    private var user = FBUser()
+    
     private var logoutContext:FBLogoutContext? {
         willSet { newValue?.execute() }
         didSet { oldValue?.cancel() }
+    }
+    
+    // MARK: Initialization
+    
+    init(model: Model, user: FBUser, currentUser: FBCurrentUser ) {
+        super.init()
+        self.model = model
+        self.user = user
+        self.currentUser = currentUser
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.model.map { self.context = GetUsersContext(model: $0, currentUser: FBCurrentUser()) }
+        self.context = GetUsersContext(model: self.model, currentUser: self.currentUser)
         self.navigationItem.title = Constants.title
+        self.rootView?.loadingView?.state = .hidden
     }
     
     // MARK: IBAction
     
-    @IBAction func logOut(sender: UIButton) {
-        self.logoutContext = FBLogoutContext(model: self.model!)
-    }
-    
-    // MARK: Public methods
-    
-    override func fill(with model: Model?) {
-        self.rootView?.tableView?.reloadData()
+    @IBAction func onlogOut(sender: UIButton) {
+          (self.model as? FBCurrentUser).map { self.logoutContext = FBLogoutContext(user: $0 ) }
     }
     
      // MARK: UITableViewDataSource
@@ -95,6 +103,6 @@ class FBUsersViewController: FBViewController, RootView, UITableViewDelegate, UI
     // MARK: UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(FBUserViewController(model: self.usersModel?[indexPath.row], nibName: toString(type: FBUserViewController.self)), animated: true)
+        self.usersModel?[indexPath.row].map { self.navigationController?.pushViewController(FBUserViewController(model: $0, currentUser: self.currentUser), animated: true) }
     }
 }

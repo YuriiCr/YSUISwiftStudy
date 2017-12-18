@@ -15,7 +15,16 @@ class FBLoginContext: YSContext {
     // MARK: Public properties
     
     var user: FBCurrentUser? {
-        return self.model as? FBCurrentUser
+        get { return self.model as? FBCurrentUser }
+        set {}
+    }
+    
+    // MARK: Initailization
+    
+    init(user: FBCurrentUser) {
+        super.init(model: user)
+        self.user = user
+        
     }
     
     // MARK: Public methods

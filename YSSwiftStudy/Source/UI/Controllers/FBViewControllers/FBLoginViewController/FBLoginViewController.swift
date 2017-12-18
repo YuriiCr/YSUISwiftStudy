@@ -22,14 +22,15 @@ class FBLoginViewController: FBViewController, RootView {
             let loadingView = self.rootView?.loadingView
             
             controller?[.didLoad] = { [weak self, weak loadingView] _, _ in
-                self?.fill(with: self?.model)
                 loadingView?.state = .hidden
+                self?.showViewController()
+   
             }
             
             controller?[.didUnload] = { [weak self] _, _ in
                 self?.dismiss(animated: true)
             }
-            
+
             controller?[.willLoad] = { [weak loadingView] _, _ in
                 loadingView?.state = .visible
             }
@@ -42,8 +43,9 @@ class FBLoginViewController: FBViewController, RootView {
     
     // MARK: Initialization
     
-     init() {
-        super.init(model: FBCurrentUser(), nibName: toString(type: FBLoginViewController.self))
+    init(model: Model) {
+        super.init()
+        self.model = model
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -55,23 +57,18 @@ class FBLoginViewController: FBViewController, RootView {
         self.rootView?.loadingView?.state = .hidden
     }
    
-    
     // MARK: IBActions
     
     @IBAction func onLogin(sender: UIButton) {
-        self.model.map { self.context = FBLoginContext(model: $0) }
+        (self.model as? FBCurrentUser).map { self.context = FBLoginContext(user: $0) }
     }
     
     // MARK: Public methods
     
-    override func fill(with model: Model?) {
-        self.presentFBUserViewController()
-    }
-    
-    // MARK: Private methods
-    
-    func presentFBUserViewController() {
-        let navigationController = UINavigationController(rootViewController: FBUserViewController(model: self.model, nibName: toString(type: FBUserViewController.self)))
+    override func showViewController() {
+        guard let user = self.model as? FBCurrentUser else { return }
+        let navigationController = UINavigationController(rootViewController: FBUserViewController(model: user, currentUser: user))
         self.present(navigationController, animated: true, completion: nil)
     }
+
 }

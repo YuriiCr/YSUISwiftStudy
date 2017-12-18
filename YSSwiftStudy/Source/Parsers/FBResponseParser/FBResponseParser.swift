@@ -16,7 +16,7 @@ class FBResponseParser {
     
     private struct Keys {
         static let userID = "id"
-        static let userName = "fisrt_name"
+        static let userName = "first_name"
         static let userSurname = "last_name"
         static let url = "url"
         static let data = "data"
@@ -26,10 +26,13 @@ class FBResponseParser {
     // MARK: Public properties
     
     static func fill(user: FBUser, with response: JSON) {
+        let images = response[Keys.image] as? JSON
+        let data = images?[Keys.data] as? [String : String]
         let name = response[Keys.userName] as? String
         let surname = response[Keys.userSurname] as? String
-        let url = (response[Keys.url] as? String)?.asUrl()
-        let id = response[Keys.url] as? String
+        let urlString = data?[Keys.url]
+        let url = urlString?.asUrl()
+        let id = response[Keys.userID] as? String
         
         user.name = name
         user.surname = surname
