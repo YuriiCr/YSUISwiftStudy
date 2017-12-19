@@ -17,7 +17,7 @@ class GetUsersContext: GetContext {
         static let data = "data"
         static let friendCachedFileName = "fbFriends.plist"
         static let parametersFieldName = "fields"
-        static let parametersFriendsValues = "friends{first_name,last_name,picture{url}}"
+        static let parametersFriendsValues = "first_name,last_name,picture{url}"
     }
     
     // MARK: Public properties
@@ -29,19 +29,34 @@ class GetUsersContext: GetContext {
         set { }
     }
     
-    override var graphPath: String { return self.user?.userID ?? "" }
+    override var graphPath: String { return self.userID + "/friends/"}
     
     override var cachedFileName: String {
         get { return Constants.friendCachedFileName }
         set { }
     }
     
+    override var user: FBUser? {
+        get { return self._user }
+        set {_user = newValue}
+    }
+    
     // MARK: Private properties
+    
+    private var _user: FBUser?
+    
+    private var userID: String { return self.user?.userID ?? ""}
     
     private var friends: UsersModel? {
         return self.model as? UsersModel
     }
     
+    // MARK: Initialization
+    
+    init(model: Model, user: FBUser, currentUser: FBCurrentUser) {
+        super.init(model: model, currentUser: currentUser)
+        self.user = user
+    }
     
     // MARK: Public methods
     
@@ -54,5 +69,3 @@ class GetUsersContext: GetContext {
         self.friends?.addObjects(users)
     }
 }
-
-

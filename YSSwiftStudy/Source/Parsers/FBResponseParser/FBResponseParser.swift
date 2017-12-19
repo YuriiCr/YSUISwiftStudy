@@ -42,6 +42,8 @@ class FBResponseParser {
         
     }
     
+    // MARK: Public Methods
+    
     static func user(with response: JSON) -> FBUser {
         let user = FBUser()
         self.fill(user: user, with: response)

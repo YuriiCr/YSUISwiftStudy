@@ -65,7 +65,7 @@ class FBUserViewController: FBViewController, RootView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.context = GetUserContext(model: self.model, currentUser: FBCurrentUser()) 
+        self.context = GetUserContext(model: self.model, currentUser: FBCurrentUser())
         self.rootView?.loadingView?.state = .hidden
     }
     

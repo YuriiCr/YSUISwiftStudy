@@ -74,7 +74,8 @@ class FBUsersViewController: FBViewController, RootView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.context = GetUsersContext(model: self.model, currentUser: self.currentUser)
+        self.rootView?.loadingView?.state = .hidden
+        self.context = GetUsersContext(model: self.model, user: self.user, currentUser: self.currentUser)
         self.navigationItem.title = Constants.title
     }
     

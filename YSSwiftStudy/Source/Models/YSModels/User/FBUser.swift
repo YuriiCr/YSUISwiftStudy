@@ -22,9 +22,7 @@ class FBUser: Model {
     var photoURL: URL?
     var friends = UsersModel()
     var imageModel: ImageModel? {
-        didSet {
-            self.imageModel?.load()
-        }
+        didSet { self.imageModel?.load() }
     }
 
 }

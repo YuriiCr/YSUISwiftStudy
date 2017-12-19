@@ -12,11 +12,13 @@ class YSContext {
     
     var model: Model?
     
-     // MARK: Public Methods
+    // MARK: Initialization
     
     init(model: Model) {
         self.model = model
     }
+    
+    // MARK: Public Methods
     
     func execute() {
         self.performExecution {[weak self] (state) in

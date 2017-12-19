@@ -39,12 +39,12 @@ class LoadingView: UIView {
         super.awakeFromNib()
         self.initSubviews()
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.initSubviews()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

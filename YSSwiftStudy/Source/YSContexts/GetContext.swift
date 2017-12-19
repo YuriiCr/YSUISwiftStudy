@@ -42,8 +42,6 @@ class GetContext: YSContext {
     
     // MARK: Public Methods
     
-    
-    
     override func execute() {
         if let model = self.model {
             synchronized(model) {
@@ -54,7 +52,6 @@ class GetContext: YSContext {
                         return
                     }
                 }
-                
                model.state = .willLoad
             }
             super.execute()

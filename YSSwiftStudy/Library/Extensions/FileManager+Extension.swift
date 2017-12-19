@@ -15,11 +15,7 @@ extension FileManager {
         let folderPath = documentsPath?.appending(nameFolder)
         if let folderPath = folderPath {
             if !FileManager.default.fileExists(atPath: folderPath) {
-                do {
-                    try FileManager.default.createDirectory(atPath: folderPath, withIntermediateDirectories: false, attributes: nil)
-                } catch let error as NSError {
-                    print (error.localizedDescription)
-                }
+                try? FileManager.default.createDirectory(atPath: folderPath, withIntermediateDirectories: false, attributes: nil)
             }
         }
         
@@ -29,13 +25,11 @@ extension FileManager {
     static func deleteFolderAtPath(_ path:String) -> Bool {
         if FileManager.default.fileExists(atPath: path) {
             do {
-                try
-                    FileManager.default.removeItem(atPath: path)
+                try FileManager.default.removeItem(atPath: path)
+                return true
             } catch _ as NSError {
                 return false
             }
-            
-            return true
         }
         
         return false

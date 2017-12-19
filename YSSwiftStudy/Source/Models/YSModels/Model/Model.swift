@@ -24,7 +24,7 @@ class Model: ObservableObject {
         let state = self.state
         if (state == .willLoad || state == .didLoad) {
             self.state = state
-            return;
+            return
         }
         self.state = .willLoad
         self.performLoadingInBackground()

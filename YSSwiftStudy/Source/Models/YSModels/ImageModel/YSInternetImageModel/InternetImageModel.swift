@@ -40,12 +40,8 @@ class InternetImageModel: FileManagerImageModel {
         }
         
         self.task = self.session.downloadTask(with: self.url, completionHandler: { (location, response, error) in
-            if let location = location, let imagePath = self.imagePath {
-                do {
-                    try FileManager.default.moveItem(atPath: location.path, toPath: imagePath)
-                } catch _ as NSError {
-
-                }
+            if let location = location, let imagePath = self.imagePath {                
+                try? FileManager.default.moveItem(atPath: location.path, toPath: imagePath)
             }
          })
         

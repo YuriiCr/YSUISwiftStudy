@@ -11,7 +11,7 @@ import FacebookLogin
 
 class FBLogoutContext: FBLoginContext {
     
-    // Public methods
+    // MARK: Public methods
     
     override func performExecution(_ block: @escaping (ModelState) -> ()) {
         LoginManager().logOut()
