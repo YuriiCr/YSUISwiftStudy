@@ -23,6 +23,7 @@ class FBTableViewCell: YSTableViewCell {
     
     func fill(with user: FBUser?) {
         self.fullNameLabel?.text = user?.fullName
+        self.userImageView?.imageModel = user?.imageModel
     }
     
     // MARK: Override methods

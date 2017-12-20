@@ -66,6 +66,9 @@ class GetUsersContext: GetContext {
         data.forEach {
             users.append(FBResponseParser.user(with: $0))
         }
-        self.friends?.addObjects(users)
+        let userFriends = self.friends
+        userFriends?.performBlockWithoutNotification {
+            userFriends?.addObjects(users)
+        }
     }
 }

@@ -15,7 +15,7 @@ class FBUser: Model {
     var name: String?
     var surname: String?
     var fullName : String? {
-        return "\(self.name ?? "") \(self.surname ?? "")"
+        return [self.name, self.surname].flatMap { $0 }.joined(separator: " ")
     }
     
     var userID: String?

@@ -22,10 +22,17 @@ extension Array {
 }
 
 extension Optional {
-    func apply<U>(_ block: ((Wrapped) -> U)?) -> U? {
-        switch block {
-        case .some(let someF): return self.map(someF)
-        case .none: return nil
+    func apply (f: ((Wrapped) -> ())?) -> ()? {
+        return f.flatMap { block in
+            self.flatMap { block($0) }
         }
     }
+        
+//    func apply<U>(_ block: ((Wrapped) -> U)?) -> U? {
+//        switch block {
+//        case .some(let someF): return self.map(someF)
+//        case .none: return nil
+//        }
+//    }
+    
 }

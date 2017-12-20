@@ -13,5 +13,10 @@ target 'YSSwiftStudy' do
   pod 'FBSDKCoreKit', '~> 4.22.1'
   pod 'FBSDKLoginKit', '~> 4.22.1'
   pod 'FBSDKShareKit', '~> 4.22.1'
+
+  pod "MagicalRecord"
+  pod 'RxSwift',    '~> 4.0'
+  pod 'RxCocoa',    '~> 4.0'
+  
 	
 end
