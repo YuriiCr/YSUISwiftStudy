@@ -56,7 +56,7 @@ class FBLoginViewController: FBViewController, RootView {
         super.viewDidLoad()
         self.rootView?.loadingView?.state = .hidden
         self.rootView?.observeLoginButton()
-        self.model = self.rootView?.user ?? FBCurrentUser() as Model
+        self.model = self.rootView?.viewModel.user ?? Model()
     }
    
     // MARK: IBActions

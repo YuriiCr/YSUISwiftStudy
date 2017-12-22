@@ -16,20 +16,11 @@ class FBLoginView: YSView {
     
     @IBOutlet var loginButton: UIButton?
     
-    var bag = DisposeBag()
-    var didTapLoginButton = PublishSubject<Void>()
-    var user = FBCurrentUser()
-    var context: YSContext? {
-        willSet { newValue?.execute() }
-        didSet { oldValue?.cancel() }
-    }
-    
+    var viewModel = FBLoginViewModel()
+
     
     func observeLoginButton() {
-        self.loginButton?.rx.tap.bind(to: self.didTapLoginButton).disposed(by: bag)
-        self.didTapLoginButton.asObservable().subscribe { (_) in
-            self.context = FBLoginContext(user: self.user)
-        }
-    }
-
+        self.loginButton?.rx.tap.bind(to: self.viewModel.didTapLoginButton)
+        self.viewModel.observe()
+}
 }
