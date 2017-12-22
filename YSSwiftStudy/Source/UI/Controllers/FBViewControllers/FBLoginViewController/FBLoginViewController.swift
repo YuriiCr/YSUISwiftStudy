@@ -55,12 +55,14 @@ class FBLoginViewController: FBViewController, RootView {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.rootView?.loadingView?.state = .hidden
+        self.rootView?.observeLoginButton()
+        self.model = self.rootView?.user ?? FBCurrentUser() as Model
     }
    
     // MARK: IBActions
     
     @IBAction func onLogin(sender: UIButton) {
-        (self.model as? FBCurrentUser).map { self.context = FBLoginContext(user: $0) }
+//        (self.model as? FBCurrentUser).map { self.context = FBLoginContext(user: $0) }
     }
     
     // MARK: Public methods

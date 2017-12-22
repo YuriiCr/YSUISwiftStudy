@@ -49,6 +49,7 @@
 		956A85CA1F93D52200292D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 956A85C91F93D52200292D21 /* Assets.xcassets */; };
 		956A85E21F93DA6300292D21 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A85E11F93DA6300292D21 /* Context.swift */; };
 		956A85E71F94FDA000292D21 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A85E61F94FDA000292D21 /* Model.swift */; };
+		9575E98B1FEAFDA0005A9D70 /* FBLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9575E98A1FEAFDA0005A9D70 /* FBLoginViewModel.swift */; };
 		957C21B51FC9B03A00806A28 /* UIViewAutoresizing+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957C21B41FC9B03A00806A28 /* UIViewAutoresizing+Extensions.swift */; };
 		9589F8061FE037490052C11B /* Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589F8051FE037490052C11B /* Apply.swift */; };
 		95A92DCB1F9F7B480074898E /* SquareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A92DC91F9F7B480074898E /* SquareViewController.swift */; };
@@ -117,6 +118,7 @@
 		956A85E11F93DA6300292D21 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		956A85E61F94FDA000292D21 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		956A85E81F95009900292D21 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
+		9575E98A1FEAFDA0005A9D70 /* FBLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginViewModel.swift; sourceTree = "<group>"; };
 		957C21B41FC9B03A00806A28 /* UIViewAutoresizing+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewAutoresizing+Extensions.swift"; sourceTree = "<group>"; };
 		9589F8051FE037490052C11B /* Apply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apply.swift; sourceTree = "<group>"; };
 		95A92DC91F9F7B480074898E /* SquareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareViewController.swift; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 			children = (
 				95B1C0C11FB371C40030A0C3 /* FBLoginViewController.swift */,
 				95B1C0CD1FB372830030A0C3 /* FBLoginView.swift */,
+				9575E98A1FEAFDA0005A9D70 /* FBLoginViewModel.swift */,
 				95B1C0C21FB371C40030A0C3 /* FBLoginViewController.xib */,
 			);
 			path = FBLoginViewController;
@@ -676,6 +679,7 @@
 				950F93631FB4EFB9005CE4C6 /* FBLogoutContext.swift in Sources */,
 				95070F431FA38F4800B26BD7 /* UITableView+Extension.swift in Sources */,
 				9533F1C91FAB754A00FC12DE /* Random+Extensions.swift in Sources */,
+				9575E98B1FEAFDA0005A9D70 /* FBLoginViewModel.swift in Sources */,
 				9533F1D61FAD1F5400FC12DE /* YSView.swift in Sources */,
 				950F93581FB49205005CE4C6 /* FBTableViewCell.swift in Sources */,
 				95029ECC1FBEDEE9004AEA54 /* Bundle+Extensions.swift in Sources */,
