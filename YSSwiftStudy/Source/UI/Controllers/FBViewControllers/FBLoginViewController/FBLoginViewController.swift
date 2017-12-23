@@ -58,17 +58,11 @@ class FBLoginViewController: FBViewController, RootView {
         self.rootView?.observeLoginButton()
         self.model = self.rootView?.viewModel.user ?? Model()
     }
-   
-    // MARK: IBActions
-    
-    @IBAction func onLogin(sender: UIButton) {
-//        (self.model as? FBCurrentUser).map { self.context = FBLoginContext(user: $0) }
-    }
     
     // MARK: Public methods
     
     func showViewController() {
-        guard let user = self.model as? FBCurrentUser else { return }
+        guard let user = self.rootView?.viewModel.user  else { return }
         let navigationController = UINavigationController(rootViewController: FBUserViewController(model: user, currentUser: user))
         self.present(navigationController, animated: true, completion: nil)
     }

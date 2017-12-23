@@ -11,7 +11,7 @@ import RxSwift
 
 class FBLoginViewModel {
     
-    // MARK: Public methods
+    // MARK: Public properties
     
     var bag = DisposeBag()
     var didTapLoginButton = PublishSubject<Void>()
@@ -21,11 +21,12 @@ class FBLoginViewModel {
         didSet { oldValue?.cancel() }
     }
     
+    // MARK: Public methods
+    
     func observe() {
-        self.didTapLoginButton.asObservable().subscribe  (  onNext: {
+        self.didTapLoginButton.subscribe  (  onNext: {
             self.context = FBLoginContext(user: self.user)
         }).disposed(by: self.bag)
     }
-    
     
 }

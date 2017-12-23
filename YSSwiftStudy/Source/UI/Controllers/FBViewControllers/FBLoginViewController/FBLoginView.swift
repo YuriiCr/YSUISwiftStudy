@@ -17,10 +17,14 @@ class FBLoginView: YSView {
     @IBOutlet var loginButton: UIButton?
     
     var viewModel = FBLoginViewModel()
-
+    private var bag = DisposeBag()
+    
+    // MARK: Public Methods
     
     func observeLoginButton() {
-        self.loginButton?.rx.tap.bind(to: self.viewModel.didTapLoginButton)
-        self.viewModel.observe()
-}
+        let model = self.viewModel
+        
+        self.loginButton?.rx.tap.bind(to: model.didTapLoginButton).disposed(by: self.bag)
+        model.observe()
+    }
 }

@@ -66,6 +66,9 @@ class FBUserViewController: FBViewController, RootView {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.context = GetUserContext(model: self.model, currentUser: FBCurrentUser())
+        (self.model as? FBCurrentUser).map {
+            self.rootView?.observeLogOutButton(with: $0)
+        }
         self.rootView?.loadingView?.state = .hidden
     }
     
@@ -77,7 +80,4 @@ class FBUserViewController: FBViewController, RootView {
         self.navigationController?.pushViewController(usersController, animated: true)
     }
     
-    @IBAction func onlogOut(sender: UIButton) {
-        (self.model as? FBCurrentUser).map { self.logoutContext = FBLogoutContext(user: $0) }
-    }
 }

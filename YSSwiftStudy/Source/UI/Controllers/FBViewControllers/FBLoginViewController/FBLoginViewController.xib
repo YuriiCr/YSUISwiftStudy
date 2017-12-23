@@ -25,9 +25,6 @@
                     <state key="normal" title="Login">
                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
-                    <connections>
-                        <action selector="onLoginWithSender:" destination="-1" eventType="touchUpInside" id="LBm-34-6cV"/>
-                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
