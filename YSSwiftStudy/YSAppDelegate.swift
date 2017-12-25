@@ -18,7 +18,8 @@ class YSAppDelegate: UIResponder, UIApplicationDelegate {
    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow.window {
-            let navigationController = UINavigationController.init(rootViewController: FBLoginViewController(model: FBCurrentUser()))
+            let viewModel = FBLoginViewModel(model: FBCurrentUser())
+            let navigationController = UINavigationController(rootViewController: FBLoginViewController(viewModel: viewModel))
             $0.rootViewController = navigationController
             
             $0.makeKeyAndVisible()

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
-class FBLoginViewController: FBViewController, RootView {
+class FBLoginViewController: UIViewController, RootView {
     
     // MARK: RootView
     
@@ -16,36 +18,17 @@ class FBLoginViewController: FBViewController, RootView {
     
     // MARK: Public properties
     
-    override var observationController: ObservableObject.ObservationController? {
-        didSet {
-            let controller = self.observationController
-            let loadingView = self.rootView?.loadingView
-            
-            controller?[.didLoad] = { [weak self, weak loadingView] _, _ in
-                loadingView?.state = .hidden
-                self?.showViewController()
-   
-            }
-            
-            controller?[.didUnload] = { [weak self] _, _ in
-                self?.dismiss(animated: true)
-            }
-
-            controller?[.willLoad] = { [weak loadingView] _, _ in
-                loadingView?.state = .visible
-            }
-            
-            controller?[.loadingFailed] = { [weak loadingView] _, _ in
-                loadingView?.state = .hidden
-            }
-        }
-    }
+    var viewModel: FBLoginViewModel
+    
+    // MARK: Private properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: Initialization
     
-    init(model: Model) {
-        super.init()
-        self.model = model
+    init(viewModel: FBLoginViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: toString(type: type(of: self)), bundle: .main)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -55,14 +38,17 @@ class FBLoginViewController: FBViewController, RootView {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.rootView?.loadingView?.state = .hidden
-        self.rootView?.observeLoginButton()
-        self.model = self.rootView?.viewModel.user ?? Model()
+        self.rootView?.fill(with: self.viewModel)
+        self.viewModel.didLogin.subscribe { (_) in
+            self.showViewController()
+        }.disposed(by: self.disposeBag)
     }
     
     // MARK: Public methods
     
     func showViewController() {
-        guard let user = self.rootView?.viewModel.user  else { return }
+        guard let user = self.viewModel.model as? FBCurrentUser
+            else { return }
         let navigationController = UINavigationController(rootViewController: FBUserViewController(model: user, currentUser: user))
         self.present(navigationController, animated: true, completion: nil)
     }

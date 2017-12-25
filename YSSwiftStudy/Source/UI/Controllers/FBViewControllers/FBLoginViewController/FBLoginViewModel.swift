@@ -15,18 +15,23 @@ class FBLoginViewModel {
     
     var bag = DisposeBag()
     var didTapLoginButton = PublishSubject<Void>()
-    var user = FBCurrentUser()
+    var didLogin = PublishSubject<Void>()
+    var model = Model()
     var context: YSContext? {
         willSet { newValue?.execute() }
         didSet { oldValue?.cancel() }
     }
     
-    // MARK: Public methods
+    // MARK: Initialization
     
-    func observe() {
-        self.didTapLoginButton.subscribe  (  onNext: {
-            self.context = FBLoginContext(user: self.user)
-        }).disposed(by: self.bag)
+    init(model: Model) {
+        self.model = model
+        self.didTapLoginButton
+            .subscribe  (  onNext: {
+            (self.model as? FBCurrentUser)
+            .map { self.context = FBLoginContext(user: $0) }
+        })
+            .disposed(by: self.bag)
     }
-    
+
 }
