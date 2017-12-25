@@ -40,8 +40,12 @@ class FBLoginViewController: UIViewController, RootView {
         self.rootView?.loadingView?.state = .hidden
         self.rootView?.fill(with: self.viewModel)
         self.viewModel.didLogin.subscribe { (_) in
-            self.showViewController()
+            if self.viewModel.model.state == .didLoad {
+                self.showViewController()
+                self.rootView?.loadingView?.state = .hidden
+            }
         }.disposed(by: self.disposeBag)
+        
     }
     
     // MARK: Public methods
