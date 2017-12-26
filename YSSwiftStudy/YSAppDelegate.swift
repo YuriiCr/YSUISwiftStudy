@@ -10,6 +10,7 @@ import UIKit
 import FacebookCore
 import FacebookLogin
 import FacebookShare
+import MagicalRecord
 
 @UIApplicationMain
 class YSAppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,7 @@ class YSAppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        MagicalRecord.setupCoreDataStack()
         self.window = UIWindow.window {
             let viewModel = FBLoginViewModel(model: FBCurrentUser())
             let navigationController = UINavigationController(rootViewController: FBLoginViewController(viewModel: viewModel))

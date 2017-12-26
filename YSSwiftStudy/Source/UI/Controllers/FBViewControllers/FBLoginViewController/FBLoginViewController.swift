@@ -22,7 +22,7 @@ class FBLoginViewController: UIViewController, RootView {
     
     // MARK: Private properties
     
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
     // MARK: Initialization
     
@@ -39,6 +39,7 @@ class FBLoginViewController: UIViewController, RootView {
         super.viewDidLoad()
         self.rootView?.loadingView?.state = .hidden
         self.rootView?.fill(with: self.viewModel)
+        self.showViewController()
         self.viewModel.didLogin.subscribe { (_) in
             if self.viewModel.model.state == .didLoad {
                 self.showViewController()
