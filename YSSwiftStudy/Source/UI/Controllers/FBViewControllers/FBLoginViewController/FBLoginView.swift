@@ -22,7 +22,6 @@ class FBLoginView: YSView {
     
     func fill(with viewModel: FBLoginViewModel) {
          self.loginButton?.rx.tap.bind(to: viewModel.didTapLoginButton).disposed(by: self.disposeBag)
-        self.loginButton?.rx.tap.bind(to: viewModel.didLogin).disposed(by: self.disposeBag)
     }
     
 }

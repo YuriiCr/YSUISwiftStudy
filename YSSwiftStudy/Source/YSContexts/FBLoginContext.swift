@@ -9,6 +9,7 @@
 import UIKit
 import FacebookLogin
 import FacebookCore
+import RxSwift
 
 class FBLoginContext: YSContext {
     
@@ -18,6 +19,8 @@ class FBLoginContext: YSContext {
         get { return self.model as? FBCurrentUser }
         set {}
     }
+    
+    var loginSubject = PublishSubject<FBCurrentUser>()
     
     // MARK: Initailization
     
@@ -43,6 +46,7 @@ class FBLoginContext: YSContext {
                 case .success(_, _, let token):
                     user.userID = token.userId
                     user.token = token.authenticationToken
+                    self.loginSubject.onNext(user)
                     block(.didLoad)
                     
                 case .cancelled:

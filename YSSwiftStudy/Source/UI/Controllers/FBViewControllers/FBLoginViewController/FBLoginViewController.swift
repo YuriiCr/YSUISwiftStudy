@@ -29,6 +29,10 @@ class FBLoginViewController: UIViewController, RootView {
     init(viewModel: FBLoginViewModel) {
         self.viewModel = viewModel
         super.init(nibName: toString(type: type(of: self)), bundle: .main)
+        self.viewModel.didLogin.subscribe({ _ in
+            self.showViewController()
+            self.rootView?.loadingView?.state = .hidden
+        }).disposed(by: self.disposeBag)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -39,21 +43,12 @@ class FBLoginViewController: UIViewController, RootView {
         super.viewDidLoad()
         self.rootView?.loadingView?.state = .hidden
         self.rootView?.fill(with: self.viewModel)
-        self.showViewController()
-        self.viewModel.didLogin.subscribe { (_) in
-            if self.viewModel.model.state == .didLoad {
-                self.showViewController()
-                self.rootView?.loadingView?.state = .hidden
-            }
-        }.disposed(by: self.disposeBag)
-        
     }
     
     // MARK: Public methods
     
     func showViewController() {
-        guard let user = self.viewModel.model as? FBCurrentUser
-            else { return }
+        let user = self.viewModel.model
         let navigationController = UINavigationController(rootViewController: FBUserViewController(model: user, currentUser: user))
         self.present(navigationController, animated: true, completion: nil)
     }
