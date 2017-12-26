@@ -30,12 +30,18 @@ class FBLoginContext: YSContext {
         
     }
     
+    convenience init(user: FBCurrentUser, subject: PublishSubject<FBCurrentUser>) {
+        self.init(user: user)
+        self.user = user
+        self.loginSubject = subject
+    }
+    
     // MARK: Public methods
     
     override func performExecution(_ block: @escaping (ModelState) -> ()) {
         if let user = self.user {
             if user.isAuthorized {
-                block(.didLoad)
+                self.loginSubject.onNext(user)
                 return
             }
             

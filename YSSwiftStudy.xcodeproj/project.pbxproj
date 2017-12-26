@@ -419,10 +419,10 @@
 		951E44F71FED615F00E8D35A /* YSContexts */ = {
 			isa = PBXGroup;
 			children = (
+				951E44FB1FED615F00E8D35A /* YSContext */,
 				951E44F81FED615F00E8D35A /* GetContext.swift */,
 				951E44F91FED615F00E8D35A /* GetUsersContext.swift */,
 				951E44FA1FED615F00E8D35A /* FBLoginContext.swift */,
-				951E44FB1FED615F00E8D35A /* YSContext */,
 				951E44FD1FED615F00E8D35A /* GetUserContext.swift */,
 				951E44FE1FED615F00E8D35A /* FBLogoutContext.swift */,
 			);

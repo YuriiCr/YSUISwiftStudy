@@ -28,8 +28,7 @@ class FBLoginViewModel {
         self.model = model
         self.didTapLoginButton
             .subscribe  (  onNext: {
-                self.context = FBLoginContext(user: self.model)
-                self.context?.loginSubject = self.didLogin
+                self.context = FBLoginContext(user: model, subject: self.didLogin)
         })
             .disposed(by: self.bag)
     }
