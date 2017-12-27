@@ -15,7 +15,7 @@ class FBLoginViewModel {
     
     var bag = DisposeBag()
     var didTapLoginButton = PublishSubject<Void>()
-    var didLogin = PublishSubject<FBCurrentUser>()
+    var didFinishAuthorization = PublishSubject<Result<FBCurrentUser>>()
     var model: FBCurrentUser
     var context: FBLoginContext? {
         willSet { newValue?.execute() }
@@ -27,8 +27,8 @@ class FBLoginViewModel {
     init(model: FBCurrentUser) {
         self.model = model
         self.didTapLoginButton
-            .subscribe  (  onNext: {
-                self.context = FBLoginContext(user: model, subject: self.didLogin)
+            .subscribe  (  onNext: { [unowned self] in
+                self.context = FBLoginContext(user: model, subject: self.didFinishAuthorization)
         })
             .disposed(by: self.bag)
     }

@@ -12,7 +12,7 @@ class FBUser: Model {
     
     // MARK: Public properties
     
-    var name: String?
+    var name: String? 
     var surname: String?
     var fullName : String? {
         return [self.name, self.surname].flatMap { $0 }.joined(separator: " ")

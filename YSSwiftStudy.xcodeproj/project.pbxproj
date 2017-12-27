@@ -74,6 +74,7 @@
 		951E45581FED615F00E8D35A /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E45191FED615F00E8D35A /* GlobalFunctions.swift */; };
 		951E45591FED615F00E8D35A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 951E451A1FED615F00E8D35A /* Info.plist */; };
 		951E455B1FED760900E8D35A /* FBUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E455A1FED760900E8D35A /* FBUserViewModel.swift */; };
+		95F7898F1FF3C1E40099995B /* CRData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F7898E1FF3C1E40099995B /* CRData.swift */; };
 		CC4F3BFF98A0E406270FAA4D /* Pods_YSSwiftStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3FB21086BCD056EC3690F0D /* Pods_YSSwiftStudy.framework */; };
 /* End PBXBuildFile section */
 
@@ -148,6 +149,7 @@
 		951E451A1FED615F00E8D35A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		951E455A1FED760900E8D35A /* FBUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBUserViewModel.swift; sourceTree = "<group>"; };
 		956A85BF1F93D52200292D21 /* YSSwiftStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YSSwiftStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		95F7898E1FF3C1E40099995B /* CRData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRData.swift; sourceTree = "<group>"; };
 		B3FB21086BCD056EC3690F0D /* Pods_YSSwiftStudy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YSSwiftStudy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B1D94E1CB6F03921F833F4 /* Pods-YSSwiftStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YSSwiftStudy.release.xcconfig"; path = "Pods/Target Support Files/Pods-YSSwiftStudy/Pods-YSSwiftStudy.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,6 +198,7 @@
 		951E44BE1FED615F00E8D35A /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				95F789901FF414F10099995B /* ViewModels */,
 				951E44BF1FED615F00E8D35A /* UI */,
 				951E44DD1FED615F00E8D35A /* Parsers */,
 				951E44E01FED615F00E8D35A /* Models */,
@@ -258,7 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				951E44CB1FED615F00E8D35A /* FBLoginView.swift */,
-				951E44CC1FED615F00E8D35A /* FBLoginViewModel.swift */,
 				951E44CD1FED615F00E8D35A /* FBLoginViewController.swift */,
 				951E44CA1FED615F00E8D35A /* FBLoginViewController.xib */,
 			);
@@ -378,6 +380,7 @@
 				951E44ED1FED615F00E8D35A /* User.swift */,
 				951E44EE1FED615F00E8D35A /* FBCurrentUser.swift */,
 				95155CF81FF274280054D1DA /* CDUser.xcdatamodeld */,
+				95F7898E1FF3C1E40099995B /* CRData.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -519,6 +522,14 @@
 				956A85BF1F93D52200292D21 /* YSSwiftStudy.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		95F789901FF414F10099995B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				951E44CC1FED615F00E8D35A /* FBLoginViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		CD129E8AEE78AD01ADA742C8 /* Frameworks */ = {
@@ -719,6 +730,7 @@
 				951E45421FED615F00E8D35A /* Context.swift in Sources */,
 				951E45551FED615F00E8D35A /* UITableView+Extension.swift in Sources */,
 				95155CFA1FF274280054D1DA /* CDUser.xcdatamodeld in Sources */,
+				95F7898F1FF3C1E40099995B /* CRData.swift in Sources */,
 				951E452C1FED615F00E8D35A /* SquareView.swift in Sources */,
 				951E451D1FED615F00E8D35A /* FBUsersView.swift in Sources */,
 				951E45271FED615F00E8D35A /* FBUserViewController.swift in Sources */,

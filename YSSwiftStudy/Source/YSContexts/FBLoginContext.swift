@@ -20,17 +20,16 @@ class FBLoginContext: YSContext {
         set {}
     }
     
-    var loginSubject = PublishSubject<FBCurrentUser>()
+    var loginSubject = PublishSubject<Result<FBCurrentUser>>()
     
     // MARK: Initailization
     
     init(user: FBCurrentUser) {
         super.init(model: user)
         self.user = user
-        
     }
     
-    convenience init(user: FBCurrentUser, subject: PublishSubject<FBCurrentUser>) {
+    convenience init(user: FBCurrentUser, subject: PublishSubject<Result<FBCurrentUser>>) {
         self.init(user: user)
         self.user = user
         self.loginSubject = subject
@@ -41,7 +40,7 @@ class FBLoginContext: YSContext {
     override func performExecution(_ block: @escaping (ModelState) -> ()) {
         if let user = self.user {
             if user.isAuthorized {
-                self.loginSubject.onNext(user)
+                self.loginSubject.onNext( Result.success(user))
                 return
             }
             
@@ -52,7 +51,7 @@ class FBLoginContext: YSContext {
                 case .success(_, _, let token):
                     user.userID = token.userId
                     user.token = token.authenticationToken
-                    self.loginSubject.onNext(user)
+                    self.loginSubject.onNext( Result.success(user))
                     block(.didLoad)
                     
                 case .cancelled:
@@ -64,5 +63,12 @@ class FBLoginContext: YSContext {
             })
         }
     }
+    
+    // MARK: Private methods
+    
+    private func execute(onCompletion: Result<FBCurrentUser>) {
+      
+    }
+    
     
 }

@@ -45,9 +45,9 @@ class FBLoginViewController: UIViewController, RootView {
     // MARK: Private methods
     
     private func prepareObserving() {
-        self.viewModel.didLogin.subscribe({ _ in
-            self.showViewController()
-            self.rootView?.loadingView?.state = .hidden
+        self.viewModel.didFinishAuthorization.subscribe({ [weak self] _ in
+            self?.showViewController()
+            self?.rootView?.loadingView?.state = .hidden
         }).disposed(by: self.disposeBag)
     }
     
