@@ -13,16 +13,16 @@ import CoreData
 
 public class DUser: NSManagedObject {
     
-    class func createOrFind(user: FBCurrentUser, in context: NSManagedObjectContext) -> DUser {
+    class func createOrFind(user: FBCurrentUser, in context: NSManagedObjectContext) {
         let request: NSFetchRequest<DUser> = DUser.fetchRequest()
         if let url = user.photoURL {
             request.predicate = NSPredicate(format: "photoUrl = %@", url as CVarArg)
         }
-        
+
         let result = try? context.fetch(request)
         if let result = result {
             if result.count > 0 {
-                return result[0]
+                return
             }
         }
         
@@ -31,7 +31,7 @@ public class DUser: NSManagedObject {
         fbUser.surname = user.surname
         fbUser.photoUrl = user.photoURL
         
-        return fbUser
+        try? context.save()
     }
 
 }

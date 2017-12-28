@@ -88,10 +88,9 @@ class FBUserViewController: FBViewController, RootView {
     
     private func updateCoreData(with user: FBCurrentUser) {
         container?.performBackgroundTask({[weak self] (context) in
-            let cuser =  DUser.createOrFind(user: user, in: context)
-            try? context.save()
+            DUser.createOrFind(user: user, in: context)
             self?.printDataBaseStatistics()
-            print(cuser.surname as Any)
+
         })
         
     }
