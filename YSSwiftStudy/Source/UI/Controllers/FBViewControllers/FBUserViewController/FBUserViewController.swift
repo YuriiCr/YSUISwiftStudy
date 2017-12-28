@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class FBUserViewController: FBViewController, RootView {
     
@@ -42,6 +43,8 @@ class FBUserViewController: FBViewController, RootView {
     
     var user: FBUser? { return self.model as? FBUser }
     
+     var container: NSPersistentContainer? = (UIApplication.shared.delegate as? YSAppDelegate)?.persistentContainer
+    
     // MARK: Private properties
     
     private var logoutContext:FBLogoutContext? {
@@ -65,11 +68,12 @@ class FBUserViewController: FBViewController, RootView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.context = GetUserContext(model: self.model, currentUser: FBCurrentUser())
+        self.context = GetUserContext(model: self.model, currentUser: self.currentUser)
         (self.model as? FBCurrentUser).map {
             self.rootView?.observeLogOutButton(with: $0)
         }
         self.rootView?.loadingView?.state = .hidden
+        self.updateCoreData(with: self.currentUser)
     }
     
     // MARK: IBAction
@@ -80,4 +84,26 @@ class FBUserViewController: FBViewController, RootView {
         self.navigationController?.pushViewController(usersController, animated: true)
     }
     
+    // MARK: Private methods
+    
+    private func updateCoreData(with user: FBCurrentUser) {
+        container?.performBackgroundTask({[weak self] (context) in
+            let cuser =  DUser.createOrFind(user: user, in: context)
+            try? context.save()
+            self?.printDataBaseStatistics()
+            print(cuser.surname as Any)
+        })
+        
+    }
+    
+    private func printDataBaseStatistics() {
+        if let context = container?.viewContext {
+            context.perform {
+                let request: NSFetchRequest<DUser> = DUser.fetchRequest()
+                if let usersCount = (try? context.fetch(request))?.count {
+                    print ("users count: ",usersCount)
+                }
+            }
+        }
+    }
 }

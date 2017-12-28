@@ -55,6 +55,7 @@ class FBLoginViewController: UIViewController, RootView {
         let user = self.viewModel.model
         let navigationController = UINavigationController(rootViewController: FBUserViewController(model: user, currentUser: user))
         self.present(navigationController, animated: true, completion: nil)
-    }
 
+    }
+    
 }

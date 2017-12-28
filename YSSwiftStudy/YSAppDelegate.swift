@@ -10,7 +10,7 @@ import UIKit
 import FacebookCore
 import FacebookLogin
 import FacebookShare
-import MagicalRecord
+import CoreData
 
 @UIApplicationMain
 class YSAppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +18,7 @@ class YSAppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        MagicalRecord.setupCoreDataStack()
+//        MagicalRecord.setupCoreDataStack()
         self.window = UIWindow.window {
             let viewModel = FBLoginViewModel(model: FBCurrentUser())
             let navigationController = UINavigationController(rootViewController: FBLoginViewController(viewModel: viewModel))
@@ -61,7 +61,7 @@ class YSAppDelegate: UIResponder, UIApplicationDelegate {
     
     lazy var persistentContainer: NSPersistentContainer = {
        
-        let container = NSPersistentContainer(name: "CDuser")
+        let container = NSPersistentContainer(name: "CDUser")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
            

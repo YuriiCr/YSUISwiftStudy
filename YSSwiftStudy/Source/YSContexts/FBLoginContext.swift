@@ -40,7 +40,7 @@ class FBLoginContext: YSContext {
     override func performExecution(_ block: @escaping (ModelState) -> ()) {
         if let user = self.user {
             if user.isAuthorized {
-                self.loginSubject.onNext( Result.success(user))
+                self.execute(onCompletion: .success(user))
                 return
             }
             
@@ -51,7 +51,7 @@ class FBLoginContext: YSContext {
                 case .success(_, _, let token):
                     user.userID = token.userId
                     user.token = token.authenticationToken
-                    self.loginSubject.onNext( Result.success(user))
+                    self.execute(onCompletion: .success(user))
                     block(.didLoad)
                     
                 case .cancelled:
@@ -67,8 +67,7 @@ class FBLoginContext: YSContext {
     // MARK: Private methods
     
     private func execute(onCompletion: Result<FBCurrentUser>) {
-      
+        self.user.map { _ in self.loginSubject.onNext(onCompletion) }
     }
-    
     
 }
